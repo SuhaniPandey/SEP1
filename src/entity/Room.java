@@ -13,8 +13,8 @@ public class Room
     isSmokingAllowed= false;
   }
 
-  public void setSmokingAllowed(boolean smokingAllowed)
+  public void setSmokingAllowed()
   {
-    isSmokingAllowed = smokingAllowed;
+    isSmokingAllowed=true;
   }
 }
