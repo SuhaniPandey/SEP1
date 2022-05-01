@@ -17,4 +17,20 @@ public class Room
   {
     isSmokingAllowed=true;
   }
+
+  public int getRoomNumber()
+  {
+    return roomNumber;
+  }
+
+  public String getRoomType()
+  {
+    return roomType;
+  }
+
+  @Override public String toString()
+  {
+    return "Room{" + "roomNumber=" + roomNumber + ", roomType='" + roomType
+        + '\'' + ", isSmokingAllowed=" + isSmokingAllowed + '}';
+  }
 }
