@@ -11,6 +11,14 @@ public class RoomList
   {
     this.rooms = new ArrayList<>();
   }
+
+  public Room getRoomByNumber(int roomNumber)
+  {
+    if(rooms.contains(room.getRoomNumber() == roomNumber))
+      return room;
+    else
+      return null;
+  }
   public void createList()
   {
     int roomNumber = 100;
