@@ -173,4 +173,6 @@ public class Room
       Room other = (Room)obj;
       return (extraBed == other.extraBed && isAvailable == other.isAvailable && roomType.equals(other.roomType));
   }
+
+
 }

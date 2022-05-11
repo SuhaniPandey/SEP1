@@ -55,14 +55,14 @@ public class BookingModelManager
    * @param phoneNum the phone number of the guest whose booking is needed
    * @return the Booking which contains phoneNum, else null
    */
-  public BookingList getBookingByGuest(int phoneNum)
+  public BookingList getBookingByGuest(String phoneNum)
   {
     BookingList bookingByGuest = new BookingList();
     BookingList allBookings = getAllBookings();
 
     for (int i = 0; i < allBookings.size(); i++)
     {
-      if ((allBookings.get(i).getPhoneNumber() == phoneNum))
+      if ((allBookings.get(i).getPhoneNumber().equals(phoneNum)))
       {
         bookingByGuest.add(allBookings.get(i));
         return bookingByGuest;
@@ -106,7 +106,7 @@ public class BookingModelManager
 
     for (int i = 0; i < allRooms.size(); i++)
     {
-      if (allRooms.get(i).isAvailable())
+      if (allRooms.get(i).getIsAvailable())
       {
         availableRooms.add(allRooms.get(i));
       }
@@ -208,7 +208,7 @@ public class BookingModelManager
    * Removes a Booking using a Guest object containing phoneNum.
    * @param phoneNum the phone number which corresponds to a Guest object
    */
-  public void deleteByGuest(int phoneNum)
+  public void deleteByGuest(String phoneNum)
   {
     BookingList allBookings = getAllBookings();
     BookingList newBookings = new BookingList();
@@ -216,7 +216,7 @@ public class BookingModelManager
     {
       for (int i = 0; i < allBookings.size(); i++)
       {
-        if (!(allBookings.getBooking(i).getPhoneNumber() == phoneNum))
+        if (!(allBookings.getBooking(i).getPhoneNumber().equals(phoneNum)))
           newBookings = (BookingList) MyFileHandler.readFromBinaryFile(fileName);
 
       }

@@ -1,5 +1,7 @@
 package entity;
 
+import jdk.jfr.FlightRecorder;
+
 import java.util.ArrayList;
 
 /**
@@ -93,5 +95,29 @@ public class RoomList
       string += rooms.get(i) + "\n";
     }
     return string;
+  }
+
+  public int size()
+  {
+    return rooms.size();
+  }
+
+  public Room get(int i)
+  {
+    if (i< rooms.size())
+    {
+      return rooms.get(i);
+    }
+    else {
+      return null;
+    }
+  }
+  public void add(Room room)
+  {
+    rooms.add(room);
+  }
+  public void set(Room room,int i)
+  {
+    rooms.set(i,room);
   }
 }

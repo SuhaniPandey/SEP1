@@ -148,4 +148,9 @@ public class Booking
     return guest.equals(other.guest) && rooms.equals(other.rooms)
         && arrival.equals(other.arrival) && departure.equals(other.departure);
   }
+
+  public String getPhoneNumber()
+  {
+    return guest.getPhoneNumber();
+  }
 }
