@@ -79,20 +79,6 @@ public class Date
   {
     return day;
   }
-
-  /**
-   * A method to get the local date based on the user pc set time
-   * @return the current date
-   */
-  public Date getLocalDate()
-  {
-    LocalDate currentDate = LocalDate.now();
-    int currentDay = currentDate.getDayOfMonth();
-    int currentMonth = currentDate.getMonthValue();
-    int currentYear = currentDate.getYear();
-    return new Date(currentDay, currentMonth, currentYear);
-  }
-
   /**
    * A boolean method to check if a date is a leap year
    * @return true if it is a leap year, otherwise false
@@ -136,25 +122,27 @@ public class Date
     else
       return -1;
   }
+  public static Date today()
+  {
+    LocalDate currentDate = LocalDate.now();
+    int currentDay = currentDate.getDayOfMonth();
+    int currentMonth = currentDate.getMonthValue();
+    int currentYear = currentDate.getYear();
+    return new Date(currentDay, currentMonth, currentYear);
+  }
 
   /**
    * A method that takes in two date objects and returns the difference in days
-   * @param checkIn is a Date object
-   * @param checkOut is a Date object
    * @return
    */
-  public int dateInterval(Date checkIn, Date checkOut)
+  public int dateInterval()
   {
-    int dayInterval1 = 0;
-    int dayInterval2 = 0;
+    Date currentDate = Date.today();
 
-    dayInterval1 += checkIn.getDay();
-    dayInterval1 += checkIn.daysInMonth();
+    int interval1 = this.getDay() + this.daysInMonth();
+    int interval2 = currentDate.getDay() + currentDate.daysInMonth();
 
-    dayInterval2 +=  checkOut.getDay();
-    dayInterval2 += checkOut.daysInMonth();
-
-    return dayInterval2 - dayInterval1;
+    return interval2 - interval1;
   }
 
   /**

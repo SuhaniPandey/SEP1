@@ -23,6 +23,16 @@ public class Room
     this.isAvailable = true;
     this.roomType = roomType;
     this.roomNumber = 0;
+    if(roomType.equals("Single Bedroom"))
+      price = 129;
+    else if(roomType.equals("Double Bedroom"))
+      price = 169;
+    else if(roomType.equals("Single Bedroom Suite"))
+      price = 259;
+    else if(roomType.equals("Two Bedroom Sutie"))
+      price = 339;
+    else if (roomType.equals("Three Bedroom Suite"))
+      price = 399;
   }
   public Room()
   {

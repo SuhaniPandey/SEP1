@@ -1,6 +1,5 @@
 package entity;
 
-import java.util.Date;
 
 public class Booking
 {
@@ -61,14 +60,13 @@ public class Booking
     return departure;
   }
 
-  public double checkOutPrice(Room room,Date dateIntervals)
+  public double checkOutPrice()
   {
-    double daysstayed=0;
+    int daysstayed = getArrival().dateInterval();
     double price=0;
-   if (room.getPrice()== rooms.getPrice())
+   if (getRooms().getPrice()== rooms.getPrice())
    {
-      daysstayed= arrival.compareTo(departure);
-      price=room.getPrice()*daysstayed;
+      price=getRooms().getPrice()*daysstayed;
    }
    return price;
   }
