@@ -1,8 +1,13 @@
 package entity;
 
+/**
+ * A Class that contains the guest,rooms,arrival and departure
+ * @author Suhani Pandey
+ */
 
 public class Booking
 {
+
   private Guest guest;
   private Room rooms;
   private Date arrival;
@@ -120,6 +125,14 @@ public class Booking
   {
     return rooms.getPrice()-(rooms.getPrice()*0.5);
   }
+  /**
+   *
+   * @return phone number from guest class
+   */
+  public String getPhoneNumber()
+  {
+    return guest.getPhoneNumber();
+  }
 
   /**
    *
@@ -149,8 +162,5 @@ public class Booking
         && arrival.equals(other.arrival) && departure.equals(other.departure);
   }
 
-  public String getPhoneNumber()
-  {
-    return guest.getPhoneNumber();
-  }
+
 }

@@ -1,6 +1,10 @@
 package entity;
 
 import java.io.Serializable;
+/**
+ * A Class that contains firstname,lastname,phone number,nationality,address,date of birth
+ * @author Suhani Pandey
+ */
 
 public class Guest implements Serializable
 {
