@@ -11,10 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.checkOut.CheckOut">
+<AnchorPane prefHeight="445.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.checkOut.CheckOut">
    <children>
-      <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="445.0" prefWidth="558.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Search">
                <content>
@@ -43,7 +42,7 @@
                         <TextField layoutX="139.0" layoutY="26.0" prefHeight="29.0" prefWidth="161.0" />
                         <TextField layoutX="139.0" layoutY="61.0" prefHeight="29.0" prefWidth="161.0" />
                         <TextField layoutX="140.0" layoutY="98.0" prefHeight="29.0" prefWidth="161.0" />
-                        <TableView layoutX="13.0" layoutY="137.0" prefHeight="167.0" prefWidth="573.0">
+                        <TableView layoutX="7.0" layoutY="171.0" prefHeight="167.0" prefWidth="547.0">
                           <columns>
                             <TableColumn prefWidth="149.33331298828125" text="First Name" />
                             <TableColumn prefWidth="164.66665649414062" text="Last Name" />
@@ -68,13 +67,13 @@
                               <Font size="22.0" />
                            </font>
                         </Text>
-                        <Text layoutX="345.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Departure Date">
+                        <Text layoutX="304.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Departure Date">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Text>
                         <DatePicker layoutX="7.0" layoutY="64.0" prefHeight="31.0" prefWidth="185.0" />
-                        <DatePicker layoutX="345.0" layoutY="65.0" prefHeight="30.0" prefWidth="189.0" />
+                        <DatePicker layoutX="293.0" layoutY="63.0" prefHeight="30.0" prefWidth="189.0" />
                         <Text layoutX="14.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total night stayed">
                            <font>
                               <Font size="22.0" />
@@ -90,7 +89,7 @@
                               <Font size="22.0" />
                            </font>
                         </Text>
-                        <Button layoutX="453.0" layoutY="284.0" mnemonicParsing="false" text="Check out">
+                        <Button layoutX="392.0" layoutY="324.0" mnemonicParsing="false" text="Check out">
                            <font>
                               <Font size="14.0" />
                            </font>
