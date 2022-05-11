@@ -12,7 +12,7 @@ public class RoomList
   private Room room;
 
   /**
-   * An empty constructor initializing the ArrayList
+   * A no argument constructor initializing the ArrayList
    */
   public RoomList()
   {

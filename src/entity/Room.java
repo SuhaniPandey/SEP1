@@ -37,7 +37,7 @@ public class Room
   public Room()
   {
     /**
-     * A no Argument Constructor, deafulting extraBed to false, isAvailable to true.
+     * A no Argument Constructor, defaulting extraBed to false, isAvailable to true.
      */
     this.extraBed = false;
     this.isAvailable = true;
@@ -139,10 +139,10 @@ public class Room
   }
 
   /**
-   * sets the price of a room by the given int
-   * @param price set by int
+   * sets the price of a room by the given double
+   * @param price set by double
    */
-  public void setPrice(int price)
+  public void setPrice(double price)
   {
     this.price = price;
   }
@@ -164,5 +164,13 @@ public class Room
   {
     return roomNumber + " Type: " + roomType + " Price: " + price + " Number of Rooms: " +
         numberOfRooms + " Availability: " + isAvailable + " ExtraBed: " + extraBed;
+  }
+  public boolean equals(Object obj)
+  {
+    if(!(obj instanceof Room))
+      return false;
+
+      Room other = (Room)obj;
+      return (extraBed == other.extraBed && isAvailable == other.isAvailable && roomType.equals(other.roomType));
   }
 }
