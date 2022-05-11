@@ -11,7 +11,6 @@ public class Date
   private int day;
   private int month;
   private int year;
-  private int hour;
 
   /**
    * A three argument constructor to set the Date
@@ -132,7 +131,7 @@ public class Date
   }
 
   /**
-   * A method that takes in two date objects and returns the difference in days
+   * A method that compares
    * @return
    */
   public int dateInterval()
@@ -171,12 +170,12 @@ public class Date
    */
   public boolean equals(Object obj)
   {
-    if (obj instanceof Date)
+    if (!(obj instanceof Date))
     {
-      Date obj1 = (Date) obj;
-      return true;
-    } else
       return false;
+    }
+    Date other = (Date)obj;
+    return (day == other.day && month == other.month && year == other.year);
   }
 
 
