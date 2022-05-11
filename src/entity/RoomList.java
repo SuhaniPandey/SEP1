@@ -2,13 +2,15 @@ package entity;
 
 import jdk.jfr.FlightRecorder;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * A public class that creates a list of Room objects
  * @author Devlin Onichuk
+ * @version 2.0
  */
-public class RoomList
+public class RoomList implements Serializable
 {
   private ArrayList<Room> rooms;
   private Room room;
@@ -97,11 +99,20 @@ public class RoomList
     return string;
   }
 
+  /**
+   * A method to get the size of an the rooms ArrayList
+   * @return size of the ArrayList
+   */
   public int size()
   {
     return rooms.size();
   }
 
+  /**
+   * A method to return a room at a given index
+   * @param i takes in an integer for the index
+   * @return room at given index
+   */
   public Room get(int i)
   {
     if (i< rooms.size())
@@ -112,10 +123,21 @@ public class RoomList
       return null;
     }
   }
+
+  /**
+   * A method to ass a room to rooms ArrayList
+   * @param room takes in a room Object
+   */
   public void add(Room room)
   {
     rooms.add(room);
   }
+
+  /**
+   * A method to set a room to a given index
+   * @param room takes in a room object
+   * @param i takes in an int for the index
+   */
   public void set(Room room,int i)
   {
     rooms.set(i,room);

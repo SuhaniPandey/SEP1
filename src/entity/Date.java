@@ -5,6 +5,7 @@ import java.time.LocalDate;
 /**
  * A Class that contains the day, month and year
  * @author Devlin Onichuk
+ * @version 2.0
  */
 public class Date
 {
@@ -132,7 +133,7 @@ public class Date
 
   /**
    * A method that compares
-   * @return
+   * @return the difference between a date and todays date
    */
   public int dateInterval()
   {
@@ -146,7 +147,7 @@ public class Date
 
   /**
    * A method to return the Date in day, month, year order
-   * @return
+   * @return the date, as day, month, year.
    */
   public String toString()
   {

@@ -3,7 +3,7 @@ package entity;
 /**
  * A Class Containing Room Objects
  * @author Devlin Onichuk
- * @version 1.0
+ * @version 2.0
  */
 public class Room
 {
@@ -18,6 +18,7 @@ public class Room
   {
     /**
      * A Three Argument Constructor creating a new Room Object, Defaults extra bed to false and isAvailable to True
+     * Sets the default room prices by type of room
      */
     this.extraBed = false;
     this.isAvailable = true;
@@ -34,18 +35,18 @@ public class Room
     else if (roomType.equals("Three Bedroom Suite"))
       price = 399;
   }
+  /**
+   * A no Argument Constructor, defaulting extraBed to false, isAvailable to true.
+   */
   public Room()
   {
-    /**
-     * A no Argument Constructor, defaulting extraBed to false, isAvailable to true.
-     */
     this.extraBed = false;
     this.isAvailable = true;
     this.roomType = "";
     this.roomNumber = 0;
   }
   /**
-   * Changes Room isAvailable to true/false.
+   * A method that changes Room isAvailable to true/false.
    */
   public void setIsAvailable()
   {
@@ -56,7 +57,7 @@ public class Room
   }
 
   /**
-   * Changes extraBed to true/false
+   * A method that changes Changes extraBed to true/false
    */
   public void setExtraBed()
   {
@@ -76,7 +77,7 @@ public class Room
   }
 
   /**
-   *
+   * A method to see if there is an Extra Bed needed
    * @return if the room needs an extra bed
    */
   public boolean isExtraBed()
@@ -85,7 +86,7 @@ public class Room
   }
 
   /**
-   *
+   * A method to get room type
    * @return the type of room
    */
   public String getRoomType()
@@ -94,7 +95,7 @@ public class Room
   }
 
   /**
-   *
+   * A method to get room number
    * @return the room number
    */
   public int getRoomNumber()
@@ -148,7 +149,7 @@ public class Room
   }
 
   /**
-   *
+   * A method to return the price
    * @return price
    */
   public double getPrice()
@@ -165,6 +166,12 @@ public class Room
     return roomNumber + " Type: " + roomType + " Price: " + price + " Number of Rooms: " +
         numberOfRooms + " Availability: " + isAvailable + " ExtraBed: " + extraBed;
   }
+
+  /**
+   * A method to see if an object is equal to Room object
+   * @param obj takes in an Object
+   * @return a Object of type Room
+   */
   public boolean equals(Object obj)
   {
     if(!(obj instanceof Room))
