@@ -219,14 +219,14 @@ public class ModelManager implements Serializable
     }
   }
 
-  public void addGuestToBooking(Booking booking, Guest guest)
+  public void addGuestsToBooking(Booking booking, ArrayList<Guest> guests)
   {
     BookingList allBookings = getAllBookings();
     for (int i = 0; i < allBookings.size(); i++)
     {
       if (allBookings.get(i).equals(booking))
       {
-        allBookings.get(i).addGuests(guest);
+        allBookings.get(i).addAllGuests(guests);
         break;
       }
     }
@@ -279,4 +279,22 @@ public class ModelManager implements Serializable
     }
     return roomList;
   }
+
+  public ArrayList<Booking> searchBooking(String firstname, String lastname,
+      String phoneNumberText)
+  {
+    BookingList allBookings = getAllBookings();
+    ArrayList<Booking> bookings = new ArrayList<>();
+    for (Booking booking : allBookings.getBookings())
+    {
+      Guest guest = booking.getMainBooker();
+      if (!guest.getFirstName().equals(firstname)) continue;
+      if (!guest.getLastName().equals(lastname)) continue;
+      if (!guest.getPhoneNumber().equals(phoneNumberText)) continue;
+      bookings.add(booking);
+    }
+    return bookings;
+  }
+
+
 }

@@ -18,6 +18,7 @@ public class Booking implements Serializable
   private Guest mainBooker;
   private ArrayList<Guest> guests;
   private Room room;
+  private int roomNumber;
   private LocalDate arrival;
   private LocalDate departure;
 
@@ -26,7 +27,13 @@ public class Booking implements Serializable
     guests = new ArrayList<>();
     this.mainBooker = mainBooker;
     this.room = room;
+    roomNumber = room.getRoomNumber();
 
+  }
+
+  public int getRoomNumber()
+  {
+    return roomNumber;
   }
 
   /**

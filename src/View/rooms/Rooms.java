@@ -79,15 +79,16 @@ public class Rooms implements Initializable
 
   private void clearLabel()
   {
+
+
+    // clearing the label
     new Thread(() -> {
       try
       {
         Thread.sleep(2000);
-
         Platform.runLater(() -> {
           errorLabel.setText(null);
         });
-
       }
       catch (InterruptedException e)
       {

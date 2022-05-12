@@ -13,22 +13,18 @@ public class RunApp
   {
 
 
-    // Testing .....
-    /*
+/*
     ModelManager modelManager = new ModelManager();
-    RoomList allRooms = modelManager.getAllRooms();
- //   System.out.println(allRooms);
-    allRooms.getRooms().forEach(System.out::println);
 
-     */
+    Guest guest = new Guest("asd","asd","<as","<s","ac",LocalDate.now());
+    Booking booking = new Booking(guest, new Room());
+    booking.setArrival(LocalDate.now());
+    booking.setDeparture(LocalDate.now().plusDays(3));
+    modelManager.addBooking(booking);
 
-    // Testing days in between
- /*   LocalDate localDate = LocalDate.now();
-    LocalDate localDate1 = LocalDate.of(2002,7,22);
+ */
 
-    System.out.println(ChronoUnit.DAYS.between(localDate1, localDate));
 
-  */
 
 
 
