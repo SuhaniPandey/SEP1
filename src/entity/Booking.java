@@ -1,7 +1,10 @@
 package entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.LongAccumulator;
 
 /**
  * A Class that contains the guest,rooms,arrival and departure
@@ -15,16 +18,15 @@ public class Booking implements Serializable
   private Guest mainBooker;
   private ArrayList<Guest> guests;
   private Room rooms;
-  private Date arrival;
-  private Date departure;
+  private LocalDate arrival;
+  private LocalDate departure;
 
-  public Booking(Guest mainBooker, Room rooms, Date arrival, Date departure)
+  public Booking(Guest mainBooker, Room rooms)
   {
     guests = new ArrayList<>();
     this.mainBooker = mainBooker;
     this.rooms = rooms;
-    this.arrival = arrival;
-    this.departure = departure;
+
   }
 
   /**
@@ -55,7 +57,7 @@ public class Booking implements Serializable
    * @param arrival
    */
 
-  public void setArrival(Date arrival)
+  public void setArrival(LocalDate arrival)
   {
     this.arrival = arrival;
   }
@@ -66,7 +68,7 @@ public class Booking implements Serializable
    * @param departure
    */
 
-  public void setDeparture(Date departure)
+  public void setDeparture(LocalDate departure)
   {
     this.departure = departure;
   }
@@ -98,7 +100,7 @@ public class Booking implements Serializable
    * @return arrival
    */
 
-  public Date getArrival()
+  public LocalDate getArrival()
   {
     return arrival;
   }
@@ -109,7 +111,7 @@ public class Booking implements Serializable
    * @return departure
    */
 
-  public Date getDeparture()
+  public LocalDate getDeparture()
   {
     return departure;
   }
@@ -122,11 +124,11 @@ public class Booking implements Serializable
 
   public double checkOutPrice()
   {
-    int daysstayed = getArrival().dateInterval();
+    int daysStayed =(int) ChronoUnit.DAYS.between(departure,arrival);
     double price = 0;
     if (getRooms().getPrice() == rooms.getPrice())
     {
-      price = getRooms().getPrice() * daysstayed;
+      price = getRooms().getPrice() * daysStayed;
     }
     return price;
   }

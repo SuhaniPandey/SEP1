@@ -1,6 +1,8 @@
 package entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+
 /**
  * A Class that contains firstname,lastname,phone number,nationality,address,date of birth
  * @author Suhani Pandey
@@ -13,7 +15,7 @@ public class Guest implements Serializable
   private String phoneNumber;
   private String nationality;
   private String address;
-  private Date dateOfBirth;
+  private LocalDate dateOfBirth;
 
   /**
    *
@@ -25,7 +27,7 @@ public class Guest implements Serializable
    * @param dateOfBirth which refers to date of birth of the guest
    */
   public Guest(String firstName, String lastName, String phoneNumber,
-      String nationality, String address, Date dateOfBirth)
+      String nationality, String address, LocalDate dateOfBirth)
   {
     this.firstName = firstName;
     this.lastName = lastName;
@@ -40,7 +42,7 @@ public class Guest implements Serializable
    * @return date of birth
    */
 
-  public Date getDateOfBirth()
+  public LocalDate getDateOfBirth()
   {
     return dateOfBirth;
   }
@@ -49,7 +51,7 @@ public class Guest implements Serializable
    * method to set date of birth
    * @param dateOfBirth takes in an Date
    */
-  public void setDateOfBirth(Date dateOfBirth)
+  public void setDateOfBirth(LocalDate dateOfBirth)
   {
     this.dateOfBirth = dateOfBirth;
   }
