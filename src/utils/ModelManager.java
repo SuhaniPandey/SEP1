@@ -1,9 +1,11 @@
 package utils;
 
 import entity.*;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -200,14 +202,12 @@ public class ModelManager implements Serializable
     }
   }
 
-
-
   public void saveRoomList(RoomList roomList)
   {
     try
     {
       MyFileHandler.writeToBinaryFile(ROOM_FILENAME, roomList);
-      int dubug =1;
+
     }
     catch (FileNotFoundException e)
     {
@@ -237,8 +237,46 @@ public class ModelManager implements Serializable
   {
     RoomList allRooms = getAllRooms();
     allRooms.addAll(rooms);
-    System.out.println("Before saving .............");
-    allRooms.getRooms().forEach(System.out::println);
     saveRoomList(allRooms);
+  }
+
+  // searching room
+  public RoomList searchRooms(LocalDate arrival, LocalDate departure,
+      Room.RoomType roomType, boolean isSmoking)
+  {
+    RoomList allRooms = getAllRooms();
+    BookingList allBookings = getAllBookings();
+    RoomList roomList = new RoomList();
+    // setting the temp list with all rooms
+
+    for (Room room : allRooms.getRooms())
+    {
+      if (!(room.getRoomType().equals(roomType)))
+        continue;  // do not add when roomtype dont match
+      if (!(room.isSmokingAllowed() == isSmoking))
+        continue;  // do not add when roomtype match
+      roomList.add(room);
+    }
+
+    for (Booking booking : allBookings.getBookings())
+    {
+      LocalDate arrivalDate = booking.getArrival();
+      LocalDate departureDate = booking.getDeparture();
+
+      // the room is not booked in either of the two given condition
+      // so we remove the room if neither is satisfied
+
+      if (!(arrival.isBefore(arrivalDate) && departure.isBefore(arrivalDate)))
+      {
+        if (!(departure.isAfter(departureDate) && arrival.isAfter(
+            departureDate)))
+        {
+          roomList.getRooms().remove(booking.getRoom());
+        }
+
+      }
+
+    }
+    return roomList;
   }
 }

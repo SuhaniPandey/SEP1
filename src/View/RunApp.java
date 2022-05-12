@@ -28,9 +28,11 @@ public class RunApp
 
     System.out.println(ChronoUnit.DAYS.between(localDate1, localDate));
 
-
   */
-     Application.launch(GUI.class);
+
+
+
+    Application.launch(GUI.class);
 
   }
 }

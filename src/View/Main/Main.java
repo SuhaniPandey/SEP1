@@ -8,10 +8,7 @@ public class Main
 {
 @FXML private AnchorPane anchorpaneSwap;
 
-public Main()
-{
 
-}
 
   public void checkInPressed()
   {

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.concurrent.atomic.LongAccumulator;
+
 
 /**
  * A Class that contains the guest,rooms,arrival and departure
@@ -17,15 +17,15 @@ public class Booking implements Serializable
 
   private Guest mainBooker;
   private ArrayList<Guest> guests;
-  private Room rooms;
+  private Room room;
   private LocalDate arrival;
   private LocalDate departure;
 
-  public Booking(Guest mainBooker, Room rooms)
+  public Booking(Guest mainBooker, Room room)
   {
     guests = new ArrayList<>();
     this.mainBooker = mainBooker;
-    this.rooms = rooms;
+    this.room = room;
 
   }
 
@@ -43,12 +43,12 @@ public class Booking implements Serializable
   /**
    * A method to set rooms
    *
-   * @param rooms takes in Room
+   * @param room takes in Room
    */
 
-  public void setRooms(Room rooms)
+  public void setRoom(Room room)
   {
-    this.rooms = rooms;
+    this.room = room;
   }
 
   /**
@@ -89,9 +89,9 @@ public class Booking implements Serializable
    * @return rooms
    */
 
-  public Room getRooms()
+  public Room getRoom()
   {
-    return rooms;
+    return room;
   }
 
   /**
@@ -126,9 +126,9 @@ public class Booking implements Serializable
   {
     int daysStayed =(int) ChronoUnit.DAYS.between(departure,arrival);
     double price = 0;
-    if (getRooms().getPrice() == rooms.getPrice())
+    if (getRoom().getPrice() == room.getPrice())
     {
-      price = getRooms().getPrice() * daysStayed;
+      price = getRoom().getPrice() * daysStayed;
     }
     return price;
   }
@@ -141,7 +141,7 @@ public class Booking implements Serializable
    */
   public double discount(double percent)
   {
-    return rooms.getPrice() - (rooms.getPrice() * percent);
+    return room.getPrice() - (room.getPrice() * percent);
   }
 
   /**
@@ -168,7 +168,7 @@ public class Booking implements Serializable
 
   public String toString()
   {
-    return "Booking{" + "guest=" + mainBooker + ", rooms=" + rooms
+    return "Booking{" + "guest=" + mainBooker + ", rooms=" + room
         + ", arrival=" + arrival + ", departure=" + departure + '}';
   }
 
@@ -186,7 +186,7 @@ public class Booking implements Serializable
       return false;
     }
     Booking other = (Booking) obj;
-    return mainBooker.equals(other.mainBooker) && rooms.equals(other.rooms)
+    return mainBooker.equals(other.mainBooker) && room.equals(other.room)
         && arrival.equals(other.arrival) && departure.equals(other.departure);
   }
 
