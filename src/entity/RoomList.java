@@ -1,19 +1,17 @@
 package entity;
 
-import jdk.jfr.FlightRecorder;
+
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * A public class that creates a list of Room objects
- * @author Devlin Onichuk
- * @version 2.0
+ * @author Devlin Onichuk, Suhani Pandey
  */
 public class RoomList implements Serializable
 {
   private ArrayList<Room> rooms;
-  private Room room;
 
   /**
    * A no argument constructor initializing the ArrayList
@@ -30,10 +28,14 @@ public class RoomList implements Serializable
    */
   public Room getRoomByNumber(int roomNumber)
   {
-    if(rooms.contains(room.getRoomNumber() == roomNumber))
-      return room;
-    else
-      return null;
+
+    for (int i = 0; i < rooms.size(); i++)
+    {
+      if (rooms.get(i).getRoomNumber()==roomNumber){
+        return rooms.get(i);
+      }
+    }
+    return null;
   }
 
   /**
@@ -48,41 +50,87 @@ public class RoomList implements Serializable
     {
       if (i <= 10)
       {
+        Room room = new Room();
+        room.setRoomType(Room.RoomType.Single_Bedroom);
+        room.setRoomNumber(roomNumber++);
+        room.setPrice(129);
+        this.rooms.add(room);
+
+        /**
         this.rooms.add(new Room());
-        this.rooms.get(i).setRoomType("Single Bedroom");
+        this.rooms.get(i).setRoomType(Room.RoomType.Single_Bedroom);
         this.rooms.get(i).setRoomNumber(roomNumber += 1);
         this.rooms.get(i).setPrice(129);
+         **/
       }
       else if (i > 10 && i <= 37)
-      {
+      {Room room = new Room();
+        room.setRoomType(Room.RoomType.Double_Bedroom);
+        room.setRoomNumber(roomNumber++);
+        room.setPrice(169);
+        this.rooms.add(room);
+
+
+        /*
         this.rooms.add(new Room());
-        this.rooms.get(i).setRoomType("Double Bedroom");
+        this.rooms.get(i).setRoomType(Room.RoomType.Double_Bedroom);
         this.rooms.get(i).setRoomNumber(roomNumber += 1);
         this.rooms.get(i).setPrice(169);
+         **/
       }
       else if (i > 37 && i <= 40)
       {
+        Room room = new Room();
+        room.setRoomType(Room.RoomType.Single_Bedroom_Suite);
+        room.setRoomNumber(roomNumber++);
+        room.setPrice(259);
+        this.rooms.add(room);
+
+        /*
         this.rooms.add(new Room());
-        this.rooms.get(i).setRoomType("Single Bedroom Suite");
+        this.rooms.get(i).setRoomType(Room.RoomType.Single_Bedroom_Suite);
         this.rooms.get(i).setRoomNumber(roomNumber += 1);
         this.rooms.get(i).setPrice(259);
+         **/
       }
       else if (i == 41)
       {
+
+        Room room = new Room();
+        room.setRoomType(Room.RoomType.Two_Bedroom_Suite);
+        room.setRoomNumber(roomNumber++);
+        room.setPrice(339);
+        this.rooms.add(room);
+        /*
         this.rooms.add(new Room());
-        this.rooms.get(i).setRoomType("Two Bedroom Suite");
+        this.rooms.get(i).setRoomType(Room.RoomType.Two_Bedroom_Suite);
         this.rooms.get(i).setRoomNumber(roomNumber += 1);
         this.rooms.get(i).setPrice(339);
+
+         */
       }
       else if (i == 42)
       {
+        Room room = new Room();
+        room.setRoomType(Room.RoomType.Three_Bedroom_Suite);
+        room.setRoomNumber(roomNumber++);
+        room.setPrice(399);
+        this.rooms.add(room);
+        /*
         this.rooms.add(new Room());
-        this.rooms.get(i).setRoomType("Three Bedroom Suite");
+        this.rooms.get(i).setRoomType(Room.RoomType.Three_Bedroom_Suite);
         this.rooms.get(i).setRoomNumber(roomNumber += 1);
         this.rooms.get(i).setPrice(399);
         break;
+
+         */
       }
     }
+  }
+
+  public ArrayList<Room> getRooms()
+  {
+    return rooms;
   }
 
   /**
@@ -99,20 +147,11 @@ public class RoomList implements Serializable
     return string;
   }
 
-  /**
-   * A method to get the size of an the rooms ArrayList
-   * @return size of the ArrayList
-   */
   public int size()
   {
     return rooms.size();
   }
 
-  /**
-   * A method to return a room at a given index
-   * @param i takes in an integer for the index
-   * @return room at given index
-   */
   public Room get(int i)
   {
     if (i< rooms.size())
@@ -123,23 +162,17 @@ public class RoomList implements Serializable
       return null;
     }
   }
-
-  /**
-   * A method to ass a room to rooms ArrayList
-   * @param room takes in a room Object
-   */
   public void add(Room room)
   {
     rooms.add(room);
   }
-
-  /**
-   * A method to set a room to a given index
-   * @param room takes in a room object
-   * @param i takes in an int for the index
-   */
   public void set(Room room,int i)
   {
     rooms.set(i,room);
+  }
+
+  public void addAll(ArrayList<Room> rooms)
+  {
+    this.rooms.addAll(rooms);
   }
 }

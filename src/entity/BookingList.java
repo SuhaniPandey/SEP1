@@ -2,9 +2,11 @@ package entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
 /**
  * A Class that contains Arraylist of booking
- * @author Suhani Pandey
+ *
+ * @author
  */
 
 public class BookingList implements Serializable
@@ -16,11 +18,15 @@ public class BookingList implements Serializable
    */
   public BookingList()
   {
-   bookings=new ArrayList<>();
+    bookings = new ArrayList<>();
+  }
+
+  public ArrayList<Booking> getBookings()
+  {
+    return bookings;
   }
 
   /**
-   *
    * @return size of the bookings
    */
   public int size()
@@ -29,7 +35,6 @@ public class BookingList implements Serializable
   }
 
   /**
-   *
    * @param guest takes in Guest
    * @return guest of indicated index if it exist
    */
@@ -38,7 +43,7 @@ public class BookingList implements Serializable
   {
     for (int i = 0; i < bookings.size(); i++)
     {
-      if (bookings.get(i).getGuest().equals(guest))
+      if (bookings.get(i).getMainBooker().equals(guest))
       {
         return bookings.get(i);
       }
@@ -48,39 +53,56 @@ public class BookingList implements Serializable
 
   /**
    * A method to add booking
+   *
    * @param booking takes in Booking
    */
 
   public void addBooking(Booking booking)
   {
-     bookings.add(booking);
+    bookings.add(booking);
   }
+
+  /**
+   * Adds a list of bookings to the bookinglist
+   *
+   * @param bookings
+   */
+
+  public void addAllBookings(ArrayList<Booking> bookings)
+  {
+    for (int i = 0; i < bookings.size(); i++)
+    {
+      add(bookings.get(i));
+    }
+
+  }
+
   /**
    * return booking
    */
   public String toString()
   {
-    String returnstr="";
-    for(int i=0;i< bookings.size();i++)
+    String returnstr = "";
+    for (int i = 0; i < bookings.size(); i++)
     {
-      returnstr+=bookings.get(i)+"\n ";
+      returnstr += bookings.get(i) + "\n ";
     }
     return returnstr;
   }
 
   /**
-   *
    * @param i takes in int
    * @return booking of certain index if exist else return null
    */
 
   public Booking get(int i)
   {
-    if (i< bookings.size())
+    if (i < bookings.size())
     {
       return bookings.get(i);
     }
-    else {
+    else
+    {
       return null;
     }
 
@@ -88,6 +110,7 @@ public class BookingList implements Serializable
 
   /**
    * A method to add booking
+   *
    * @param booking takes in Booking
    */
   public void add(Booking booking)
@@ -97,22 +120,20 @@ public class BookingList implements Serializable
 
   /**
    * A method to set booking
+   *
    * @param booking takes in Booking
-   * @param i takes in an int
+   * @param i       takes in an int
    */
-  public void set(Booking booking,int i)
+  public void set(Booking booking, int i)
   {
-    bookings.set(i,booking);
+    bookings.set(i, booking);
   }
 
-  /**
-   * A method to get booking
-   * @param i takes in an int
-   * @return booking of index i
-   */
 
-  public Booking getBooking(int i)
+
+  public boolean removeBooking(Booking booking)
   {
-    return bookings.get(i);
+    return bookings.remove(booking);
   }
+
 }

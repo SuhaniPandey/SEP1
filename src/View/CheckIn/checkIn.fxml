@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -35,22 +35,23 @@
                               <Font size="22.0" />
                            </font>
                         </Text>
-                        <TextField layoutX="133.0" layoutY="15.0" prefHeight="29.0" prefWidth="149.0" />
-                        <TextField layoutX="133.0" layoutY="48.0" prefHeight="29.0" prefWidth="149.0" />
-                        <TextField layoutX="133.0" layoutY="82.0" prefHeight="29.0" prefWidth="149.0" />
-                        <Button layoutX="394.0" layoutY="47.0" mnemonicParsing="false" text="Search">
+                        <TextField fx:id="firstName" layoutX="133.0" layoutY="15.0" prefHeight="29.0" prefWidth="149.0" />
+                        <TextField fx:id="lastName" layoutX="133.0" layoutY="48.0" prefHeight="29.0" prefWidth="149.0" />
+                        <TextField fx:id="phoneNumber" layoutX="133.0" layoutY="82.0" prefHeight="29.0" prefWidth="149.0" />
+                        <Button layoutX="394.0" layoutY="47.0" mnemonicParsing="false" onAction="#onSearchPressed" text="Search">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <TableView layoutX="12.0" layoutY="120.0" prefHeight="200.0" prefWidth="537.0">
+                        <TableView fx:id="tableView" layoutX="12.0" layoutY="120.0" prefHeight="200.0" prefWidth="537.0">
                           <columns>
-                            <TableColumn prefWidth="156.6666259765625" text="First Name" />
-                            <TableColumn prefWidth="158.66668701171875" text="Last Name" />
-                              <TableColumn prefWidth="258.0000203450521" text="Booked room" />
+                            <TableColumn fx:id="roomNumberColumn" prefWidth="156.6666259765625" text="RoomNumber" />
+                            <TableColumn fx:id="arrivalDateColumn" prefWidth="158.66668701171875" text="ArrivalDate" />
+                              <TableColumn fx:id="departureDateColumn" prefWidth="258.0000203450521" text="DepartureDate" />
                           </columns>
                         </TableView>
                         <Button layoutX="434.0" layoutY="332.0" mnemonicParsing="false" text="Save" />
+                        <Button layoutX="269.0" layoutY="332.0" mnemonicParsing="false" text="Cancel" />
                      </children>
                   </AnchorPane>
                </content>
@@ -89,19 +90,15 @@
                               <Font size="22.0" />
                            </font>
                         </Text>
-                        <TextField layoutX="159.0" layoutY="17.0" prefHeight="29.0" prefWidth="159.0" />
-                        <TextField layoutX="159.0" layoutY="52.0" prefHeight="29.0" prefWidth="159.0" />
-                        <TextField layoutX="159.0" layoutY="86.0" prefHeight="29.0" prefWidth="159.0" />
-                        <TextField layoutX="159.0" layoutY="124.0" prefHeight="29.0" prefWidth="159.0" />
-                        <TextField layoutX="159.0" layoutY="197.0" prefHeight="29.0" prefWidth="167.0" />
-                        <DatePicker layoutX="158.0" layoutY="159.0" prefHeight="32.0" prefWidth="169.0" />
-                        <ChoiceBox layoutX="164.0" layoutY="235.0" prefWidth="150.0" />
-                        <Text layoutX="16.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Extra Bed">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </Text>
-                        <Button layoutX="362.0" layoutY="297.0" mnemonicParsing="false" text="Check-In" />
+                        <TextField fx:id="firstNameCheckIn" layoutX="159.0" layoutY="17.0" prefHeight="29.0" prefWidth="159.0" />
+                        <TextField fx:id="lastNameCheckIn" layoutX="159.0" layoutY="52.0" prefHeight="29.0" prefWidth="159.0" />
+                        <TextField fx:id="address" layoutX="159.0" layoutY="86.0" prefHeight="29.0" prefWidth="159.0" />
+                        <TextField fx:id="phoneNo" layoutX="159.0" layoutY="124.0" prefHeight="29.0" prefWidth="159.0" />
+                        <TextField fx:id="nationality" layoutX="159.0" layoutY="197.0" prefHeight="29.0" prefWidth="167.0" />
+                        <DatePicker fx:id="dateOfBirth" layoutX="158.0" layoutY="159.0" prefHeight="32.0" prefWidth="169.0" />
+                        <Button layoutX="362.0" layoutY="297.0" mnemonicParsing="false" onAction="#checkInPressed" text="Check-In" />
+                        <Button layoutX="87.0" layoutY="252.0" mnemonicParsing="false" onAction="#addGuestPressed" text="AddGuest" />
+                        <CheckBox fx:id="extraBed" layoutX="86.0" layoutY="313.0" mnemonicParsing="false" text="Extra bed" />
                      </children>
                   </AnchorPane>
                </content>

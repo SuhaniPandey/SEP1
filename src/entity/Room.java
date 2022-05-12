@@ -1,83 +1,110 @@
 package entity;
 
+import java.io.Serializable;
+
 /**
  * A Class Containing Room Objects
+ *
  * @author Devlin Onichuk
- * @version 2.0
+ * @version 1.0
  */
-public class Room
+public class Room implements Serializable
 {
   private boolean extraBed;
   private boolean isAvailable;
   private int roomNumber;
-  private String roomType;
+  private RoomType roomType;
   private double price;
   private int numberOfRooms;
 
-  public Room(boolean extraBed, boolean isAvailable, String roomType)
+  public Room(boolean extraBed, boolean isAvailable, RoomType roomType)
   {
     /**
      * A Three Argument Constructor creating a new Room Object, Defaults extra bed to false and isAvailable to True
-     * Sets the default room prices by type of room
      */
     this.extraBed = false;
     this.isAvailable = true;
     this.roomType = roomType;
-    this.roomNumber = 0;
-    if(roomType.equals("Single Bedroom"))
+    if (roomType == RoomType.Single_Bedroom)
       price = 129;
-    else if(roomType.equals("Double Bedroom"))
+    else if (roomType == RoomType.Double_Bedroom)
       price = 169;
-    else if(roomType.equals("Single Bedroom Suite"))
+    else if (roomType == RoomType.Single_Bedroom_Suite)
       price = 259;
-    else if(roomType.equals("Two Bedroom Sutie"))
+    else if (roomType == RoomType.Double_Bedroom)
       price = 339;
-    else if (roomType.equals("Three Bedroom Suite"))
+    else if (roomType == RoomType.Three_Bedroom_Suite)
       price = 399;
   }
-  /**
-   * A no Argument Constructor, defaulting extraBed to false, isAvailable to true.
-   */
+
   public Room()
   {
+    /**
+     * A no Argument Constructor, defaulting extraBed to false, isAvailable to true.
+     */
     this.extraBed = false;
     this.isAvailable = true;
-    this.roomType = "";
+    roomType = RoomType.Single_Bedroom; // initialized it with single room
     this.roomNumber = 0;
-  }
-  /**
-   * A method that changes Room isAvailable to true/false.
-   */
-  public void setIsAvailable()
-  {
-    if(!(isAvailable))
-      isAvailable = true;
-    else
-      isAvailable = false;
   }
 
   /**
-   * A method that changes Changes extraBed to true/false
+   * toggles the availability status
    */
-  public void setExtraBed()
+  public void toggleAvailableStatus()
   {
-    if(!(extraBed))
-      extraBed = true;
-    else
-      extraBed = false;
+    isAvailable = !isAvailable;
   }
+
+  /**
+   * Sets the room availability to true
+   */
+  public void setAvailable(){
+    isAvailable =true;
+  }
+
+  /**
+   * Sets the room availability to false
+   */
+  public void setNotAvailable(){
+    isAvailable = false;
+  }
+
+  /**
+   * Changes extraBed to true/false
+   */
+  public void toggleExtraBed()
+  {
+    extraBed = !extraBed;
+
+  }
+
+  /**
+   * Sets the extra bed to true
+   */
+  public void setExtraBed(){
+    isAvailable =true;
+  }
+
+  /**
+   * Sets the extra bed to false
+   */
+  public void setNotExtraBed(){
+    isAvailable = false;
+  }
+
 
   /**
    * checks the availability of the room
+   *
    * @return the Availability of the room
    */
-  public boolean getIsAvailable()
+  public boolean IsAvailable()
   {
     return isAvailable;
   }
 
   /**
-   * A method to see if there is an Extra Bed needed
    * @return if the room needs an extra bed
    */
   public boolean isExtraBed()
@@ -86,16 +113,14 @@ public class Room
   }
 
   /**
-   * A method to get room type
    * @return the type of room
    */
-  public String getRoomType()
+  public RoomType getRoomType()
   {
     return roomType;
   }
 
   /**
-   * A method to get room number
    * @return the room number
    */
   public int getRoomNumber()
@@ -105,24 +130,35 @@ public class Room
 
   /**
    * sets the number of rooms based on the type of room
+   *
    * @param roomType given in the constructor
    */
-  public void setNumberOfRooms(String roomType)
+  public static int getNumberOfRooms(RoomType roomType)
   {
-    if(roomType.equals("Single Bedroom"))
-      numberOfRooms = 10;
-    else if(roomType.equals("Double Bedroom"))
-      numberOfRooms = 27;
-    else if(roomType.equals("Single Bedroom Suite"))
-      numberOfRooms = 3;
-    if(roomType.equals("Two Bedroom Suite"))
-      numberOfRooms = 1;
-    if(roomType.equals("Three Bedroom Suite"))
-      numberOfRooms = 1;
+    switch (roomType)
+    {
+      case Single_Bedroom:
+        return 10;
+
+      case Double_Bedroom:
+        return 27;
+
+      case Single_Bedroom_Suite:
+        return 3;
+
+      case Two_Bedroom_Suite:
+        return 1;
+
+      case Three_Bedroom_Suite:
+        return 1;
+
+    }
+    return -1;
   }
 
   /**
    * sets a new room number
+   *
    * @param roomNumber sets room number by given int
    */
   public void setRoomNumber(int roomNumber)
@@ -132,15 +168,17 @@ public class Room
 
   /**
    * takes a String and sets it to the roomType
+   *
    * @param roomType set by given String
    */
-  public void setRoomType(String roomType)
+  public void setRoomType(RoomType roomType)
   {
     this.roomType = roomType;
   }
 
   /**
    * sets the price of a room by the given double
+   *
    * @param price set by double
    */
   public void setPrice(double price)
@@ -149,7 +187,6 @@ public class Room
   }
 
   /**
-   * A method to return the price
    * @return price
    */
   public double getPrice()
@@ -159,26 +196,31 @@ public class Room
 
   /**
    * combines all the room information and creates a string of all the information in the room
+   *
    * @return all the room information in a string
    */
   public String toString()
   {
-    return roomNumber + " Type: " + roomType + " Price: " + price + " Number of Rooms: " +
-        numberOfRooms + " Availability: " + isAvailable + " ExtraBed: " + extraBed;
+    return roomNumber + " Type: " + roomType + " Price: " + price
+        + " Number of Rooms: " + numberOfRooms + " Availability: " + isAvailable
+        + " ExtraBed: " + extraBed;
   }
 
-  /**
-   * A method to see if an object is equal to Room object
-   * @param obj takes in an Object
-   * @return a Object of type Room
-   */
   public boolean equals(Object obj)
   {
-    if(!(obj instanceof Room))
+    if (!(obj instanceof Room))
       return false;
+    Room other = (Room) obj;
+    return (extraBed == other.extraBed && isAvailable == other.isAvailable
+        && roomType.equals(other.roomType));
+  }
 
-      Room other = (Room)obj;
-      return (extraBed == other.extraBed && isAvailable == other.isAvailable && roomType.equals(other.roomType));
+  // enums are constant , and make our life easier later since we dont have to input strings
+  // eg , if we mistype double bedrom , then later getAllDoubleBedroom will not take that room because "double bedroom" is
+  //                                   not equal to "double bedrom"
+  public enum RoomType implements Serializable
+  {
+    Single_Bedroom, Double_Bedroom, Single_Bedroom_Suite, Two_Bedroom_Suite, Three_Bedroom_Suite
   }
 
 

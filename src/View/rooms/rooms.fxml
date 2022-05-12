@@ -42,9 +42,9 @@
                   <ChoiceBox fx:id="roomTypeChoice" layoutX="17.0" layoutY="281.0" prefHeight="30.0" prefWidth="150.0" />
                   <TableView fx:id="roomTableView" layoutX="198.0" layoutY="34.0" prefHeight="300.0" prefWidth="300.0">
                     <columns>
-                      <TableColumn fx:id="roomTableName" minWidth="100.0" prefWidth="100.0" text="Name" />
-                      <TableColumn fx:id="roomTableType" minWidth="100.0" prefWidth="100.0" text="Type" />
-                        <TableColumn fx:id="roomTablePrice" minWidth="100.0" prefWidth="100.0" text="Price" />
+                      <TableColumn fx:id="roomTableName" minWidth="100.0" prefWidth="122.00001525878906" text="Room Type" />
+                      <TableColumn fx:id="roomTablePrice" minWidth="68.66668701171875" prefWidth="94.0" text="Price" />
+                        <TableColumn fx:id="roomTableAvailability" minWidth="82.66668701171875" prefWidth="84.0" text="Availability" />
                     </columns>
                   </TableView>
                   <CheckBox fx:id="smokingCheckBox" layoutX="36.0" layoutY="337.0" mnemonicParsing="false" text="Smoking" />

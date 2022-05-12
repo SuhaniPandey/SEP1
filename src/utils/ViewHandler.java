@@ -1,76 +1,75 @@
 package utils;
 
-
-import javafx.scene.Node;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
 import java.io.IOException;
-import javafx.fxml.FXMLLoader;
 
 public class ViewHandler
 {
+public ViewHandler()
+{
 
-   public static Parent getCheckIn()
-   {
-     try
-     {
-      return loadFXML("../View/CheckIn/CheckIn.fxml");
-     }
-     catch (IOException e)
-     {
-       e.printStackTrace();
-       return null;
-     }
-   }
-   public static Parent getCheckOut()
-   {
-     try
-     {
-       return loadFXML("../View/CheckOut/CheckOut.fxml");
-     }
-     catch (IOException e)
-     {
-       e.printStackTrace();
-       return null;
-     }
-
-     }
-
-
-
-
+}
   private static Parent loadFXML(String path) throws IOException
   {
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(ViewHandler.class.getResource(path));
-    Parent root = loader.load();
+    Parent root = (Parent)loader.load();
     return root;
+  }
+
+  public static Parent getcheckIn()
+  {
+    try
+    {
+      return loadFXML("../View/CheckIn/checkIn.fxml");
+    }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+      return null;
+    }
+  }
+
+  public static Parent getrooms()
+  {
+    try
+    {
+      return loadFXML("../View/rooms/rooms.fxml");
+    }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+      return null;
+    }
+
   }
 
   public static Parent getbooking()
   {
     try
     {
-      return loadFXML("../View/Booking/Booking.fxml");
+      return loadFXML("../View/booking/booking.fxml");
     }
     catch (IOException e)
     {
       e.printStackTrace();
       return null;
     }
+
   }
 
-  public static Parent getRooms()
+  public static Parent getcheckOut()
   {
     try
     {
-      return loadFXML("../View/Rooms/Rooms.fxml");
+      return loadFXML("../View/checkOut/checkOut.fxml");
     }
     catch (IOException e)
     {
       e.printStackTrace();
       return null;
     }
-
   }
 }
