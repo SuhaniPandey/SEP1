@@ -1,5 +1,6 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -8,7 +9,7 @@ import java.util.ArrayList;
  * @author
  */
 
-public class Booking
+public class Booking implements Serializable
 {
 
   private Guest mainBooker;

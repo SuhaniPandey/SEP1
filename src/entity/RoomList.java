@@ -1,17 +1,17 @@
 package entity;
 
-import jdk.jfr.FlightRecorder;
 
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * A public class that creates a list of Room objects
- * @author Devlin Onichuk
+ * @author Devlin Onichuk, Suhani Pandey
  */
-public class RoomList
+public class RoomList implements Serializable
 {
   private ArrayList<Room> rooms;
-  private Room room;
 
   /**
    * A no argument constructor initializing the ArrayList
@@ -28,10 +28,14 @@ public class RoomList
    */
   public Room getRoomByNumber(int roomNumber)
   {
-    if(rooms.contains(room.getRoomNumber() == roomNumber))
-      return room;
-    else
-      return null;
+
+    for (int i = 0; i < rooms.size(); i++)
+    {
+      if (rooms.get(i).getRoomNumber()==roomNumber){
+        return rooms.get(i);
+      }
+    }
+    return null;
   }
 
   /**
@@ -46,41 +50,87 @@ public class RoomList
     {
       if (i <= 10)
       {
+        Room room = new Room();
+        room.setRoomType(Room.RoomType.Single_Bedroom);
+        room.setRoomNumber(roomNumber++);
+        room.setPrice(129);
+        this.rooms.add(room);
+
+        /**
         this.rooms.add(new Room());
-        this.rooms.get(i).setRoomType("Single Bedroom");
+        this.rooms.get(i).setRoomType(Room.RoomType.Single_Bedroom);
         this.rooms.get(i).setRoomNumber(roomNumber += 1);
         this.rooms.get(i).setPrice(129);
+         **/
       }
       else if (i > 10 && i <= 37)
-      {
+      {Room room = new Room();
+        room.setRoomType(Room.RoomType.Double_Bedroom);
+        room.setRoomNumber(roomNumber++);
+        room.setPrice(169);
+        this.rooms.add(room);
+
+
+        /*
         this.rooms.add(new Room());
-        this.rooms.get(i).setRoomType("Double Bedroom");
+        this.rooms.get(i).setRoomType(Room.RoomType.Double_Bedroom);
         this.rooms.get(i).setRoomNumber(roomNumber += 1);
         this.rooms.get(i).setPrice(169);
+         **/
       }
       else if (i > 37 && i <= 40)
       {
+        Room room = new Room();
+        room.setRoomType(Room.RoomType.Single_Bedroom_Suite);
+        room.setRoomNumber(roomNumber++);
+        room.setPrice(259);
+        this.rooms.add(room);
+
+        /*
         this.rooms.add(new Room());
-        this.rooms.get(i).setRoomType("Single Bedroom Suite");
+        this.rooms.get(i).setRoomType(Room.RoomType.Single_Bedroom_Suite);
         this.rooms.get(i).setRoomNumber(roomNumber += 1);
         this.rooms.get(i).setPrice(259);
+         **/
       }
       else if (i == 41)
       {
+
+        Room room = new Room();
+        room.setRoomType(Room.RoomType.Two_Bedroom_Suite);
+        room.setRoomNumber(roomNumber++);
+        room.setPrice(339);
+        this.rooms.add(room);
+        /*
         this.rooms.add(new Room());
-        this.rooms.get(i).setRoomType("Two Bedroom Suite");
+        this.rooms.get(i).setRoomType(Room.RoomType.Two_Bedroom_Suite);
         this.rooms.get(i).setRoomNumber(roomNumber += 1);
         this.rooms.get(i).setPrice(339);
+
+         */
       }
       else if (i == 42)
       {
+        Room room = new Room();
+        room.setRoomType(Room.RoomType.Three_Bedroom_Suite);
+        room.setRoomNumber(roomNumber++);
+        room.setPrice(399);
+        this.rooms.add(room);
+        /*
         this.rooms.add(new Room());
-        this.rooms.get(i).setRoomType("Three Bedroom Suite");
+        this.rooms.get(i).setRoomType(Room.RoomType.Three_Bedroom_Suite);
         this.rooms.get(i).setRoomNumber(roomNumber += 1);
         this.rooms.get(i).setPrice(399);
         break;
+
+         */
       }
     }
+  }
+
+  public ArrayList<Room> getRooms()
+  {
+    return rooms;
   }
 
   /**
@@ -119,5 +169,10 @@ public class RoomList
   public void set(Room room,int i)
   {
     rooms.set(i,room);
+  }
+
+  public void addAll(ArrayList<Room> rooms)
+  {
+    this.rooms.addAll(rooms);
   }
 }

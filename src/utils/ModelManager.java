@@ -1,9 +1,14 @@
-package entity;
+package utils;
 
+import entity.*;
 import utils.MyFileHandler;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.Serial;
+import java.io.Serializable;
+import java.security.SecureRandomParameters;
+import java.util.ArrayList;
 
 /**
  * A class for accessing Booking objects and reading/writing to/from files
@@ -11,7 +16,7 @@ import java.io.IOException;
  * @author
  * @version 1.0
  */
-public class ModelManager
+public class ModelManager implements Serializable
 {
   private String BOOKING_FILENAME = "booking.bin";
   private String ROOM_FILENAME = "rooms.bin";
@@ -92,7 +97,7 @@ public class ModelManager
     }
     catch (IOException e)
     {
-      System.out.println("IO Error reading file");
+      throw new RuntimeException(e);
     }
     catch (ClassNotFoundException e)
     {
@@ -113,7 +118,7 @@ public class ModelManager
 
     for (int i = 0; i < allRooms.size(); i++)
     {
-      if (allRooms.get(i).getIsAvailable())
+      if (allRooms.get(i).IsAvailable())
       {
         availableRooms.add(allRooms.get(i));
       }
@@ -199,6 +204,25 @@ public class ModelManager
     }
   }
 
+
+
+  public void saveRoomList(RoomList roomList)
+  {
+    try
+    {
+      MyFileHandler.writeToBinaryFile(ROOM_FILENAME, roomList);
+      int dubug =1;
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("File not found");
+    }
+    catch (IOException e)
+    {
+      System.out.println("IO Error writing to file");
+    }
+  }
+
   public void addGuestToBooking(Booking booking, Guest guest)
   {
     BookingList allBookings = getAllBookings();
@@ -213,4 +237,12 @@ public class ModelManager
     saveBookings(allBookings);
   }
 
+  public void addAllRooms(ArrayList<Room> rooms)
+  {
+    RoomList allRooms = getAllRooms();
+    allRooms.addAll(rooms);
+    System.out.println("Before saving .............");
+    allRooms.getRooms().forEach(System.out::println);
+    saveRoomList(allRooms);
+  }
 }

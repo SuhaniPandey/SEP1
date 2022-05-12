@@ -1,13 +1,13 @@
 package View.rooms;
 
-import entity.ModelManager;
+import utils.ModelManager;
 import entity.Room;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableRow;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 import java.net.URL;
@@ -16,21 +16,21 @@ import java.util.ResourceBundle;
 public class Rooms implements Initializable
 {
   @FXML private TableView roomTableView;
-  @FXML private TableRow<Room>roomTableName;
-  @FXML private TableRow<Room> roomTablePrice;
-  @FXML private TableRow<Room> roomTableAvailability;
-
+  @FXML private TableColumn<Room, String> roomTableName;
+  @FXML private TableColumn<Room, Integer> roomTablePrice;
+  @FXML private TableColumn<Room, Boolean> roomTableAvailability;
   private ModelManager modelManager;
-  ObservableList<Room> list= FXCollections.observableArrayList();
+
+  ObservableList<Room> rooms;
+
   public void initialize(URL url, ResourceBundle resourceBundle)
   {
+    modelManager = new ModelManager();
+    rooms = FXCollections.observableArrayList();
+
 
   }
-  private void loadDate()
-  {
-    list.removeAll(list);
 
-  }
 
   @FXML private void searchPressed(ActionEvent actionEvent)
   {
@@ -40,6 +40,5 @@ public class Rooms implements Initializable
   @FXML private void bookPressed(ActionEvent actionEvent)
   {
   }
-
 
 }

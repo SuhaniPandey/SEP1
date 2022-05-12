@@ -1,4 +1,5 @@
 package entity;
+import java.io.Serializable;
 import java.time.Clock;
 import java.time.LocalDate;
 
@@ -6,7 +7,7 @@ import java.time.LocalDate;
  * A Class that contains the day, month and year
  * @author Devlin Onichuk
  */
-public class Date
+public class Date implements Serializable
 {
   private int day;
   private int month;
