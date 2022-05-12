@@ -7,24 +7,25 @@ import java.io.IOException;
 
 /**
  * A class for accessing Booking objects and reading/writing to/from files
+ *
  * @author
  * @version 1.0
  */
-public class BookingModelManager
+public class ModelManager
 {
-  private String fileName;
+  private String BOOKING_FILENAME = "booking.bin";
+  private String ROOM_FILENAME = "rooms.bin";
 
   /**
-   * Initializes the fileName instance variable.
-   * @param fileName the chosen name for the file
+   * A no-argument constructor
    */
-  public BookingModelManager(String fileName)
+  public ModelManager()
   {
-    this.fileName = fileName;
   }
 
   /**
    * Creates an array list BookingList of all Booking objects in the binary file
+   *
    * @return array list of every booking object in the binary file
    */
   public BookingList getAllBookings()
@@ -33,7 +34,8 @@ public class BookingModelManager
 
     try
     {
-      allBookings = (BookingList) MyFileHandler.readFromBinaryFile(fileName);
+      allBookings = (BookingList) MyFileHandler.readFromBinaryFile(
+          BOOKING_FILENAME);
     }
     catch (FileNotFoundException e)
     {
@@ -52,23 +54,25 @@ public class BookingModelManager
 
   /**
    * Gets a Booking object which contains phoneNum from the list.
+   *
    * @param phoneNum the phone number of the guest whose booking is needed
    * @return the Booking which contains phoneNum, else null
    */
-  public BookingList getBookingByGuest(String phoneNum)
+  public BookingList getBookingByGuestPhoneNum(String phoneNum)
   {
     BookingList bookingByGuest = new BookingList();
     BookingList allBookings = getAllBookings();
 
     for (int i = 0; i < allBookings.size(); i++)
     {
-      if ((allBookings.get(i).getPhoneNumber().equals(phoneNum)))
+      if ((allBookings.get(i).getMainBooker().getPhoneNumber()
+          .equals(phoneNum)))
       {
         bookingByGuest.add(allBookings.get(i));
-        return bookingByGuest;
+
       }
     }
-    return null;
+    return bookingByGuest;
   }
 
   // not sure
@@ -78,7 +82,9 @@ public class BookingModelManager
 
     try
     {
-      allRooms = (RoomList) MyFileHandler.readFromBinaryFile(fileName);
+
+      allRooms = (RoomList) MyFileHandler.readFromBinaryFile(ROOM_FILENAME);
+
     }
     catch (FileNotFoundException e)
     {
@@ -97,6 +103,7 @@ public class BookingModelManager
 
   /**
    * Creates array list only containing Room objects with a isAvailable()=True value.
+   *
    * @return array list of isAvailable Room objects
    */
   public RoomList getAllAvailableRooms()
@@ -117,148 +124,70 @@ public class BookingModelManager
 
   /**
    * Adds a Booking to the binary file.
+   *
    * @param booking the Booking object which will be added to the binary file
    */
   public void addBooking(Booking booking)
   {
-    try
-    {
-      MyFileHandler.writeToBinaryFile(fileName, booking);
-    }
-    catch (FileNotFoundException e)
-    {
-      System.out.println("File not found");
-    }
-    catch (IOException e)
-    {
-      System.out.println("IO error writing to file");
-    }
+    BookingList allBookings = getAllBookings();
+    allBookings.addBooking(booking);
+    saveBookings(allBookings);
   }
 
   /**
    * Adds an array list of Booking objects to the binary file.
+   *
    * @param bookings the BookingList array list which will be added to the binary file
    */
   public void addBookings(BookingList bookings)
   {
-    for (int i = 0; i < bookings.size(); i++)
-    {
-      try
-      {
-        MyFileHandler.writeToBinaryFile(fileName, bookings.getBooking(i));
-      }
-      catch (FileNotFoundException e)
-      {
-        System.out.println("File not found");
-      }
-      catch (IOException e)
-      {
-        System.out.println("IO error writing to file");
-      }
-    }
+    BookingList allBookings = getAllBookings();
+    allBookings.addAllBookings(bookings.getBookings());
+    saveBookings(allBookings);
+
   }
 
   /**
    * Removes a Booking object from the binary file
+   *
    * @param booking the Booking object which will be removed from the binary file
    */
   public void deleteBooking(Booking booking)
   {
     BookingList allBookings = getAllBookings();
-    BookingList newBookings = new BookingList();
-    try
-    {
-      for (int i = 0; i < allBookings.size(); i++)
-      {
-        if (!(allBookings.getBooking(i) == booking))
-          newBookings = (BookingList) MyFileHandler.readFromBinaryFile(fileName);
+    allBookings.removeBooking(booking);
+    saveBookings(allBookings);
 
-      }
-    }
-    catch (FileNotFoundException e)
-    {
-      System.out.println("File not found");
-    }
-    catch (IOException e)
-    {
-      System.out.println("IO error reading file");
-    }
-    catch(ClassNotFoundException e)
-    {
-      System.out.println("Class not found");
-    }
-    try
-    {
-      for (int i = 0; i < newBookings.size(); i++)
-      {
-        MyFileHandler.writeToBinaryFile(fileName, newBookings);
-      }
-    }
-    catch (FileNotFoundException e)
-    {
-      System.out.println("File not found");
-    }
-    catch (IOException e)
-    {
-      System.out.println("IO error reading file");
-    }
   }
 
   /**
    * Removes a Booking using a Guest object containing phoneNum.
+   *
    * @param phoneNum the phone number which corresponds to a Guest object
    */
-  public void deleteByGuest(String phoneNum)
+  public void deleteBookingByGuestPhoneNum(String phoneNum)
   {
     BookingList allBookings = getAllBookings();
-    BookingList newBookings = new BookingList();
-    try
+    for (int i = 0; i < allBookings.size(); i++)
     {
-      for (int i = 0; i < allBookings.size(); i++)
+      if (allBookings.get(i).getMainBooker().getPhoneNumber().equals(phoneNum))
       {
-        if (!(allBookings.getBooking(i).getPhoneNumber().equals(phoneNum)))
-          newBookings = (BookingList) MyFileHandler.readFromBinaryFile(fileName);
-
+        allBookings.removeBooking(allBookings.get(i));
       }
     }
-    catch (FileNotFoundException e)
-    {
-      System.out.println("File not found");
-    }
-    catch (IOException e)
-    {
-      System.out.println("IO error reading file");
-    }
-    catch(ClassNotFoundException e)
-    {
-      System.out.println("Class not found");
-    }
-    try
-    {
-      for (int i = 0; i < newBookings.size(); i++)
-      {
-        MyFileHandler.writeToBinaryFile(fileName, newBookings);
-      }
-    }
-    catch (FileNotFoundException e)
-    {
-      System.out.println("File not found");
-    }
-    catch (IOException e)
-    {
-      System.out.println("IO error reading file");
-    }
+    saveBookings(allBookings);
   }
 
   /**
    * Updates the binary file will newly added or removed Booking objects.
+   *
    * @param bookings the array list which contains all Booking objects
    */
   public void saveBookings(BookingList bookings)
   {
     try
     {
-      MyFileHandler.writeToBinaryFile(fileName, bookings);
+      MyFileHandler.writeToBinaryFile(BOOKING_FILENAME, bookings);
     }
     catch (FileNotFoundException e)
     {
@@ -272,18 +201,16 @@ public class BookingModelManager
 
   public void addGuestToBooking(Booking booking, Guest guest)
   {
-    try
+    BookingList allBookings = getAllBookings();
+    for (int i = 0; i < allBookings.size(); i++)
     {
-      MyFileHandler.writeToBinaryFile(fileName, booking);
+      if (allBookings.get(i).equals(booking))
+      {
+        allBookings.get(i).addGuests(guest);
+        break;
+      }
     }
-    catch (FileNotFoundException e)
-    {
-      System.out.println("File not found");
-    }
-    catch (IOException e)
-    {
-      System.out.println("IO error writing to file");
-    }
+    saveBookings(allBookings);
   }
 
 }

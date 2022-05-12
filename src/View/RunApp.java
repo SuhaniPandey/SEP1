@@ -2,7 +2,7 @@ package View;
 
 import javafx.application.Application;
 
-public class test
+public class RunApp
 {
   public static void main(String[] args)
   {

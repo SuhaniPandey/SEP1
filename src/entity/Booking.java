@@ -1,21 +1,26 @@
 package entity;
 
+import java.util.ArrayList;
+
 /**
  * A Class that contains the guest,rooms,arrival and departure
- * @author Suhani Pandey
+ *
+ * @author
  */
 
 public class Booking
 {
 
-  private Guest guest;
+  private Guest mainBooker;
+  private ArrayList<Guest> guests;
   private Room rooms;
   private Date arrival;
   private Date departure;
 
-  public Booking(Guest guest, Room rooms, Date arrival, Date departure)
+  public Booking(Guest mainBooker, Room rooms, Date arrival, Date departure)
   {
-    this.guest = guest;
+    guests = new ArrayList<>();
+    this.mainBooker = mainBooker;
     this.rooms = rooms;
     this.arrival = arrival;
     this.departure = departure;
@@ -23,16 +28,18 @@ public class Booking
 
   /**
    * A method to set guest
-   * @param guest takes in Guest
+   *
+   * @param mainBooker takes in Guest
    */
 
-  public void setGuest(Guest guest)
+  public void setMainBooker(Guest mainBooker)
   {
-    this.guest = guest;
+    this.mainBooker = mainBooker;
   }
 
   /**
    * A method to set rooms
+   *
    * @param rooms takes in Room
    */
 
@@ -43,6 +50,7 @@ public class Booking
 
   /**
    * A method to set arrival date takes in Date
+   *
    * @param arrival
    */
 
@@ -53,6 +61,7 @@ public class Booking
 
   /**
    * A method to set departure date
+   *
    * @param departure
    */
 
@@ -63,15 +72,17 @@ public class Booking
 
   /**
    * A method to get guest
+   *
    * @return guest
    */
-  public Guest getGuest()
+  public Guest getMainBooker()
   {
-    return guest;
+    return mainBooker;
   }
 
   /**
    * A method to get rooms
+   *
    * @return rooms
    */
 
@@ -82,6 +93,7 @@ public class Booking
 
   /**
    * A method to get arrival
+   *
    * @return arrival
    */
 
@@ -92,6 +104,7 @@ public class Booking
 
   /**
    * A method to get departure
+   *
    * @return departure
    */
 
@@ -102,52 +115,64 @@ public class Booking
 
   /**
    * A method to get final check out price in certain date interval
+   *
    * @return price
    */
 
   public double checkOutPrice()
   {
     int daysstayed = getArrival().dateInterval();
-    double price=0;
-    if (getRooms().getPrice()== rooms.getPrice())
+    double price = 0;
+    if (getRooms().getPrice() == rooms.getPrice())
     {
-      price=getRooms().getPrice()*daysstayed;
+      price = getRooms().getPrice() * daysstayed;
     }
     return price;
   }
 
   /**
    * A method to get discount
+   *
    * @param percent
    * @return final price after discount
    */
-  public double discont(double percent)
+  public double discount(double percent)
   {
-    return rooms.getPrice()-(rooms.getPrice()*0.5);
-  }
-  /**
-   *
-   * @return phone number from guest class
-   */
-  public String getPhoneNumber()
-  {
-    return guest.getPhoneNumber();
+    return rooms.getPrice() - (rooms.getPrice() * percent);
   }
 
   /**
-   *
-   * @return guest,rooms,arrival,departure
+   * This method adds one guest at a time
+   * @param guest
+   */
+  public void addGuests(Guest guest)
+  {
+    guests.add(guest);
+  }
+
+  /**
+   * This method adds a list of guests at one time
+   * @param guests
+   */
+  public void addAllGuests(ArrayList<Guest> guests)
+  {
+    guests.addAll(guests);
+  }
+
+  /**
+   * @return guest, rooms, arrival, departure
    */
 
-   public String toString()
+  public String toString()
   {
-    return "Booking{" + "guest=" + guest + ", rooms=" + rooms + ", arrival="
-        + arrival + ", departure=" + departure + '}';
+    return "Booking{" + "guest=" + mainBooker + ", rooms=" + rooms
+        + ", arrival=" + arrival + ", departure=" + departure + '}';
   }
 
   /**
    * A method to check if a given object is an instance of a Booking object
    * If obj is an instance of Booking,turn Object obj into a Booking object
+   *
    * @param obj obj a given object
    * @return true if the obj is an instance of Booking, else return false
    */
@@ -157,10 +182,9 @@ public class Booking
     {
       return false;
     }
-    Booking other=(Booking) obj;
-    return guest.equals(other.guest) && rooms.equals(other.rooms)
+    Booking other = (Booking) obj;
+    return mainBooker.equals(other.mainBooker) && rooms.equals(other.rooms)
         && arrival.equals(other.arrival) && departure.equals(other.departure);
   }
-
 
 }
