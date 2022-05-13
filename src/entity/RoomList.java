@@ -38,6 +38,12 @@ public class RoomList implements Serializable
     return null;
   }
 
+  public void setRooms(ArrayList<Room> rooms)
+  {
+    this.rooms = rooms;
+
+  }
+
   /**
    * A Method that adds all rooms to the arraylist, assign room type, and room number.
    * Assigns room Type based on the number of each room
@@ -54,7 +60,9 @@ public class RoomList implements Serializable
         room.setRoomType(Room.RoomType.Single_Bedroom);
         room.setRoomNumber(roomNumber++);
         room.setPrice(129);
+        if (i % 2==0) room.setSmokingAllowed(true);
         this.rooms.add(room);
+
 
         /**
         this.rooms.add(new Room());
@@ -68,7 +76,9 @@ public class RoomList implements Serializable
         room.setRoomType(Room.RoomType.Double_Bedroom);
         room.setRoomNumber(roomNumber++);
         room.setPrice(169);
+        if (i % 2==0) room.setSmokingAllowed(true);
         this.rooms.add(room);
+
 
 
         /*
@@ -84,6 +94,7 @@ public class RoomList implements Serializable
         room.setRoomType(Room.RoomType.Single_Bedroom_Suite);
         room.setRoomNumber(roomNumber++);
         room.setPrice(259);
+        if (i % 2==0) room.setSmokingAllowed(true);
         this.rooms.add(room);
 
         /*
@@ -100,6 +111,7 @@ public class RoomList implements Serializable
         room.setRoomType(Room.RoomType.Two_Bedroom_Suite);
         room.setRoomNumber(roomNumber++);
         room.setPrice(339);
+        if (i % 2==0) room.setSmokingAllowed(true);
         this.rooms.add(room);
         /*
         this.rooms.add(new Room());
@@ -115,6 +127,7 @@ public class RoomList implements Serializable
         room.setRoomType(Room.RoomType.Three_Bedroom_Suite);
         room.setRoomNumber(roomNumber++);
         room.setPrice(399);
+        if (i % 2==0) room.setSmokingAllowed(true);
         this.rooms.add(room);
         /*
         this.rooms.add(new Room());

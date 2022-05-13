@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * A Class Containing Room Objects
  *
- * @author Devlin Onichuk
+ * @author Devlin  , Suhani Pandey
  * @version 1.0
  */
 public class Room implements Serializable
@@ -16,6 +16,7 @@ public class Room implements Serializable
   private RoomType roomType;
   private double price;
   private int numberOfRooms;
+  private boolean isSmokingAllowed;
 
   public Room(boolean extraBed, boolean isAvailable, RoomType roomType)
   {
@@ -25,6 +26,7 @@ public class Room implements Serializable
     this.extraBed = false;
     this.isAvailable = true;
     this.roomType = roomType;
+    isSmokingAllowed=false;
     if (roomType == RoomType.Single_Bedroom)
       price = 129;
     else if (roomType == RoomType.Double_Bedroom)
@@ -44,8 +46,20 @@ public class Room implements Serializable
      */
     this.extraBed = false;
     this.isAvailable = true;
+    this.isSmokingAllowed=false;
     roomType = RoomType.Single_Bedroom; // initialized it with single room
-    this.roomNumber = 0;
+
+  }
+
+  public void setSmokingAllowed(boolean smokingAllowed)
+  {
+    isSmokingAllowed = smokingAllowed;
+
+  }
+
+  public boolean isSmokingAllowed()
+  {
+    return isSmokingAllowed;
   }
 
   /**
@@ -206,14 +220,15 @@ public class Room implements Serializable
         + " ExtraBed: " + extraBed;
   }
 
+  // if Room number is equal then the room is same..
   public boolean equals(Object obj)
   {
     if (!(obj instanceof Room))
       return false;
     Room other = (Room) obj;
-    return (extraBed == other.extraBed && isAvailable == other.isAvailable
-        && roomType.equals(other.roomType));
+    return this.roomNumber==other.getRoomNumber();
   }
+
 
   // enums are constant , and make our life easier later since we dont have to input strings
   // eg , if we mistype double bedrom , then later getAllDoubleBedroom will not take that room because "double bedroom" is

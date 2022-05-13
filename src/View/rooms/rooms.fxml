@@ -4,6 +4,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="445.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.rooms.Rooms">
+<AnchorPane fx:id="anchorPane" prefHeight="445.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.rooms.Rooms">
    <children>
       <Pane prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -40,15 +41,25 @@
                      </font>
                   </Button>
                   <ChoiceBox fx:id="roomTypeChoice" layoutX="17.0" layoutY="281.0" prefHeight="30.0" prefWidth="150.0" />
-                  <TableView fx:id="roomTableView" layoutX="198.0" layoutY="34.0" prefHeight="300.0" prefWidth="300.0">
+                  <TableView fx:id="roomTableView" layoutX="184.0" layoutY="54.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0">
                     <columns>
-                      <TableColumn fx:id="roomTableName" minWidth="100.0" prefWidth="122.00001525878906" text="Room Type" />
-                      <TableColumn fx:id="roomTablePrice" minWidth="68.66668701171875" prefWidth="94.0" text="Price" />
-                        <TableColumn fx:id="roomTableAvailability" minWidth="82.66668701171875" prefWidth="84.0" text="Availability" />
+                        <TableColumn fx:id="roomTableNumber" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="RoomNumber" />
+                      <TableColumn fx:id="roomTableType" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Room Type" />
+                      <TableColumn fx:id="roomTablePrice" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" text="Price" />
                     </columns>
                   </TableView>
                   <CheckBox fx:id="smokingCheckBox" layoutX="36.0" layoutY="337.0" mnemonicParsing="false" text="Smoking" />
                   <Button layoutX="426.0" layoutY="356.0" mnemonicParsing="false" onAction="#bookPressed" text="Book" />
+                  <Label layoutX="184.0" layoutY="27.0" text="Available rooms :">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="errorLabel" layoutX="176.0" layoutY="382.0" prefHeight="20.0" prefWidth="300.0" textFill="RED">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>
