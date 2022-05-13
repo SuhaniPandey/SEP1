@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  * A public class that creates a list of Room objects
- * @author Devlin Onichuk, Suhani Pandey
+ * @author Devlin Onichuk
  */
 public class RoomList implements Serializable
 {
@@ -64,12 +64,12 @@ public class RoomList implements Serializable
         this.rooms.add(room);
 
 
-        /**
+        /*
         this.rooms.add(new Room());
         this.rooms.get(i).setRoomType(Room.RoomType.Single_Bedroom);
         this.rooms.get(i).setRoomNumber(roomNumber += 1);
         this.rooms.get(i).setPrice(129);
-         **/
+         */
       }
       else if (i > 10 && i <= 37)
       {Room room = new Room();

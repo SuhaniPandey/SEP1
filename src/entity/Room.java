@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * A Class Containing Room Objects
  *
- * @author Devlin  , Suhani Pandey
+ * @author Devlin
  * @version 1.0
  */
 public class Room implements Serializable
@@ -180,6 +180,15 @@ public class Room implements Serializable
     this.roomNumber = roomNumber;
   }
 
+
+  // enums are constant , and make our life easier later since we dont have to input strings
+  // eg , if we mistype double bedrom , then later getAllDoubleBedroom will not take that room because "double bedroom" is
+  //                                   not equal to "double bedrom"
+  public enum RoomType implements Serializable
+  {
+    Single_Bedroom, Double_Bedroom, Single_Bedroom_Suite, Two_Bedroom_Suite, Three_Bedroom_Suite
+  }
+
   /**
    * takes a String and sets it to the roomType
    *
@@ -230,13 +239,7 @@ public class Room implements Serializable
   }
 
 
-  // enums are constant , and make our life easier later since we dont have to input strings
-  // eg , if we mistype double bedrom , then later getAllDoubleBedroom will not take that room because "double bedroom" is
-  //                                   not equal to "double bedrom"
-  public enum RoomType implements Serializable
-  {
-    Single_Bedroom, Double_Bedroom, Single_Bedroom_Suite, Two_Bedroom_Suite, Three_Bedroom_Suite
-  }
+
 
 
 }

@@ -244,10 +244,11 @@ public class ModelManager implements Serializable
   public RoomList searchRooms(LocalDate arrival, LocalDate departure,
       Room.RoomType roomType, boolean isSmoking)
   {
+    // setting the temp list with all rooms
     RoomList allRooms = getAllRooms();
     BookingList allBookings = getAllBookings();
     RoomList roomList = new RoomList();
-    // setting the temp list with all rooms
+
 
     for (Room room : allRooms.getRooms())
     {
@@ -257,6 +258,8 @@ public class ModelManager implements Serializable
         continue;  // do not add when roomtype match
       roomList.add(room);
     }
+
+
 
     for (Booking booking : allBookings.getBookings())
     {
@@ -279,6 +282,8 @@ public class ModelManager implements Serializable
     }
     return roomList;
   }
+
+
 
   public ArrayList<Booking> searchBooking(String firstname, String lastname,
       String phoneNumberText)

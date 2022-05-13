@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * A Class that contains the guest,rooms,arrival and departure
  *
- * @author
+ * @author Suhani
  */
 
 public class Booking implements Serializable
