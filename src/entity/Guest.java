@@ -37,6 +37,13 @@ public class Guest implements Serializable
     this.dateOfBirth=dateOfBirth;
   }
 
+  public Guest(String firstname, String lastname, String phoneno)
+  {
+    this.firstName=firstname;
+    this.lastName=lastname;
+    this.phoneNumber=phoneno;
+  }
+
   /**
    * method to get date of birth
    * @return date of birth

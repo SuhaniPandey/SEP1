@@ -26,15 +26,21 @@ public class RunApp
     booking.setDeparture(LocalDate.now().plusDays(3));
     modelManager.addBooking(booking);
 
-*/
-    /*
+
+
+ */
+
+
+/*
     ModelManager modelManager=new ModelManager();
     RoomList roomList=new RoomList();
     roomList.createList();
     modelManager.saveRoomList(roomList);
 
 
-     */
+ */
+
+
 
     Application.launch(GUI.class);
 

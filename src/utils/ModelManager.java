@@ -1,5 +1,6 @@
 package utils;
 
+import View.CheckIn.CheckIn;
 import entity.*;
 
 import java.io.FileNotFoundException;
@@ -157,7 +158,8 @@ public class ModelManager implements Serializable
     for (int i = 0; i < allBookings.size(); i++)
     {
       Booking booking=allBookings.get(i);
-      if (booking.getMainBooker().getFirstName().equals(firstName) && booking.getMainBooker().getLastName().equals(lastName) && booking.getMainBooker().getPhoneNumber().equals(phoneNumber))
+      if (booking.getMainBooker().getFirstName().equals(firstName) && booking.getMainBooker().getLastName().equals(lastName)
+          && booking.getMainBooker().getPhoneNumber().equals(phoneNumber))
       {
         allBookings.removeBooking(booking);
       }
@@ -258,9 +260,7 @@ public class ModelManager implements Serializable
         {
           roomList.getRooms().remove(booking.getRoom());
         }
-
       }
-
     }
     return roomList;
   }
@@ -283,25 +283,6 @@ public class ModelManager implements Serializable
     }
     return bookings;
   }
-/*
-  public ArrayList<Booking> deleteBooking(String firstNameCancelText, String lastnameCancelText, String phoneNumberCancelText)
-  {
-    BookingList allbooking = getAllBookings();
-    ArrayList<Booking> booking = new ArrayList<>();
-    for (Booking bookings : allbooking.getBookings())
-    {
-      Guest guest = bookings.getMainBooker();
-      if (!guest.getFirstName().equals(firstNameCancelText))
-        continue;
-      if (!guest.getLastName().equals(lastnameCancelText))
-        continue;
-      if (!guest.getPhoneNumber().equals(phoneNumberCancelText))
-        continue;
-      booking.remove(bookings);
-    }
-    return booking;
 
-  }
 
- */
 }
