@@ -150,6 +150,7 @@ public class ModelManager implements Serializable
 
   }
 
+
   /**
    * Removes a Booking object from the binary file
    *

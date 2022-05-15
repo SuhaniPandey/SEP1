@@ -47,8 +47,8 @@
                         <TableView fx:id="tableView" layoutX="7.0" layoutY="171.0" prefHeight="167.0" prefWidth="547.0">
                           <columns>
                             <TableColumn fx:id="roomNumberColumn" prefWidth="149.33331298828125" text="RoomNumber" />
-                            <TableColumn fx:id="arrivalDateColumn" prefWidth="164.66665649414062" text="ArrivalDate" />
-                              <TableColumn fx:id="departureDateColumn" prefWidth="258.6666259765625" text="DepartureDate" />
+                            <TableColumn fx:id="arrivalDateColumn" prefWidth="200.0000457763672" text="Guest Name" />
+                              <TableColumn fx:id="departureDateColumn" prefWidth="223.33328247070312" text="Room type" />
                           </columns>
                         </TableView>
                         <Button layoutX="380.0" layoutY="64.0" mnemonicParsing="false" onAction="#onSearchPressed" text="Search">
