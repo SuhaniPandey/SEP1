@@ -60,6 +60,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
+                  <Label fx:id="errorDate" layoutX="36.0" layoutY="9.0" prefHeight="17.0" prefWidth="300.0" textFill="RED" />
                </children>
             </AnchorPane>
          </children>

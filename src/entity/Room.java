@@ -18,7 +18,7 @@ public class Room implements Serializable
   private int numberOfRooms;
   private boolean isSmokingAllowed;
 
-  public Room(boolean extraBed, boolean isAvailable, RoomType roomType)
+  public Room(int extraBed, boolean isAvailable, RoomType roomType)
   {
     /**
      * A Three Argument Constructor creating a new Room Object, Defaults extra bed to false and isAvailable to True
@@ -44,13 +44,12 @@ public class Room implements Serializable
     /**
      * A no Argument Constructor, defaulting extraBed to false, isAvailable to true.
      */
-    this.extraBed = false;
+     this.extraBed=false;
     this.isAvailable = true;
     this.isSmokingAllowed=false;
     roomType = RoomType.Single_Bedroom; // initialized it with single room
 
   }
-
   public void setSmokingAllowed(boolean smokingAllowed)
   {
     isSmokingAllowed = smokingAllowed;
@@ -86,7 +85,7 @@ public class Room implements Serializable
 
   /**
    * Changes extraBed to true/false
-   */
+  */
   public void toggleExtraBed()
   {
     extraBed = !extraBed;
@@ -95,17 +94,18 @@ public class Room implements Serializable
 
   /**
    * Sets the extra bed to true
-   */
+*/
   public void setExtraBed(){
     isAvailable =true;
   }
 
-  /**
+   /**
    * Sets the extra bed to false
    */
   public void setNotExtraBed(){
     isAvailable = false;
   }
+
 
 
   /**
@@ -120,7 +120,7 @@ public class Room implements Serializable
 
   /**
    * @return if the room needs an extra bed
-   */
+  */
   public boolean isExtraBed()
   {
     return extraBed;

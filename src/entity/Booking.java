@@ -31,6 +31,11 @@ public class Booking implements Serializable
 
   }
 
+  public ArrayList<Guest> getGuests()
+  {
+    return guests;
+  }
+
   public int getRoomNumber()
   {
     return roomNumber;

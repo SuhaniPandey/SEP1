@@ -13,7 +13,6 @@ public class SelectedRoomFromBooking
   public static void setSelectedRoom(Room room){
     selectedRoom = room;
   }
-
   public static void setArrivalDate(LocalDate arrivalDate)
   {
     SelectedRoomFromBooking.arrivalDate = arrivalDate;

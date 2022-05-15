@@ -102,8 +102,12 @@
                         <TextField fx:id="nationality" layoutX="159.0" layoutY="197.0" prefHeight="29.0" prefWidth="167.0" />
                         <DatePicker fx:id="dateOfBirth" layoutX="158.0" layoutY="159.0" prefHeight="32.0" prefWidth="169.0" />
                         <Button layoutX="362.0" layoutY="297.0" mnemonicParsing="false" onAction="#checkInPressed" text="Check-In" />
-                        <Button layoutX="87.0" layoutY="252.0" mnemonicParsing="false" onAction="#addGuestPressed" text="AddGuest" />
-                        <CheckBox fx:id="extraBed" layoutX="86.0" layoutY="313.0" mnemonicParsing="false" text="Extra bed" />
+                        <Button layoutX="117.0" layoutY="239.0" mnemonicParsing="false" onAction="#addGuestPressed" text="AddGuest" />
+                        <CheckBox fx:id="extraBed" layoutX="25.0" layoutY="283.0" mnemonicParsing="false" text="Extra Bed">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </CheckBox>
                      </children>
                   </AnchorPane>
                </content>
