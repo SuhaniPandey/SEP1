@@ -38,6 +38,10 @@ public class RoomList implements Serializable
     return null;
   }
 
+  /**
+   * A method to set the rooms ArrayList to another ArrayList of the same type
+   * @param rooms the ArrayList to be assigned to a given ArrayList
+   */
   public void setRooms(ArrayList<Room> rooms)
   {
     this.rooms = rooms;
@@ -160,11 +164,20 @@ public class RoomList implements Serializable
     return string;
   }
 
+  /**
+   * A method to get the size of the ArrayList
+   * @return the size of the ArrayList rooms
+   */
   public int size()
   {
     return rooms.size();
   }
 
+  /**
+   * A method to get an object inside the ArrayList
+   * @param i is the index to get in the ArrayList
+   * @return the object at index I
+   */
   public Room get(int i)
   {
     if (i< rooms.size())
@@ -175,15 +188,30 @@ public class RoomList implements Serializable
       return null;
     }
   }
+
+  /**
+   * A method to add a room object to the rooms ArrayList
+   * @param room is te object to be added to the ArrayList
+   */
   public void add(Room room)
   {
     rooms.add(room);
   }
+
+  /**
+   * A method to set a room to a given index in the ArrayList
+   * @param room to be added to the ArrayList
+   * @param i is the index the room will be set to
+   */
   public void set(Room room,int i)
   {
     rooms.set(i,room);
   }
 
+  /**
+   * A method to add all rooms to the rooms ArrayList
+   * @param rooms is all the rooms to be added to the Array List
+   */
   public void addAll(ArrayList<Room> rooms)
   {
     this.rooms.addAll(rooms);

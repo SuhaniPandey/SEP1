@@ -184,6 +184,10 @@ public class Room implements Serializable
   // enums are constant , and make our life easier later since we dont have to input strings
   // eg , if we mistype double bedrom , then later getAllDoubleBedroom will not take that room because "double bedroom" is
   //                                   not equal to "double bedrom"
+
+  /**
+   * a method to set each room type to constants
+   */
   public enum RoomType implements Serializable
   {
     Single_Bedroom, Double_Bedroom, Single_Bedroom_Suite, Two_Bedroom_Suite, Three_Bedroom_Suite
@@ -230,6 +234,12 @@ public class Room implements Serializable
   }
 
   // if Room number is equal then the room is same..
+
+  /**
+   * A method to check if the room numbers are equal
+   * @param obj to be compared to Room
+   * @return true if the object is a room object and the room number is the same
+   */
   public boolean equals(Object obj)
   {
     if (!(obj instanceof Room))
