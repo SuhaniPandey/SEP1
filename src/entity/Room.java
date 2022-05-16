@@ -50,12 +50,21 @@ public class Room implements Serializable
     roomType = RoomType.Single_Bedroom; // initialized it with single room
 
   }
+
+  /**
+   * A method to set smoking to allowed
+   * @param smokingAllowed sets smoking to true/false
+   */
   public void setSmokingAllowed(boolean smokingAllowed)
   {
     isSmokingAllowed = smokingAllowed;
 
   }
 
+  /**
+   * A method to set smoking is allowed
+   * @return if smoking is allowed
+   */
   public boolean isSmokingAllowed()
   {
     return isSmokingAllowed;
@@ -247,9 +256,4 @@ public class Room implements Serializable
     Room other = (Room) obj;
     return this.roomNumber==other.getRoomNumber();
   }
-
-
-
-
-
 }
