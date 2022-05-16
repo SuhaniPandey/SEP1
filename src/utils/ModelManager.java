@@ -211,16 +211,18 @@ public class ModelManager implements Serializable
     BookingList allBookings = getAllBookings(); // happens 1 time
     for (int i = 0; i < allBookings.size(); i++) // happens n times
     {
-      if (allBookings.get(i).equals(booking)) // happens 1 times each iteration
+      if (allBookings.get(i).equals(booking)) // Comparison happens 1 time per iteration
       {
-        allBookings.get(i).addAllGuests(guests); // happens 1 time
-        break; //happens 1 time
+        allBookings.get(i).addAllGuests(guests); // getting object at given index happens 1 time
+        break; //breaks the loop happens only 1 time
       }
     }
-    saveBookings(allBookings); //happens 1 time
+    saveBookings(allBookings); //saves the booking to the booking list, happens 1 time
     // T(0) = 1 + n + 1 + 1 + 1
     // removing all constants
     // O(n)
+    // We chose this code to analyze because of its relative complexity
+    // compared to other loops in this program.
   }
 
   public void addAllRooms(ArrayList<Room> rooms)

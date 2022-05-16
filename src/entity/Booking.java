@@ -136,16 +136,13 @@ public class Booking implements Serializable
 
   public double checkOutPrice()
   {
-    int daysStayed =(int) ChronoUnit.DAYS.between(departure,arrival); // happens 1 time
-    double price = 0; // happens 1 time
-    if (getRoom().getPrice() == room.getPrice()) // happens n times
+    int daysStayed =(int) ChronoUnit.DAYS.between(departure,arrival);
+    double price = 0;
+    if (getRoom().getPrice() == room.getPrice())
     {
-      price = getRoom().getPrice() * daysStayed; // 1 = and 1 * for each iteration
+      price = getRoom().getPrice() * daysStayed;
     }
-    return price; // happens 1 time
-    // T(0) 1 + 1 + 2n + 1
-    // remove constants
-    // Time Complexity O(n)
+    return price;
   }
 
   /**
