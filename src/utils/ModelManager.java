@@ -208,16 +208,19 @@ public class ModelManager implements Serializable
 
   public void addGuestsToBooking(Booking booking, ArrayList<Guest> guests)
   {
-    BookingList allBookings = getAllBookings();
-    for (int i = 0; i < allBookings.size(); i++)
+    BookingList allBookings = getAllBookings(); // happens 1 time
+    for (int i = 0; i < allBookings.size(); i++) // happens n times
     {
-      if (allBookings.get(i).equals(booking))
+      if (allBookings.get(i).equals(booking)) // happens 1 times each iteration
       {
-        allBookings.get(i).addAllGuests(guests);
-        break;
+        allBookings.get(i).addAllGuests(guests); // happens 1 time
+        break; //happens 1 time
       }
     }
-    saveBookings(allBookings);
+    saveBookings(allBookings); //happens 1 time
+    // T(0) = 1 + n + 1 + 1 + 1
+    // removing all constants
+    // O(n)
   }
 
   public void addAllRooms(ArrayList<Room> rooms)
