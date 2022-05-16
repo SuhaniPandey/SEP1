@@ -1,5 +1,6 @@
 package utils;
 
+import View.CheckIn.CheckIn;
 import entity.*;
 
 import java.io.FileNotFoundException;
@@ -150,35 +151,21 @@ public class ModelManager implements Serializable
 
   }
 
-  /**
-   * Removes a Booking object from the binary file
-   *
-   * @param booking the Booking object which will be removed from the binary file
-   */
-  public void deleteBooking(Booking booking)
-  {
-    BookingList allBookings = getAllBookings();
-    allBookings.removeBooking(booking);
-    saveBookings(allBookings);
 
-  }
-
-  /**
-   * Removes a Booking using a Guest object containing phoneNum.
-   *
-   * @param phoneNum the phone number which corresponds to a Guest object
-   */
-  public void deleteBookingByGuestPhoneNum(String phoneNum)
+  public void deleteBooking(String firstName,String lastName,String phoneNumber)
   {
     BookingList allBookings = getAllBookings();
     for (int i = 0; i < allBookings.size(); i++)
     {
-      if (allBookings.get(i).getMainBooker().getPhoneNumber().equals(phoneNum))
+      Booking booking=allBookings.get(i);
+      if (booking.getMainBooker().getFirstName().equals(firstName) && booking.getMainBooker().getLastName().equals(lastName)
+          && booking.getMainBooker().getPhoneNumber().equals(phoneNumber))
       {
-        allBookings.removeBooking(allBookings.get(i));
+        allBookings.removeBooking(booking);
       }
     }
     saveBookings(allBookings);
+
   }
 
   /**
@@ -244,10 +231,10 @@ public class ModelManager implements Serializable
   public RoomList searchRooms(LocalDate arrival, LocalDate departure,
       Room.RoomType roomType, boolean isSmoking)
   {
+    // setting the temp list with all rooms
     RoomList allRooms = getAllRooms();
     BookingList allBookings = getAllBookings();
     RoomList roomList = new RoomList();
-    // setting the temp list with all rooms
 
     for (Room room : allRooms.getRooms())
     {
@@ -273,9 +260,7 @@ public class ModelManager implements Serializable
         {
           roomList.getRooms().remove(booking.getRoom());
         }
-
       }
-
     }
     return roomList;
   }
@@ -288,9 +273,12 @@ public class ModelManager implements Serializable
     for (Booking booking : allBookings.getBookings())
     {
       Guest guest = booking.getMainBooker();
-      if (!guest.getFirstName().equals(firstname)) continue;
-      if (!guest.getLastName().equals(lastname)) continue;
-      if (!guest.getPhoneNumber().equals(phoneNumberText)) continue;
+      if (!guest.getFirstName().equals(firstname))
+        continue;
+      if (!guest.getLastName().equals(lastname))
+        continue;
+      if (!guest.getPhoneNumber().equals(phoneNumberText))
+        continue;
       bookings.add(booking);
     }
     return bookings;

@@ -31,6 +31,7 @@ public class Rooms implements Initializable
   @FXML private CheckBox smokingCheckBox;
 
   @FXML private Label errorLabel;
+  @FXML private Label errorDate;
 
   private ModelManager modelManager;
 
@@ -54,6 +55,12 @@ public class Rooms implements Initializable
     Room.RoomType roomType = roomTypeChoice.getValue();
     boolean isSmoking = smokingCheckBox.isSelected();
 
+    if (departure.isBefore(arrival))
+    {
+      errorDate.setText("Departure date is before arrival date");
+      clearLabel();
+      return;
+    }
     RoomList roomList = modelManager.searchRooms(arrival, departure, roomType,
         isSmoking);
     roomsToDisplay.setAll(roomList.getRooms());
@@ -122,19 +129,6 @@ public class Rooms implements Initializable
         new PropertyValueFactory<>("roomNumber"));
     roomTableView.setItems(roomsToDisplay);
 
-  }
-
-  private void disablePast(DatePicker dp)
-  {
-    dp.setDayCellFactory(picker -> new DateCell()
-    {
-      public void updateItem(LocalDate date, boolean empty)
-      {
-        super.updateItem(date, empty);
-        LocalDate today = LocalDate.now();
-        setDisable(empty || date.compareTo(today) < 0);
-      }
-    });
   }
 
 }

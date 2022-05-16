@@ -15,7 +15,7 @@
 
 <AnchorPane prefHeight="445.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.checkOut.CheckOut">
    <children>
-      <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="445.0" prefWidth="558.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="445.0" prefWidth="558.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Search">
                <content>
@@ -46,9 +46,9 @@
                         <TextField fx:id="phoneNumber" layoutX="140.0" layoutY="98.0" prefHeight="29.0" prefWidth="161.0" />
                         <TableView fx:id="tableView" layoutX="7.0" layoutY="171.0" prefHeight="167.0" prefWidth="547.0">
                           <columns>
-                            <TableColumn fx:id="roomNumberColumn" prefWidth="149.33331298828125" text="RoomNumber" />
-                            <TableColumn fx:id="arrivalDateColumn" prefWidth="164.66665649414062" text="ArrivalDate" />
-                              <TableColumn fx:id="departureDateColumn" prefWidth="258.6666259765625" text="DepartureDate" />
+                            <TableColumn fx:id="roomNumberColumn" prefWidth="145.33330821990967" text="Room no." />
+                              <TableColumn fx:id="ArrivalDateColumn" minWidth="0.0" prefWidth="197.33338928222656" text="Arrival Date" />
+                              <TableColumn fx:id="departureDateColumn" minWidth="0.0" prefWidth="204.00003051757812" text="Departure Date" />
                           </columns>
                         </TableView>
                         <Button layoutX="380.0" layoutY="64.0" mnemonicParsing="false" onAction="#onSearchPressed" text="Search">
@@ -56,11 +56,13 @@
                               <Font size="14.0" />
                            </font>
                         </Button>
+                        <Button layoutX="450.0" layoutY="354.0" mnemonicParsing="false" onAction="#onNextpressed" text="Next" />
+                        <Label fx:id="errorLabel" layoutX="126.0" layoutY="358.0" prefHeight="17.0" prefWidth="309.0" textFill="#fb0505" />
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
-          <Tab text="check-out">
+          <Tab fx:id="checkOutTab" text="check-out">
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>

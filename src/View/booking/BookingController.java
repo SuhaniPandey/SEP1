@@ -15,6 +15,7 @@ import utils.ViewHandler;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class BookingController implements Initializable
@@ -72,6 +73,13 @@ public class BookingController implements Initializable
 
   @FXML private void onCancelPressed()
   {
+    String firstNameCancelText=firstNameCancel.getText();
+    String lastnameCancelText=lastNameCancel.getText();
+    String phoneNumberCancelText=phoneNoCancel.getText();
+    modelManager.deleteBooking(firstNameCancelText,lastnameCancelText,phoneNumberCancelText);
+    firstNameCancel.clear();
+    lastNameCancel.clear();
+    AlertBox.display("Booking removed succesfully");
 
   }
 }

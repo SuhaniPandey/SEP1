@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * A Class Containing Room Objects
  *
- * @author Devlin  , Suhani Pandey
+ * @author Devlin
  * @version 1.0
  */
 public class Room implements Serializable
@@ -18,7 +18,7 @@ public class Room implements Serializable
   private int numberOfRooms;
   private boolean isSmokingAllowed;
 
-  public Room(boolean extraBed, boolean isAvailable, RoomType roomType)
+  public Room(int extraBed, boolean isAvailable, RoomType roomType)
   {
     /**
      * A Three Argument Constructor creating a new Room Object, Defaults extra bed to false and isAvailable to True
@@ -44,13 +44,12 @@ public class Room implements Serializable
     /**
      * A no Argument Constructor, defaulting extraBed to false, isAvailable to true.
      */
-    this.extraBed = false;
+     this.extraBed=false;
     this.isAvailable = true;
     this.isSmokingAllowed=false;
     roomType = RoomType.Single_Bedroom; // initialized it with single room
 
   }
-
   public void setSmokingAllowed(boolean smokingAllowed)
   {
     isSmokingAllowed = smokingAllowed;
@@ -86,7 +85,7 @@ public class Room implements Serializable
 
   /**
    * Changes extraBed to true/false
-   */
+  */
   public void toggleExtraBed()
   {
     extraBed = !extraBed;
@@ -95,17 +94,18 @@ public class Room implements Serializable
 
   /**
    * Sets the extra bed to true
-   */
+*/
   public void setExtraBed(){
     isAvailable =true;
   }
 
-  /**
+   /**
    * Sets the extra bed to false
    */
   public void setNotExtraBed(){
     isAvailable = false;
   }
+
 
 
   /**
@@ -120,7 +120,7 @@ public class Room implements Serializable
 
   /**
    * @return if the room needs an extra bed
-   */
+  */
   public boolean isExtraBed()
   {
     return extraBed;
@@ -180,6 +180,15 @@ public class Room implements Serializable
     this.roomNumber = roomNumber;
   }
 
+
+  // enums are constant , and make our life easier later since we dont have to input strings
+  // eg , if we mistype double bedrom , then later getAllDoubleBedroom will not take that room because "double bedroom" is
+  //                                   not equal to "double bedrom"
+  public enum RoomType implements Serializable
+  {
+    Single_Bedroom, Double_Bedroom, Single_Bedroom_Suite, Two_Bedroom_Suite, Three_Bedroom_Suite
+  }
+
   /**
    * takes a String and sets it to the roomType
    *
@@ -230,13 +239,7 @@ public class Room implements Serializable
   }
 
 
-  // enums are constant , and make our life easier later since we dont have to input strings
-  // eg , if we mistype double bedrom , then later getAllDoubleBedroom will not take that room because "double bedroom" is
-  //                                   not equal to "double bedrom"
-  public enum RoomType implements Serializable
-  {
-    Single_Bedroom, Double_Bedroom, Single_Bedroom_Suite, Two_Bedroom_Suite, Three_Bedroom_Suite
-  }
+
 
 
 }

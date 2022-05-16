@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * A Class that contains Arraylist of booking
  *
- * @author
+ * @author Suhani
  */
 
 public class BookingList implements Serializable

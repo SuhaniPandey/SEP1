@@ -1,6 +1,7 @@
 package View.CheckIn;
 
 import View.AlertBox;
+import View.booking.SelectedRoomFromBooking;
 import entity.Booking;
 import entity.Guest;
 import entity.Room;
@@ -51,7 +52,6 @@ public class CheckIn implements Initializable
     addedGuests = new ArrayList<>();
     initializeTable();
     inititializeTabs();
-
   }
 
   private void inititializeTabs()

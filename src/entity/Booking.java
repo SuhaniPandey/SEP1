@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * A Class that contains the guest,rooms,arrival and departure
  *
- * @author
+ * @author Suhani
  */
 
 public class Booking implements Serializable
@@ -29,6 +29,11 @@ public class Booking implements Serializable
     this.room = room;
     roomNumber = room.getRoomNumber();
 
+  }
+
+  public ArrayList<Guest> getGuests()
+  {
+    return guests;
   }
 
   public int getRoomNumber()
@@ -168,6 +173,10 @@ public class Booking implements Serializable
   {
     guests.addAll(guests);
   }
+  public void getAllAddedGuest(ArrayList<Guest> guests)
+  {
+      guests.get(getGuests().size());
+  }
 
   /**
    * @return guest, rooms, arrival, departure
@@ -196,5 +205,6 @@ public class Booking implements Serializable
     return mainBooker.equals(other.mainBooker) && room.equals(other.room)
         && arrival.equals(other.arrival) && departure.equals(other.departure);
   }
+
 
 }

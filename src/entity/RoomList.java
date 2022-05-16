@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  * A public class that creates a list of Room objects
- * @author Devlin Onichuk, Suhani Pandey
+ * @author Devlin Onichuk
  */
 public class RoomList implements Serializable
 {
@@ -60,23 +60,23 @@ public class RoomList implements Serializable
         room.setRoomType(Room.RoomType.Single_Bedroom);
         room.setRoomNumber(roomNumber++);
         room.setPrice(129);
-        if (i % 2==0) room.setSmokingAllowed(true);
+        //if (i % 2==0) room.setSmokingAllowed(true);
         this.rooms.add(room);
 
 
-        /**
+        /*
         this.rooms.add(new Room());
         this.rooms.get(i).setRoomType(Room.RoomType.Single_Bedroom);
         this.rooms.get(i).setRoomNumber(roomNumber += 1);
         this.rooms.get(i).setPrice(129);
-         **/
+         */
       }
       else if (i > 10 && i <= 37)
       {Room room = new Room();
         room.setRoomType(Room.RoomType.Double_Bedroom);
         room.setRoomNumber(roomNumber++);
         room.setPrice(169);
-        if (i % 2==0) room.setSmokingAllowed(true);
+        //if (i % 2==0) room.setSmokingAllowed(true);
         this.rooms.add(room);
 
 
@@ -94,7 +94,7 @@ public class RoomList implements Serializable
         room.setRoomType(Room.RoomType.Single_Bedroom_Suite);
         room.setRoomNumber(roomNumber++);
         room.setPrice(259);
-        if (i % 2==0) room.setSmokingAllowed(true);
+        room.setSmokingAllowed(true);
         this.rooms.add(room);
 
         /*
@@ -111,7 +111,7 @@ public class RoomList implements Serializable
         room.setRoomType(Room.RoomType.Two_Bedroom_Suite);
         room.setRoomNumber(roomNumber++);
         room.setPrice(339);
-        if (i % 2==0) room.setSmokingAllowed(true);
+       room.setSmokingAllowed(false);
         this.rooms.add(room);
         /*
         this.rooms.add(new Room());
@@ -127,7 +127,7 @@ public class RoomList implements Serializable
         room.setRoomType(Room.RoomType.Three_Bedroom_Suite);
         room.setRoomNumber(roomNumber++);
         room.setPrice(399);
-        if (i % 2==0) room.setSmokingAllowed(true);
+        room.setSmokingAllowed(true);
         this.rooms.add(room);
         /*
         this.rooms.add(new Room());
