@@ -100,6 +100,7 @@ public class CheckIn implements Initializable
   @FXML private void checkInPressed()
   {
     modelManager.addGuestsToBooking( selectedBooking, addedGuests);
+    modelManager.checkIn(selectedBooking);
     AlertBox.display("Checked in sucessfullly");
     clearFields();
 
