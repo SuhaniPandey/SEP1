@@ -15,20 +15,18 @@ public class RunApp
   {
 
 
-/*
-    ModelManager modelManager = new ModelManager();
 
-    Guest guest = new Guest("asd","asd","<as","<s","ac",LocalDate.now());
-    Booking booking = new Booking(guest, new Room());
-
-
-    booking.setArrival(LocalDate.now());
-    booking.setDeparture(LocalDate.now().plusDays(3));
-    modelManager.addBooking(booking);
-
+//    ModelManager modelManager = new ModelManager();
+//
+//    Guest guest = new Guest("asd","asd","<as","<s","ac",LocalDate.now());
+//    Booking booking = new Booking(guest, new Room());
+//    booking.setArrival(LocalDate.now());
+//    booking.setDeparture(LocalDate.now().plusDays(3));
+//
+//    modelManager.addBooking(booking);
 
 
- */
+
 
 
 /*
