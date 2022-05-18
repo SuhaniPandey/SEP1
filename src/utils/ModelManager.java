@@ -249,7 +249,7 @@ public class ModelManager implements Serializable
 
   // searching room
   public RoomList searchRooms(LocalDate arrival, LocalDate departure,
-      Room.RoomType roomType, boolean isSmoking)
+      Room.RoomType roomType)
   {
     // setting the temp list with all rooms
     RoomList allRooms = getAllRooms();
@@ -260,8 +260,6 @@ public class ModelManager implements Serializable
     {
       if (!(room.getRoomType().equals(roomType)))
         continue;  // do not add when roomtype dont match
-      if (!(room.isSmokingAllowed() == isSmoking))
-        continue;  // do not add when roomtype match
       roomList.add(room);
     }
 
@@ -304,6 +302,41 @@ public class ModelManager implements Serializable
     return bookings;
   }
 
+  public ArrayList<Booking> filterBookings(LocalDate dateFrom, LocalDate dateTo) {
+    BookingList allBookings = getAllBookings();
+    ArrayList<Booking> filteredBooking = new ArrayList<>();
+    for (Booking booking : allBookings.getBookings()
+    ) {
+      boolean include = false;
+      // following if-else checks if the given date includes the booked date..
+      if ((booking.getDeparture().isBefore(dateTo) && (booking.getDeparture().isAfter(dateFrom))) || booking.getDeparture().isEqual(dateTo))
+        include = true;
+      else if ((booking.getArrival().isAfter(dateFrom) && (booking.getArrival().isBefore(dateTo))) || booking.getArrival().isEqual(dateFrom))
+        include = true;
+      if (include) {
+        filteredBooking.add(booking);
+      }
+    }
+    return filteredBooking;
+  }
+
+  public ArrayList<Booking> searchCheckIn(String firstname, String lastname, String phoneno)
+  {
+    BookingList allBookings = getAllBookings();
+    ArrayList<Booking> allCheckIn = new ArrayList<>();
+    for (Booking booking : allBookings.getBookings()) {
+      Guest guest = booking.getMainBooker();
+      if (!guest.getFirstName().equals(firstname))
+        continue;
+      if (!guest.getLastName().equals(lastname))
+        continue;
+      if (!guest.getPhoneNumber().equals(phoneno))
+        continue;
+      if (booking.getIsCheckedIn())
+        allCheckIn.add(booking);
+    }
+    return allCheckIn;
+
   /*public void createFile(ArrayList<String> RoomList)
   {
     try
@@ -329,4 +362,25 @@ public class ModelManager implements Serializable
     }
   }*/
 
+}
+  public boolean deleteBooking(Booking booking) {
+    BookingList allBookings = getAllBookings();
+    boolean isRemoved = allBookings.removeBooking(booking);
+    saveBookings(allBookings);
+    return isRemoved;
+  }
+
+  public void checkIn(Booking selectedBooking)
+  {
+    BookingList allBookings = getAllBookings();
+    for (Booking booking : allBookings.getBookings())
+    {
+      if (booking.equals(selectedBooking))
+      {
+        booking.setCheckedIn(true);
+        break;
+      }
+    }
+    saveBookings(allBookings);
+  }
 }

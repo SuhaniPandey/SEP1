@@ -112,7 +112,6 @@ public class BookingController implements Initializable {
 
         boolean isRemoved = modelManager.deleteBooking(booking);
         if (isRemoved) allBookingsToShow.remove(booking);
-        int debbug;
 
     }
 
