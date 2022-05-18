@@ -26,9 +26,9 @@ public class Booking implements Serializable {
     public Booking(Guest mainBooker, Room room) {
         guests = new ArrayList<>();
         this.mainBooker = mainBooker;
-
         this.room = room;
         roomNumber = room.getRoomNumber();
+        guests = new ArrayList<>();
 
     }
 

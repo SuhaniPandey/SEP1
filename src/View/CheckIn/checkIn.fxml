@@ -13,50 +13,36 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="525.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.CheckIn.CheckIn">
+<AnchorPane fx:id="anchorPame" prefHeight="446.0" prefWidth="523.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.CheckIn.CheckIn">
    <children>
-      <TabPane fx:id="tabPane" layoutX="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="558.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="tabPane" layoutX="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="520.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Search">
+          <Tab text="All checkins">
                <content>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                  <AnchorPane prefHeight="417.0" prefWidth="576.0">
                      <children>
-                        <Text layoutX="14.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="14.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="14.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone no.">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </Text>
-                        <TextField fx:id="firstName" layoutX="133.0" layoutY="15.0" prefHeight="29.0" prefWidth="149.0" />
-                        <TextField fx:id="lastName" layoutX="133.0" layoutY="48.0" prefHeight="29.0" prefWidth="149.0" />
-                        <TextField fx:id="phoneNumber" layoutX="133.0" layoutY="82.0" prefHeight="29.0" prefWidth="149.0" />
-                        <Button layoutX="394.0" layoutY="47.0" mnemonicParsing="false" onAction="#onSearchPressed" text="Search">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Button>
-                        <TableView fx:id="tableView" layoutX="12.0" layoutY="120.0" prefHeight="200.0" prefWidth="537.0">
+                        <TableView fx:id="tableView" layoutX="14.0" layoutY="31.0" prefHeight="200.0" prefWidth="480.0">
                           <columns>
-                            <TableColumn fx:id="roomNumberColumn" prefWidth="156.6666259765625" text="RoomNumber" />
-                            <TableColumn fx:id="arrivalDateColumn" prefWidth="158.66668701171875" text="ArrivalDate" />
-                              <TableColumn fx:id="departureDateColumn" prefWidth="258.0000203450521" text="DepartureDate" />
+                            <TableColumn fx:id="roomNumberColumn" prefWidth="120.0" text="RoomNumber" />
+                            <TableColumn fx:id="arrivalDateColumn" prefWidth="120.0" text="ArrivalDate" />
+                              <TableColumn fx:id="departureDateColumn" prefWidth="120.0" text="DepartureDate" />
+                              <TableColumn fx:id="bookedBy" prefWidth="120.0" text="Booked By" />
                           </columns>
                         </TableView>
-                        <Button layoutX="434.0" layoutY="332.0" mnemonicParsing="false" onAction="#nextPressed" text="Next" />
+                        <Button layoutX="233.0" layoutY="367.0" mnemonicParsing="false" onAction="#onFilterPressed" text="Filter" />
                         <Label fx:id="errorLabel" layoutX="49.0" layoutY="336.0" prefHeight="17.0" prefWidth="300.0" textFill="RED">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
+                        <Label layoutX="14.0" layoutY="14.0" text="All checked ins :" />
+                        <TextField fx:id="firstNameFilter" layoutX="40.0" layoutY="323.0" promptText="First name" />
+                        <TextField fx:id="lastNameFilter" layoutX="207.0" layoutY="323.0" promptText="Last name" />
+                        <TextField fx:id="phoneNumberFilter" layoutX="40.0" layoutY="367.0" promptText="Phone number" />
+                        <Button layoutX="298.0" layoutY="367.0" mnemonicParsing="false" onAction="#onResetFilterPressed" text="Reset Filter" />
+                        <Button layoutX="298.0" layoutY="243.0" mnemonicParsing="false" onAction="#checkOutPressed" text="Check out" />
+                        <Button layoutX="378.0" layoutY="243.0" mnemonicParsing="false" onAction="#detailsPressed" text="Details" />
+                        <Label layoutX="35.0" layoutY="292.0" text="Filter :" />
                      </children>
                   </AnchorPane>
                </content>

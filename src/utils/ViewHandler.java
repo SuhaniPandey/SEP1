@@ -1,5 +1,6 @@
 package utils;
 
+import View.AlertBox;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
@@ -13,7 +14,7 @@ public class ViewHandler {
     private static Parent loadFXML(String path) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(ViewHandler.class.getResource(path));
-        Parent root = (Parent) loader.load();
+        Parent root =  loader.load();
         return root;
     }
 
@@ -58,6 +59,15 @@ public class ViewHandler {
     public static Parent getcheckOut() {
         try {
             return loadFXML("../View/checkOut/checkOut.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static Parent getCheckedInDetails(){
+        try {
+            return loadFXML("../View/CheckIn/CheckedInDetails.fxml");
         } catch (IOException e) {
             e.printStackTrace();
             return null;
