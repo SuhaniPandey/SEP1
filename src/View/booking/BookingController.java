@@ -5,6 +5,7 @@ import entity.Booking;
 import entity.BookingList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
@@ -114,6 +115,12 @@ public class BookingController implements Initializable {
         int debbug;
 
     }
+
+  public void onCheckedInPressed()
+  {
+      Booking booking=allBookingsTableView.getSelectionModel().getSelectedItem();
+      modelManager.checkIn(booking);
+  }
 }
 
 

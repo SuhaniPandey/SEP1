@@ -35,6 +35,14 @@ public class CheckOut implements Initializable
   private ModelManager modelManager;
   private ObservableList<Booking> checkInToDisplay;
 
+  //all checked in guest search
+  @FXML private TableView<Booking> checkInAllTableView;
+  @FXML private TableColumn<Booking,String> mainBooker;
+  @FXML private TableColumn<Booking,String> guest;
+  @FXML private TableColumn<Booking,Integer> roomNumber;
+  @FXML private TableColumn<Booking,LocalDate> checkedInDate;
+  @FXML private TableColumn<Booking,LocalDate> checkedOutDate;
+
 
   @Override public void initialize(URL url, ResourceBundle resourceBundle)
   {
@@ -74,12 +82,9 @@ public class CheckOut implements Initializable
   @FXML
   private void onCheckOutPressed()
   {
-
-
   }
   private void initializeDates()
   {
-    //arrivalDate.setValue(selectedCheckIn.getArrival());
     departureDate.setValue(LocalDate.now());
     arrivalDate.setEditable(false);
     arrivalDate.setDisable(true);

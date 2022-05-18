@@ -127,6 +127,23 @@
                   </AnchorPane>
                </content>
             </Tab>
+            <Tab text="All Checked In Guest">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="checkInAllTableView" layoutX="5.0" layoutY="47.0" prefHeight="200.0" prefWidth="550.0">
+                          <columns>
+                            <TableColumn fx:id="mainBooker" prefWidth="110.0" text="MainBooker" />
+                              <TableColumn fx:id="guest" prefWidth="110.0" text="Guest" />
+                            <TableColumn fx:id="roomNumber" prefWidth="110.0" text="Room Number" />
+                              <TableColumn fx:id="checkedInDate" prefWidth="110.0" text="Checked In date" />
+                              <TableColumn fx:id="checkedOutDate" prefWidth="110.0" text="Checked out date" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
         </tabs>
       </TabPane>
    </children>
