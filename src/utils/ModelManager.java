@@ -182,11 +182,14 @@ public class ModelManager implements Serializable {
 
     public void addGuestsToBooking(Booking booking, ArrayList<Guest> guests) {
         BookingList allBookings = getAllBookings();
-        for (int i = 0; i < allBookings.size(); i++) {
-            if (allBookings.get(i).equals(booking)) {
-                allBookings.get(i).addAllGuests(guests);
+        for (Booking booking1 : allBookings.getBookings()
+        ) {
+            if (booking1.equals(booking)){
+                booking1.addAllGuests(guests);
+
                 break;
             }
+
         }
         saveBookings(allBookings);
     }

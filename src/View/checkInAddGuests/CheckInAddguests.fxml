@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="334.0" prefWidth="410.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.checkInAddGuests.CheckInAddGuests">
+   <children>
+      <Text layoutX="14.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <Text layoutX="14.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <Text layoutX="14.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <Text layoutX="14.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone no.">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <Text layoutX="16.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Birth">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <Text layoutX="16.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nationality">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <TextField fx:id="firstNameCheckIn" layoutX="159.0" layoutY="17.0" prefHeight="29.0" prefWidth="159.0" />
+      <TextField fx:id="lastNameCheckIn" layoutX="159.0" layoutY="52.0" prefHeight="29.0" prefWidth="159.0" />
+      <TextField fx:id="address" layoutX="159.0" layoutY="86.0" prefHeight="29.0" prefWidth="159.0" />
+      <TextField fx:id="phoneNo" layoutX="159.0" layoutY="124.0" prefHeight="29.0" prefWidth="159.0" />
+      <TextField fx:id="nationality" layoutX="159.0" layoutY="197.0" prefHeight="29.0" prefWidth="167.0" />
+      <DatePicker fx:id="dateOfBirth" layoutX="158.0" layoutY="159.0" prefHeight="32.0" prefWidth="169.0" />
+      <Button layoutX="139.0" layoutY="294.0" mnemonicParsing="false" onAction="#checkInPressed" text="Check-In" />
+      <Button layoutX="117.0" layoutY="239.0" mnemonicParsing="false" onAction="#addGuestPressed" text="AddGuest" />
+      <Button layoutX="306.0" layoutY="294.0" mnemonicParsing="false" onAction="#onBackPressed" text="Back" />
+   </children>
+</AnchorPane>

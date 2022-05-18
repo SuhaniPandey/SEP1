@@ -13,11 +13,10 @@ public class RunApp {
     public static void main(String[] args) {
 
 
- ModelManager modelManager = new ModelManager();
-
+// ModelManager modelManager = new ModelManager();
+//
 //    Guest guest = new Guest("asd","asd","<as","<s","ac", LocalDate.now());
 //    Booking booking = new Booking(guest, new Room());
-//    booking.addGuests(new Guest("Sachin", "Baral","(/(7788","sdf","asdfs",LocalDate.now()));
 //    booking.setCheckedIn(true);
 //    booking.setArrival(LocalDate.now());
 //    booking.setDeparture(LocalDate.now().plusDays(3));

@@ -126,35 +126,12 @@ public class Booking implements Serializable {
      */
 
     public double checkOutPrice() {
-        int daysStayed = (int) ChronoUnit.DAYS.between(arrival,departure);
-        double price = 0;
-        if (getRoom().getPrice() == room.getPrice()) {
-            price = (getRoom().getPrice() * daysStayed)+smokingFee()-discount();
-        }
-        return price;
+        int daysStayed = (int) ChronoUnit.DAYS.between(arrival, departure);
+        return room.getPrice() * daysStayed;
+
     }
 
-    /**
-     * A method to get discount
-     *
-     * @return final price after discount
-     */
-    public double discount() {
-        return room.getPrice() - (room.getPrice() * 0.5);
-    }
-    public double smokingFee()
-    {
-        return 100;
-    }
 
-    /**
-     * This method adds one guest at a time
-     *
-     * @param guest
-     */
-    public void addGuests(Guest guest) {
-        guests.add(guest);
-    }
 
     /**
      * This method adds a list of guests at one time
@@ -163,11 +140,10 @@ public class Booking implements Serializable {
      */
     public void addAllGuests(ArrayList<Guest> guests) {
         guests.addAll(guests);
+        System.out.println(guests);
     }
 
-    public void getAllAddedGuest(ArrayList<Guest> guests) {
-        guests.get(getGuests().size());
-    }
+
 
     /**
      * @return guest, rooms, arrival, departure
@@ -185,7 +161,6 @@ public class Booking implements Serializable {
     public boolean getIsCheckedIn() {
         return isCheckedIn;
     }
-
 
 
     /**
@@ -208,7 +183,6 @@ public class Booking implements Serializable {
     public String getBookerName() {
         return mainBooker.getFirstName();
     }
-
 
 
 

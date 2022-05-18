@@ -42,14 +42,13 @@ public class CheckedInDetails {
     @FXML
     private TableColumn<Guest, LocalDate> dateOfBirthColumn;
 
-    @FXML
-    private ObservableList<Guest> guestsToShow = FXCollections.observableArrayList();
+
+    private ObservableList<Guest> guestsToShow ;
 
 
     public void initialize() {
         initializeDateFields();
         initializeTable();
-
 
     }
 
@@ -74,10 +73,9 @@ public class CheckedInDetails {
                 new PropertyValueFactory<>("nationality"));
         phoneNumberColumn.setCellValueFactory(
                 new PropertyValueFactory<>("phoneNumber"));
-        dateOfBirthColumn.setCellValueFactory(
-                new PropertyValueFactory<>("dateOfBirth"));
+        dateOfBirthColumn.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
 
-        tableView.setItems(FXCollections.observableList(guestsToShow));
+        tableView.setItems(guestsToShow);
     }
 
 
@@ -101,7 +99,6 @@ public class CheckedInDetails {
     }
 
     public void setGuestsToShow(ObservableList<Guest> guestsToShow) {
-
         this.guestsToShow = guestsToShow;
     }
 }

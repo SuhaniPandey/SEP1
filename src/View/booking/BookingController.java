@@ -1,19 +1,23 @@
 package View.booking;
 
 import View.AlertBox;
+import View.checkInAddGuests.CheckInAddGuests;
 import entity.Booking;
 import entity.BookingList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.Parent;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import utils.ModelManager;
-import utils.ViewHandler;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -116,12 +120,31 @@ public class BookingController implements Initializable {
     }
 
 
+    @FXML
+    private void onCheckedInPressed() throws IOException {
 
-  public void onCheckedInPressed()
-  {
+        Booking selectedItem = allBookingsTableView.getSelectionModel().getSelectedItem();
+        if (selectedItem == null) {
+            AlertBox.display("Select a booking to check-in");
+            return;
+        }
+        if (selectedItem.getIsCheckedIn()){
+            AlertBox.display("Selected booking is already checked in");
+            return;
+        }
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../../View/checkInAddGuests/CheckInAddguests.fxml"));
+        Parent root = loader.load();
+        CheckInAddGuests controller = loader.getController();
+        controller.setSelectedBooking(selectedItem);
+        controller.initialize();
+
+        anchorPane.getChildren().clear();
+        anchorPane.getChildren().setAll(root);
 
 
-  }
+
+    }
 }
 
 
