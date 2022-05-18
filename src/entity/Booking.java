@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * A Class that contains the guest,rooms,arrival and departure
  *
- * @author Suhani
+ * @author
  */
 
 public class Booking implements Serializable {
@@ -21,6 +21,7 @@ public class Booking implements Serializable {
     private LocalDate arrival;
     private LocalDate departure;
     private boolean isCheckedIn;
+
 
     public Booking(Guest mainBooker, Room room) {
         guests = new ArrayList<>();
@@ -185,6 +186,8 @@ public class Booking implements Serializable {
         return isCheckedIn;
     }
 
+
+
     /**
      * A method to check if a given object is an instance of a Booking object
      * If obj is an instance of Booking,turn Object obj into a Booking object
@@ -201,9 +204,12 @@ public class Booking implements Serializable {
                 && arrival.equals(other.arrival) && departure.equals(other.departure);
     }
 
+
     public String getBookerName() {
         return mainBooker.getFirstName();
     }
+
+
 
 
 }

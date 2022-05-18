@@ -8,12 +8,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import utils.ModelManager;
+import utils.ViewHandler;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -38,6 +37,7 @@ public class BookingController implements Initializable {
     private TableColumn<Booking, Boolean> isCheckedInAll;
     @FXML
     private DatePicker dateToFilter, dateFromFilter;
+
 
     private ObservableList<Booking> allBookingsToShow;
 
@@ -119,8 +119,8 @@ public class BookingController implements Initializable {
 
   public void onCheckedInPressed()
   {
-      Booking booking=allBookingsTableView.getSelectionModel().getSelectedItem();
-      modelManager.checkIn(booking);
+
+
   }
 }
 

@@ -1,7 +1,9 @@
 package View.checkOut;
 
+import View.AlertBox;
 import View.booking.SelectedRoomFromBooking;
 import entity.Booking;
+import entity.BookingList;
 import entity.Guest;
 import entity.Room;
 import javafx.application.Platform;
@@ -23,9 +25,12 @@ import java.util.ResourceBundle;
 public class CheckOut implements Initializable
 {
   @FXML private TextField firstName, lastName, phoneNumber;
+  /*
   @FXML private TableView<Booking> tableView;
   @FXML private TableColumn<Booking, Integer> roomNumberColumn;
   @FXML private TableColumn<Booking,LocalDate> ArrivalDateColumn,departureDateColumn;
+
+   */
   @FXML private DatePicker arrivalDate, departureDate;
   @FXML private Label nightStayed, smokingFee,discount,finalPrice;
   @FXML private Tab checkOutTab;
@@ -59,6 +64,7 @@ public class CheckOut implements Initializable
   }
   private void initializeTable()
   {
+    /*
     roomNumberColumn.setCellValueFactory(
         new PropertyValueFactory<>("roomNumber"));
     ArrivalDateColumn.setCellValueFactory(
@@ -66,6 +72,21 @@ public class CheckOut implements Initializable
     departureDateColumn.setCellValueFactory(
         new PropertyValueFactory<>("departure"));
     tableView.setItems(checkInToDisplay);
+
+     */
+
+    mainBooker.setCellValueFactory(
+        new PropertyValueFactory<>("bookerName"));
+    guest.setCellValueFactory(
+        new PropertyValueFactory<>("guests"));
+    roomNumber.setCellValueFactory(
+        new PropertyValueFactory<>("roomNumber"));
+    checkedInDate.setCellValueFactory(
+        new PropertyValueFactory<>("arrival"));
+    checkedOutDate.setCellValueFactory(
+        new PropertyValueFactory<>("departure"));
+    checkInAllTableView.setItems(checkInToDisplay);
+
   }
 
   @FXML
@@ -97,7 +118,7 @@ public class CheckOut implements Initializable
 
   public void onNextpressed()
   {
-    Booking booking = tableView.getSelectionModel().getSelectedItem();
+    Booking booking = checkInAllTableView.getSelectionModel().getSelectedItem();
     if (booking == null)
     {
       errorLabel.setText("Select Checked In guest first");
@@ -108,7 +129,7 @@ public class CheckOut implements Initializable
     tabPane.getSelectionModel().select(1);
     arrivalDate.setValue(selectedCheckIn.getArrival());
     nightStayed.setText(String.valueOf(ChronoUnit.DAYS.between(selectedCheckIn.getArrival(),LocalDate.now())));
-   finalPrice.setText(String.valueOf(selectedCheckIn.checkOutPrice()));
+    finalPrice.setText(String.valueOf(selectedCheckIn.checkOutPrice()));
   }
   public void onSmokingPressed()
   {
@@ -138,6 +159,4 @@ public class CheckOut implements Initializable
     }).start();
 
   }
-
-
 }

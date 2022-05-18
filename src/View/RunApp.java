@@ -12,8 +12,8 @@ import java.time.LocalDate;
 public class RunApp {
     public static void main(String[] args) {
 
-/*
-   ModelManager modelManager = new ModelManager();
+
+  /* ModelManager modelManager = new ModelManager();
 
     Guest guest = new Guest("asd","asd","<as","<s","ac", LocalDate.now());
     Booking booking = new Booking(guest, new Room());
@@ -22,7 +22,10 @@ public class RunApp {
 
     modelManager.addBooking(booking);
 
- */
+   */
+
+
+
 
 
 
@@ -39,7 +42,7 @@ public class RunApp {
 
 
 
-       Application.launch(GUI.class);
+      Application.launch(GUI.class);
 
     }
 }

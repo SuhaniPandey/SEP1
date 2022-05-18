@@ -44,20 +44,22 @@
                         <TextField fx:id="firstName" layoutX="139.0" layoutY="26.0" prefHeight="29.0" prefWidth="161.0" />
                         <TextField fx:id="lastName" layoutX="139.0" layoutY="61.0" prefHeight="29.0" prefWidth="161.0" />
                         <TextField fx:id="phoneNumber" layoutX="140.0" layoutY="98.0" prefHeight="29.0" prefWidth="161.0" />
-                        <TableView fx:id="tableView" layoutX="7.0" layoutY="171.0" prefHeight="167.0" prefWidth="547.0">
-                          <columns>
-                            <TableColumn fx:id="roomNumberColumn" prefWidth="145.33330821990967" text="Room no." />
-                              <TableColumn fx:id="ArrivalDateColumn" minWidth="0.0" prefWidth="197.33338928222656" text="Arrival Date" />
-                              <TableColumn fx:id="departureDateColumn" minWidth="0.0" prefWidth="204.00003051757812" text="Departure Date" />
-                          </columns>
-                        </TableView>
                         <Button layoutX="380.0" layoutY="64.0" mnemonicParsing="false" onAction="#onSearchPressed" text="Search">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Button>
-                        <Button layoutX="450.0" layoutY="354.0" mnemonicParsing="false" onAction="#onNextpressed" text="Next" />
+                        <Button layoutX="422.0" layoutY="368.0" mnemonicParsing="false" onAction="#onNextpressed" text="Next" />
                         <Label fx:id="errorLabel" layoutX="126.0" layoutY="358.0" prefHeight="17.0" prefWidth="309.0" textFill="#fb0505" />
+                        <TableView fx:id="checkInAllTableView" layoutX="4.0" layoutY="146.0" prefHeight="209.0" prefWidth="550.0">
+                          <columns>
+                            <TableColumn fx:id="mainBooker" prefWidth="110.0" text="MainBooker" />
+                              <TableColumn fx:id="guest" prefWidth="110.0" text="Guest" />
+                            <TableColumn fx:id="roomNumber" prefWidth="110.0" text="Room Number" />
+                              <TableColumn fx:id="checkedInDate" prefWidth="110.0" text="Checked In date" />
+                              <TableColumn fx:id="checkedOutDate" prefWidth="110.0" text="Checked out date" />
+                          </columns>
+                        </TableView>
                      </children>
                   </AnchorPane>
                </content>
@@ -78,7 +80,7 @@
                         </Text>
                         <DatePicker fx:id="arrivalDate" layoutX="7.0" layoutY="64.0" prefHeight="31.0" prefWidth="185.0" />
                         <DatePicker fx:id="departureDate" layoutX="293.0" layoutY="63.0" prefHeight="30.0" prefWidth="189.0" />
-                        <Button layoutX="392.0" layoutY="324.0" mnemonicParsing="false" text="Check out">
+                        <Button layoutX="392.0" layoutY="324.0" mnemonicParsing="false" onAction="#onCheckOutPressed" text="Check out">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -126,23 +128,6 @@
                      </children>
                   </AnchorPane>
                </content>
-            </Tab>
-            <Tab text="All Checked In Guest">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView fx:id="checkInAllTableView" layoutX="5.0" layoutY="47.0" prefHeight="200.0" prefWidth="550.0">
-                          <columns>
-                            <TableColumn fx:id="mainBooker" prefWidth="110.0" text="MainBooker" />
-                              <TableColumn fx:id="guest" prefWidth="110.0" text="Guest" />
-                            <TableColumn fx:id="roomNumber" prefWidth="110.0" text="Room Number" />
-                              <TableColumn fx:id="checkedInDate" prefWidth="110.0" text="Checked In date" />
-                              <TableColumn fx:id="checkedOutDate" prefWidth="110.0" text="Checked out date" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-              </content>
             </Tab>
         </tabs>
       </TabPane>

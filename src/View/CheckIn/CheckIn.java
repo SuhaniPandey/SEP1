@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import utils.ModelManager;
 
 import java.awt.image.AreaAveragingScaleFilter;
@@ -39,6 +40,7 @@ public class CheckIn implements Initializable
   @FXML private TextField firstNameCheckIn, lastNameCheckIn, address, phoneNo, nationality;
   @FXML private DatePicker dateOfBirth;
   @FXML private CheckBox extraBed;
+
 
   private ObservableList<Booking> bookingsToDisplay;
   private ArrayList<Guest> addedGuests;
@@ -101,7 +103,7 @@ public class CheckIn implements Initializable
   {
     modelManager.addGuestsToBooking( selectedBooking, addedGuests);
     modelManager.checkIn(selectedBooking);
-    AlertBox.display("Checked in sucessfullly");
+    AlertBox.display("Checked in successfully");
     clearFields();
 
   }
