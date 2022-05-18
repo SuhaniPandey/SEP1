@@ -197,11 +197,10 @@ public class ModelManager implements Serializable {
      * @param arrival   The date the guest wants to arrive
      * @param departure The date the guest is leaving the hotel.
      * @param roomType  The type of room you want to search for.
-     * @param isSmoking true if the room should be smoking, false if it should be non-smoking
      * @return A list of rooms that are available for the given dates.
      */
     public RoomList searchRooms(LocalDate arrival, LocalDate departure,
-                                Room.RoomType roomType, boolean isSmoking) {
+                                Room.RoomType roomType) {
         // setting the temp list with all rooms
         RoomList allRooms = getAllRooms();
         BookingList allBookings = getAllBookings();
@@ -210,8 +209,8 @@ public class ModelManager implements Serializable {
         for (Room room : allRooms.getRooms()) {
             if (!(room.getRoomType().equals(roomType)))
                 continue;  // do not add when roomtype dont match
-            if (!(room.isSmokingAllowed() == isSmoking))
-                continue;  // do not add when roomtype match
+          //  if (!(room.isSmokingAllowed() == isSmoking))
+               // continue;  // do not add when roomtype match
             roomList.add(room);
         }
 
@@ -277,6 +276,7 @@ public class ModelManager implements Serializable {
         saveBookings(allBookings);
     }
 
+
     public ArrayList<Booking> filterBookings(LocalDate dateFrom, LocalDate dateTo) {
         BookingList allBookings = getAllBookings();
         ArrayList<Booking> filteredBooking = new ArrayList<>();
@@ -298,4 +298,24 @@ public class ModelManager implements Serializable {
         }
         return filteredBooking;
     }
+
+  public ArrayList<Booking> searchCheckIn(String firstname, String lastname, String phoneno)
+  {
+      BookingList allBookings = getAllBookings();
+      ArrayList<Booking> allCheckIn = new ArrayList<>();
+      for (Booking booking : allBookings.getBookings()) {
+          Guest guest = booking.getMainBooker();
+          if (!guest.getFirstName().equals(firstname))
+              continue;
+          if (!guest.getLastName().equals(lastname))
+              continue;
+          if (!guest.getPhoneNumber().equals(phoneno))
+              continue;
+          if (booking.getIsCheckedIn())
+          allCheckIn.add(booking);
+      }
+      return allCheckIn;
+
+
+  }
 }

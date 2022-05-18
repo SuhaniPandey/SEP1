@@ -28,7 +28,6 @@ public class Rooms implements Initializable
   @FXML private TableColumn<Room, Integer> roomTableNumber;
   @FXML private DatePicker arrivalDate, departureDate;
   @FXML private ChoiceBox<Room.RoomType> roomTypeChoice;
-  @FXML private CheckBox smokingCheckBox;
 
   @FXML private Label errorLabel;
   @FXML private Label errorDate;
@@ -53,7 +52,6 @@ public class Rooms implements Initializable
     LocalDate arrival = arrivalDate.getValue();
     LocalDate departure = departureDate.getValue();
     Room.RoomType roomType = roomTypeChoice.getValue();
-    boolean isSmoking = smokingCheckBox.isSelected();
 
     if (departure.isBefore(arrival))
     {
@@ -61,8 +59,7 @@ public class Rooms implements Initializable
       clearLabel();
       return;
     }
-    RoomList roomList = modelManager.searchRooms(arrival, departure, roomType,
-        isSmoking);
+    RoomList roomList = modelManager.searchRooms(arrival, departure, roomType);
     roomsToDisplay.setAll(roomList.getRooms());
 
   }

@@ -125,10 +125,10 @@ public class Booking implements Serializable {
      */
 
     public double checkOutPrice() {
-        int daysStayed = (int) ChronoUnit.DAYS.between(departure, arrival);
+        int daysStayed = (int) ChronoUnit.DAYS.between(arrival,departure);
         double price = 0;
         if (getRoom().getPrice() == room.getPrice()) {
-            price = getRoom().getPrice() * daysStayed;
+            price = (getRoom().getPrice() * daysStayed)+smokingFee()-discount();
         }
         return price;
     }
@@ -136,11 +136,14 @@ public class Booking implements Serializable {
     /**
      * A method to get discount
      *
-     * @param percent
      * @return final price after discount
      */
-    public double discount(double percent) {
-        return room.getPrice() - (room.getPrice() * percent);
+    public double discount() {
+        return room.getPrice() - (room.getPrice() * 0.5);
+    }
+    public double smokingFee()
+    {
+        return 100;
     }
 
     /**

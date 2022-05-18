@@ -16,6 +16,7 @@ import utils.ModelManager;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -33,7 +34,7 @@ public class CheckOut implements Initializable
   private Booking selectedCheckIn;
   private ModelManager modelManager;
   private ObservableList<Booking> checkInToDisplay;
-  private ArrayList<Guest> addedGuests;
+
 
   @Override public void initialize(URL url, ResourceBundle resourceBundle)
   {
@@ -65,8 +66,8 @@ public class CheckOut implements Initializable
  String firstname=firstName.getText();
  String lastname=lastName.getText();
  String phoneno=phoneNumber.getText();
-  //  ArrayList<Booking> bookings = modelManager.searchCheckIn(firstname,lastname, phoneno);
-   // checkInToDisplay.setAll(bookings);
+  ArrayList<Booking> bookings = modelManager.searchCheckIn(firstname,lastname, phoneno);
+    checkInToDisplay.setAll(bookings);
   }
 
 
@@ -78,7 +79,7 @@ public class CheckOut implements Initializable
   }
   private void initializeDates()
   {
-    arrivalDate.setValue(SelectedRoomFromBooking.getArrivalDate());
+    //arrivalDate.setValue(selectedCheckIn.getArrival());
     departureDate.setValue(LocalDate.now());
     arrivalDate.setEditable(false);
     arrivalDate.setDisable(true);
@@ -100,6 +101,18 @@ public class CheckOut implements Initializable
     }
     selectedCheckIn = booking;
     tabPane.getSelectionModel().select(1);
+    arrivalDate.setValue(selectedCheckIn.getArrival());
+    nightStayed.setText(String.valueOf(ChronoUnit.DAYS.between(selectedCheckIn.getArrival(),LocalDate.now())));
+   finalPrice.setText(String.valueOf(selectedCheckIn.checkOutPrice()));
+  }
+  public void onSmokingPressed()
+  {
+    smokingFee.setText(String.valueOf(selectedCheckIn.smokingFee()));
+  }
+
+  public void onDiscountPressed()
+  {
+    discount.setText(String.valueOf(selectedCheckIn.discount()));
   }
   private void clearLabel()
   {
@@ -120,4 +133,6 @@ public class CheckOut implements Initializable
     }).start();
 
   }
+
+
 }
