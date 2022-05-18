@@ -135,6 +135,9 @@ public class CheckIn implements Initializable
   {
 
     // clearing the label
+    // Thread means to work on parallel. This makes sures that your GUI doesn't freeze for the slept time.
+    // Platform.runLater() is used when a different thread than the main one wants to change something in GUI.
+
     new Thread(() -> {
       try
       {

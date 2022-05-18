@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * A class for accessing Booking objects and reading/writing to/from files
  *
- * @author
+ * @author Suhani Pandey
  * @version 1.0
  */
 public class ModelManager implements Serializable {
@@ -125,16 +125,11 @@ public class ModelManager implements Serializable {
     }
 
 
-    public void deleteBooking(String firstName, String lastName, String phoneNumber) {
+    public boolean deleteBooking(Booking booking) {
         BookingList allBookings = getAllBookings();
-        for (int i = 0; i < allBookings.size(); i++) {
-            Booking booking = allBookings.get(i);
-            if (booking.getMainBooker().getFirstName().equals(firstName) && booking.getMainBooker().getLastName().equals(lastName)
-                    && booking.getMainBooker().getPhoneNumber().equals(phoneNumber)) {
-                allBookings.removeBooking(booking);
-            }
-        }
+        boolean isRemoved = allBookings.removeBooking(booking);
         saveBookings(allBookings);
+        return isRemoved;
 
     }
 
@@ -289,9 +284,11 @@ public class ModelManager implements Serializable {
         ) {
             boolean include = false;
 
-            // folowing if-else checks if the given date includes the booked date..
-            if ((booking.getDeparture().isBefore(dateTo) && (booking.getDeparture().isAfter(dateFrom)) ) || booking.getDeparture().isEqual(dateTo)) include = true;
-            else if ((booking.getArrival().isAfter(dateFrom) && (booking.getArrival().isBefore(dateTo)) )|| booking.getArrival().isEqual(dateFrom)) include = true;
+            // following if-else checks if the given date includes the booked date..
+            if ((booking.getDeparture().isBefore(dateTo) && (booking.getDeparture().isAfter(dateFrom))) || booking.getDeparture().isEqual(dateTo))
+                include = true;
+            else if ((booking.getArrival().isAfter(dateFrom) && (booking.getArrival().isBefore(dateTo))) || booking.getArrival().isEqual(dateFrom))
+                include = true;
 
             if (include) {
                 filteredBooking.add(booking);

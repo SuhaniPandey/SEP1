@@ -81,7 +81,7 @@ public class Rooms implements Initializable
     SelectedRoomFromBooking.setArrivalDate(arrivalDate.getValue());
     SelectedRoomFromBooking.setDepartureDate(departureDate.getValue());
     anchorPane.getChildren().clear();
-    anchorPane.getChildren().setAll(ViewHandler.getbooking());
+    anchorPane.getChildren().setAll(ViewHandler.getCreateBooking());
   }
 
   private void clearLabel()
