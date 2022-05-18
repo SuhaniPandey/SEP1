@@ -370,6 +370,8 @@ public class ModelManager implements Serializable
     return isRemoved;
   }
 
+
+
   public void checkIn(Booking selectedBooking)
   {
     BookingList allBookings = getAllBookings();

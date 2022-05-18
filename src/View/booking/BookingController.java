@@ -115,6 +115,8 @@ public class BookingController implements Initializable {
 
     }
 
+
+
   public void onCheckedInPressed()
   {
       Booking booking=allBookingsTableView.getSelectionModel().getSelectedItem();
