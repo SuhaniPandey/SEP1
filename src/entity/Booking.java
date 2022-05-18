@@ -16,7 +16,6 @@ public class Booking implements Serializable {
 
     private Guest mainBooker;
     private ArrayList<Guest> guests;
-    private String bookerName; // For table use....
     private Room room;
     private int roomNumber;
     private LocalDate arrival;
@@ -26,7 +25,7 @@ public class Booking implements Serializable {
     public Booking(Guest mainBooker, Room room) {
         guests = new ArrayList<>();
         this.mainBooker = mainBooker;
-        bookerName = mainBooker.getFirstName();
+
         this.room = room;
         roomNumber = room.getRoomNumber();
 
@@ -200,11 +199,8 @@ public class Booking implements Serializable {
     }
 
     public String getBookerName() {
-        return bookerName;
+        return mainBooker.getFirstName();
     }
 
-    public void setBookerName(String bookerName) {
-        this.bookerName = bookerName;
-    }
 
 }

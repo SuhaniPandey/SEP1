@@ -65,7 +65,7 @@ public class CheckOut implements Initializable
  String firstname=firstName.getText();
  String lastname=lastName.getText();
  String phoneno=phoneNumber.getText();
-  //  ArrayList<Booking> bookings = modelManager.searchCheckIn(firstname,lastname,phoneno);
+  //  ArrayList<Booking> bookings = modelManager.searchCheckIn(firstname,lastname, phoneno);
    // checkInToDisplay.setAll(bookings);
   }
 

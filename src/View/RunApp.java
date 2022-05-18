@@ -1,24 +1,20 @@
 package View;
 
-import View.booking.SelectedRoomFromBooking;
-import entity.*;
-import utils.ModelManager;
+import entity.Booking;
+import entity.Guest;
+import entity.Room;
 import javafx.application.Application;
+import utils.ModelManager;
 
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 
-public class RunApp
-{
-  public static void main(String[] args)
-  {
-
+public class RunApp {
+    public static void main(String[] args) {
 
 
 //    ModelManager modelManager = new ModelManager();
 //
-//    Guest guest = new Guest("asd","asd","<as","<s","ac",LocalDate.now());
+//    Guest guest = new Guest("asd","asd","<as","<s","ac", LocalDate.now());
 //    Booking booking = new Booking(guest, new Room());
 //    booking.setArrival(LocalDate.now());
 //    booking.setDeparture(LocalDate.now().plusDays(3));
@@ -39,8 +35,7 @@ public class RunApp
  */
 
 
+        Application.launch(GUI.class);
 
-    Application.launch(GUI.class);
-
-  }
+    }
 }
