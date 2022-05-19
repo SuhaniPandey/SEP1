@@ -12,8 +12,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import utils.ModelManager;
@@ -41,6 +43,8 @@ public class CheckIn implements Initializable {
     private TableColumn<Booking, LocalDate> departureDateColumn;
     @FXML
     private TableColumn<Booking, String> bookedBy;
+    @FXML
+    private TextField firstNameFilter,lastNameFilter,phoneNumberFilter;
 
 
     // Next tab
@@ -107,7 +111,13 @@ public class CheckIn implements Initializable {
     }
 
     @FXML
-    private void onFilterPressed() {
+    private void onFilterPressed()
+    {
+  String firstName=firstNameFilter.getText();
+  String lastName=lastNameFilter.getText();
+  String phoneNo=phoneNumberFilter.getText();
+  ArrayList<Booking> filterCheckIn=modelManager.filterCheckIn(firstName,lastName,phoneNo);
+  bookingsToDisplay.setAll(filterCheckIn);
 
     }
 

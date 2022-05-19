@@ -323,5 +323,25 @@ public class ModelManager implements Serializable {
         return checkedInsBookings;
     }
 
+    public ArrayList<Booking> filterCheckIn(String firstName, String lastName,
+        String phoneNo)
+    {
+        BookingList allBookings = getAllBookings();
+        ArrayList<Booking> filterCheckIn = new ArrayList<>();
+        for (Booking checkIn : allBookings.getBookings()
+        ) {
+            Guest guest = checkIn.getMainBooker();
+            if (!guest.getFirstName().equals(firstName))
+                continue;
+            if (!guest.getLastName().equals(lastName))
+                continue;
+            if (!guest.getPhoneNumber().equals(phoneNo))
+                continue;
+            if (checkIn.getIsCheckedIn())
+                filterCheckIn.add(checkIn);
+        }
+        return filterCheckIn;
+        }
 
-}
+    }
+
