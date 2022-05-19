@@ -50,12 +50,21 @@ public class CreateBookingController implements Initializable {
 
     @FXML
     private void onBookPressed() {
-        String firstNameText = firstName.getText();
-        String lastNameText = lastName.getText();
-        String addressText = address.getText();
-        String nationalityText = nationality.getText();
-        String phoneNumberText = phoneNo.getText();
+        String firstNameText = firstName.getText().trim();
+        String lastNameText = lastName.getText().trim();
+        String addressText = address.getText().trim();
+        String nationalityText = nationality.getText().trim();
+        String phoneNumberText = phoneNo.getText().trim();
         LocalDate dateOfBirthText = dateOfBirth.getValue();
+
+        if (dateOfBirthText ==null){
+            AlertBox.display("Select valid date of birth");
+            return;
+        }
+        if (dateOfBirthText.isAfter(LocalDate.now())){
+            AlertBox.display("The guest must be born already. \n We dont provide booking for unborn child");
+            return;
+        }
 
         Guest guest = new Guest(firstNameText, lastNameText, phoneNumberText, nationalityText, addressText, dateOfBirthText);
         Room room = SelectedRoomFromBooking.getSelectedRoom();

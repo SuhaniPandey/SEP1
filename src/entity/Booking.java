@@ -26,9 +26,9 @@ public class Booking implements Serializable {
     public Booking(Guest mainBooker, Room room) {
         guests = new ArrayList<>();
         this.mainBooker = mainBooker;
-
         this.room = room;
         roomNumber = room.getRoomNumber();
+        guests = new ArrayList<>();
 
     }
 
@@ -126,35 +126,14 @@ public class Booking implements Serializable {
      */
 
     public double checkOutPrice() {
-        int daysStayed = (int) ChronoUnit.DAYS.between(arrival,departure);
-        double price = 0;
-        if (getRoom().getPrice() == room.getPrice()) {
-            price = (getRoom().getPrice() * daysStayed)+smokingFee()-discount();
-        }
+        int daysStayed = (int) ChronoUnit.DAYS.between(arrival, departure);
+        double price = room.getPrice() * daysStayed;
+        if (price==0) return room.getPrice();
         return price;
+
     }
 
-    /**
-     * A method to get discount
-     *
-     * @return final price after discount
-     */
-    public double discount() {
-        return room.getPrice() - (room.getPrice() * 0.5);
-    }
-    public double smokingFee()
-    {
-        return 100;
-    }
 
-    /**
-     * This method adds one guest at a time
-     *
-     * @param guest
-     */
-    public void addGuests(Guest guest) {
-        guests.add(guest);
-    }
 
     /**
      * This method adds a list of guests at one time
@@ -162,12 +141,11 @@ public class Booking implements Serializable {
      * @param guests
      */
     public void addAllGuests(ArrayList<Guest> guests) {
-        guests.addAll(guests);
+        this.guests.addAll(guests);
+
     }
 
-    public void getAllAddedGuest(ArrayList<Guest> guests) {
-        guests.get(getGuests().size());
-    }
+
 
     /**
      * @return guest, rooms, arrival, departure
@@ -185,7 +163,6 @@ public class Booking implements Serializable {
     public boolean getIsCheckedIn() {
         return isCheckedIn;
     }
-
 
 
     /**
@@ -208,7 +185,6 @@ public class Booking implements Serializable {
     public String getBookerName() {
         return mainBooker.getFirstName();
     }
-
 
 
 

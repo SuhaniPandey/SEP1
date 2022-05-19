@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="445.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.checkOut.CheckOut">
+<AnchorPane fx:id="anchorPane" prefHeight="445.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.checkOut.CheckOut">
    <children>
       <TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="445.0" prefWidth="558.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -51,13 +51,12 @@
                         </Button>
                         <Button layoutX="422.0" layoutY="368.0" mnemonicParsing="false" onAction="#onNextpressed" text="Next" />
                         <Label fx:id="errorLabel" layoutX="126.0" layoutY="358.0" prefHeight="17.0" prefWidth="309.0" textFill="#fb0505" />
-                        <TableView fx:id="checkInAllTableView" layoutX="4.0" layoutY="146.0" prefHeight="209.0" prefWidth="550.0">
+                        <TableView fx:id="checkInAllTableView" layoutX="4.0" layoutY="146.0" prefHeight="210.0" prefWidth="520.0">
                           <columns>
-                            <TableColumn fx:id="mainBooker" prefWidth="110.0" text="MainBooker" />
-                              <TableColumn fx:id="guest" prefWidth="110.0" text="Guest" />
-                            <TableColumn fx:id="roomNumber" prefWidth="110.0" text="Room Number" />
-                              <TableColumn fx:id="checkedInDate" prefWidth="110.0" text="Checked In date" />
-                              <TableColumn fx:id="checkedOutDate" prefWidth="110.0" text="Checked out date" />
+                            <TableColumn fx:id="mainBooker" prefWidth="130.0" text="MainBooker" />
+                            <TableColumn fx:id="roomNumber" prefWidth="130.0" text="Room Number" />
+                              <TableColumn fx:id="checkedInDate" prefWidth="130.0" text="Checked In date" />
+                              <TableColumn fx:id="checkedOutDate" prefWidth="130.0" text="Checked out date" />
                           </columns>
                         </TableView>
                      </children>
@@ -110,12 +109,12 @@
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <CheckBox layoutX="22.0" layoutY="200.0" mnemonicParsing="false" onAction="#onSmokingPressed" text="Smoking fee">
+                        <CheckBox fx:id="smokingCheckBox" layoutX="22.0" layoutY="200.0" mnemonicParsing="false" onAction="#onSmokingPressed" text="Smoking fee">
                            <font>
                               <Font size="19.0" />
                            </font>
                         </CheckBox>
-                        <CheckBox layoutX="22.0" layoutY="238.0" mnemonicParsing="false" onAction="#onDiscountPressed" text="Discount">
+                        <CheckBox fx:id="discountCheckBox" layoutX="22.0" layoutY="238.0" mnemonicParsing="false" onAction="#onDiscountPressed" text="Discount">
                            <font>
                               <Font size="19.0" />
                            </font>
