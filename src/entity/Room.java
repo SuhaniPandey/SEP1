@@ -18,7 +18,7 @@ public class Room implements Serializable
   private int numberOfRooms;
   private boolean isSmokingAllowed;
 
-  public Room(int extraBed, boolean isAvailable, RoomType roomType)
+  public Room(RoomType roomType)
   {
     /**
      * A Three Argument Constructor creating a new Room Object, Defaults extra bed to false and isAvailable to True
@@ -27,6 +27,9 @@ public class Room implements Serializable
     this.isAvailable = true;
     this.roomType = roomType;
     isSmokingAllowed=false;
+  }
+
+  private void calculateRoomPrice() {
     if (roomType == RoomType.Single_Bedroom)
       price = 129;
     else if (roomType == RoomType.Double_Bedroom)
@@ -51,89 +54,11 @@ public class Room implements Serializable
 
   }
 
-  /**
-   * A method to set smoking to allowed
-   * @param smokingAllowed sets smoking to true/false
-   */
-  public void setSmokingAllowed(boolean smokingAllowed)
-  {
-    isSmokingAllowed = smokingAllowed;
-
-  }
-
-  /**
-   * A method to set smoking is allowed
-   * @return if smoking is allowed
-   */
-  public boolean isSmokingAllowed()
-  {
-    return isSmokingAllowed;
-  }
-
-  /**
-   * toggles the availability status
-   */
-  public void toggleAvailableStatus()
-  {
-    isAvailable = !isAvailable;
-  }
-
-  /**
-   * Sets the room availability to true
-   */
-  public void setAvailable(){
-    isAvailable =true;
-  }
-
-  /**
-   * Sets the room availability to false
-   */
-  public void setNotAvailable(){
-    isAvailable = false;
-  }
-
-  /**
-   * Changes extraBed to true/false
-  */
-  public void toggleExtraBed()
-  {
-    extraBed = !extraBed;
-
-  }
-
-  /**
-   * Sets the extra bed to true
-*/
-  public void setExtraBed(){
-    isAvailable =true;
-  }
-
-   /**
-   * Sets the extra bed to false
-   */
-  public void setNotExtraBed(){
-    isAvailable = false;
-  }
 
 
 
-  /**
-   * checks the availability of the room
-   *
-   * @return the Availability of the room
-   */
-  public boolean IsAvailable()
-  {
-    return isAvailable;
-  }
 
-  /**
-   * @return if the room needs an extra bed
-  */
-  public boolean isExtraBed()
-  {
-    return extraBed;
-  }
+
 
   /**
    * @return the type of room
@@ -227,6 +152,7 @@ public class Room implements Serializable
    */
   public double getPrice()
   {
+    calculateRoomPrice();
     return price;
   }
 

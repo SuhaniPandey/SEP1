@@ -35,8 +35,9 @@ public class CheckInAddGuests {
     }
 
     @FXML
-    private void checkInPressed(ActionEvent actionEvent) {
+    private void checkInPressed( ) {
         modelManager.addGuestsToBooking(selectedBooking, addedGuests);
+
         modelManager.checkIn(selectedBooking);
         AlertBox.display("Checked in successfully");
 
@@ -44,11 +45,11 @@ public class CheckInAddGuests {
 
     @FXML
     private void addGuestPressed() {
-        String firstName = firstNameCheckIn.getText();
-        String lastname = lastNameCheckIn.getText();
-        String nationalityText = nationality.getText();
-        String phone = phoneNo.getText();
-        String addressText = address.getText();
+        String firstName = firstNameCheckIn.getText().trim();
+        String lastname = lastNameCheckIn.getText().trim();
+        String nationalityText = nationality.getText().trim();
+        String phone = phoneNo.getText().trim();
+        String addressText = address.getText().trim();
         LocalDate date = dateOfBirth.getValue();
         addedGuests.add(new Guest(firstName, lastname, phone, nationalityText, addressText, date));
         clearFields();

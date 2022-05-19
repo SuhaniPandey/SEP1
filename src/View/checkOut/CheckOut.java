@@ -7,12 +7,18 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import utils.ModelManager;
+import utils.ViewHandler;
 
+import javax.swing.text.View;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class CheckOut {
+
+    @FXML
+    private AnchorPane anchorPane;
     @FXML
     private TextField firstName, lastName, phoneNumber;
     /*
@@ -95,6 +101,16 @@ public class CheckOut {
 
     @FXML
     private void onCheckOutPressed() {
+        if (modelManager.deleteBooking(selectedBooking)){
+            AlertBox.display("Checked out successfully. \n The booking has now been deleted from the system permanently");
+            anchorPane.getChildren().clear();
+            anchorPane.getChildren().setAll(ViewHandler.getbooking());
+            return;
+        }
+        AlertBox.display("Checkout failed... Something went wrong");
+
+
+
     }
 
     private void initializeDates() {

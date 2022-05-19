@@ -115,7 +115,10 @@ public class BookingController implements Initializable {
         }
 
         boolean isRemoved = modelManager.deleteBooking(booking);
-        if (isRemoved) allBookingsToShow.remove(booking);
+        if (isRemoved){
+            allBookingsToShow.remove(booking);
+            AlertBox.display("Bookings have been deleted from the system permanently..");
+        }
 
     }
 

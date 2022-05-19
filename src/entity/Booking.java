@@ -127,7 +127,9 @@ public class Booking implements Serializable {
 
     public double checkOutPrice() {
         int daysStayed = (int) ChronoUnit.DAYS.between(arrival, departure);
-        return room.getPrice() * daysStayed;
+        double price = room.getPrice() * daysStayed;
+        if (price==0) return room.getPrice();
+        return price;
 
     }
 
@@ -139,8 +141,8 @@ public class Booking implements Serializable {
      * @param guests
      */
     public void addAllGuests(ArrayList<Guest> guests) {
-        guests.addAll(guests);
-        System.out.println(guests);
+        this.guests.addAll(guests);
+
     }
 
 

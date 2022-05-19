@@ -47,6 +47,7 @@ public class CheckedInDetails {
 
 
     public void initialize() {
+        guestsToShow = FXCollections.observableArrayList();
         initializeDateFields();
         initializeTable();
 
@@ -62,6 +63,7 @@ public class CheckedInDetails {
     }
 
     private void initializeTable() {
+
         firstNameColumn.setCellValueFactory(
                 new PropertyValueFactory<>("firstName"));
         lastNameColumn.setCellValueFactory(
@@ -74,8 +76,8 @@ public class CheckedInDetails {
         phoneNumberColumn.setCellValueFactory(
                 new PropertyValueFactory<>("phoneNumber"));
         dateOfBirthColumn.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
-
         tableView.setItems(guestsToShow);
+        guestsToShow.forEach(System.out::println);
     }
 
 
@@ -99,6 +101,6 @@ public class CheckedInDetails {
     }
 
     public void setGuestsToShow(ObservableList<Guest> guestsToShow) {
-        this.guestsToShow = guestsToShow;
+        this.guestsToShow.setAll(guestsToShow);
     }
 }

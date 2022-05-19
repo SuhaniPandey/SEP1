@@ -81,23 +81,7 @@ public class ModelManager implements Serializable {
         return allRooms;
     }
 
-    /**
-     * Creates array list only containing Room objects with a isAvailable()=True value.
-     *
-     * @return array list of isAvailable Room objects
-     */
-    public RoomList getAllAvailableRooms() {
-        RoomList availableRooms = new RoomList();
-        RoomList allRooms = getAllRooms();
 
-        for (int i = 0; i < allRooms.size(); i++) {
-            if (allRooms.get(i).IsAvailable()) {
-                availableRooms.add(allRooms.get(i));
-            }
-        }
-
-        return availableRooms;
-    }
 
     /**
      * Adds a Booking to the binary file.
@@ -192,6 +176,7 @@ public class ModelManager implements Serializable {
 
         }
         saveBookings(allBookings);
+
     }
 
     public void addAllRooms(ArrayList<Room> rooms) {
@@ -337,4 +322,6 @@ public class ModelManager implements Serializable {
         }
         return checkedInsBookings;
     }
+
+
 }

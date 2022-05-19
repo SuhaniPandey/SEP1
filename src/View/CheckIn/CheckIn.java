@@ -87,9 +87,12 @@ public class CheckIn implements Initializable {
         CheckedInDetails controller = loader.getController();
         controller.setCheckIn(booking.getArrival());
         controller.setCheckOut(booking.getDeparture());
-        controller.setGuestsToShow(FXCollections.observableArrayList(booking.getGuests()));
-        controller.setBookerName(booking.getBookerName());
         controller.initialize();
+
+       controller.setGuestsToShow(FXCollections.observableArrayList(booking.getGuests()));
+        controller.setBookerName(booking.getBookerName());
+
+
 
         // Switch view here..
         anchorPame.getChildren().clear();
