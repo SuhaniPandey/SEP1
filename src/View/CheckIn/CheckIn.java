@@ -5,6 +5,7 @@ import View.CheckIn.checkedInDetails.CheckedInDetails;
 import View.checkInAddGuests.CheckInAddGuests;
 import View.checkOut.CheckOut;
 import entity.Booking;
+import entity.BookingList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -107,7 +108,15 @@ public class CheckIn implements Initializable {
 
 
     @FXML
-    private void onResetFilterPressed(ActionEvent actionEvent) {
+    private void onResetFilterPressed()
+    {
+        firstNameFilter.clear();
+        lastNameFilter.clear();
+        phoneNumberFilter.clear();
+        ArrayList<Booking> bookings=modelManager.getAllCheckedInbookings();
+        bookingsToDisplay.setAll(bookings);
+
+
     }
 
     @FXML
