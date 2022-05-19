@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * A public class that creates a list of Room objects
  *
- * @author Devlin Onichuk
+ * @author
  */
 public class RoomList implements Serializable {
     private ArrayList<Room> rooms;
@@ -66,6 +66,11 @@ public class RoomList implements Serializable {
             }
         }
     }
+
+    /**
+     * A method to get Array list of room
+     * @return room
+     */
 
     public ArrayList<Room> getRooms() {
         return rooms;

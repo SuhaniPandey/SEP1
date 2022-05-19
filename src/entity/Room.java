@@ -29,6 +29,9 @@ public class Room implements Serializable
     isSmokingAllowed=false;
   }
 
+  /**
+   * Method to calculate room price of given room type
+   */
   private void calculateRoomPrice() {
     if (roomType == RoomType.Single_Bedroom)
       price = 129;
@@ -53,13 +56,6 @@ public class Room implements Serializable
     roomType = RoomType.Single_Bedroom; // initialized it with single room
 
   }
-
-
-
-
-
-
-
   /**
    * @return the type of room
    */
@@ -116,8 +112,8 @@ public class Room implements Serializable
 
 
   // enums are constant , and make our life easier later since we dont have to input strings
-  // eg , if we mistype double bedrom , then later getAllDoubleBedroom will not take that room because "double bedroom" is
-  //                                   not equal to "double bedrom"
+  // eg , if we mistype "double bedrom" , then later getAllDoubleBedroom will not take that room because
+  // "double bedroom" is not equal to "double bedrom"
 
   /**
    * a method to set each room type to constants

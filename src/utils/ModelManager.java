@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  * A class for accessing Booking objects and reading/writing to/from files
- *
+ *Two files to read booking list and room list
  * @author
  * @version 1.0
  */
@@ -63,7 +63,10 @@ public class ModelManager implements Serializable {
         return bookingByGuest;
     }
 
-    // not sure
+    /**
+     * A method to get all rooms from room list
+     * @return all rooms
+     */
     public RoomList getAllRooms() {
         RoomList allRooms = new RoomList();
 
@@ -85,7 +88,7 @@ public class ModelManager implements Serializable {
 
     /**
      * Adds a Booking to the binary file.
-     *
+     *Bookings are added and every bookings are saved in the booking list at last
      * @param booking the Booking object which will be added to the binary file
      */
     public void addBooking(Booking booking) {
@@ -106,6 +109,14 @@ public class ModelManager implements Serializable {
 
     }
 
+    /**
+     * A method to delete booking from given firstname ,last name and phone number
+     * @param firstName takes String
+     * @param lastName takes String
+     * @param phoneNumber takes String
+     * It goes through the list of all bookings and check whether the given information matched with
+     *                    mainbooker and is it is matched tghe booking is removed and every bookings is saved
+     */
 
     public void deleteBooking(String firstName, String lastName, String phoneNumber) {
         BookingList allBookings = getAllBookings();
@@ -122,7 +133,7 @@ public class ModelManager implements Serializable {
 
     /**
      * Updates the binary file will newly added or removed Booking objects.
-     *
+     *Saves the booking in binary files
      * @param bookings the array list which contains all Booking objects
      */
     public void saveBookings(BookingList bookings) {
@@ -134,6 +145,11 @@ public class ModelManager implements Serializable {
             System.out.println("IO Error writing to file");
         }
     }
+
+    /**
+     * A method to save roomList in binary files
+     * @param roomList takes room list
+     */
 
     public void saveRoomList(RoomList roomList) {
         try {
@@ -164,6 +180,13 @@ public class ModelManager implements Serializable {
         }
     }
 
+    /**
+     * A method to add guest to the booking
+     * @param booking takes Booking
+     * @param guests takes array list of guest
+     *       First it takes all the booking from booking list
+     *
+     */
     public void addGuestsToBooking(Booking booking, ArrayList<Guest> guests) {
         BookingList allBookings = getAllBookings();
         for (Booking booking1 : allBookings.getBookings()

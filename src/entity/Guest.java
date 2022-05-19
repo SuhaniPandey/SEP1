@@ -6,7 +6,7 @@ import java.time.LocalDate;
 /**
  * A Class that contains firstname,lastname,phone number,nationality,address,date of birth
  *
- * @author Suhani Pandey
+ * @author
  */
 
 public class Guest implements Serializable {
@@ -35,6 +35,12 @@ public class Guest implements Serializable {
         this.dateOfBirth = dateOfBirth;
     }
 
+    /**
+     *
+     * @param firstname takes String
+     * @param lastname takes String
+     * @param phoneno takes String
+     */
     public Guest(String firstname, String lastname, String phoneno) {
         this.firstName = firstname;
         this.lastName = lastname;

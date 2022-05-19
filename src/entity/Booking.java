@@ -32,10 +32,19 @@ public class Booking implements Serializable {
 
     }
 
+    /**
+     * A method to get Arraylist of guest
+     * @return guests
+     */
+
     public ArrayList<Guest> getGuests() {
         return guests;
     }
 
+    /**
+     * method to get room number
+     * @return room number
+     */
     public int getRoomNumber() {
         return roomNumber;
     }
@@ -156,10 +165,19 @@ public class Booking implements Serializable {
                 + ", arrival=" + arrival + ", departure=" + departure + '}';
     }
 
+    /**
+     * A method to set checked in guest
+     * @param checkedIn takes boolean
+     */
+
     public void setCheckedIn(boolean checkedIn) {
         isCheckedIn = checkedIn;
     }
 
+    /**
+     * A method to get checked in guest
+     * @return checked in guest
+     */
     public boolean getIsCheckedIn() {
         return isCheckedIn;
     }
@@ -181,6 +199,10 @@ public class Booking implements Serializable {
                 && arrival.equals(other.arrival) && departure.equals(other.departure);
     }
 
+    /**
+     * A method to get booker name
+     * @return firstname of main Booker
+     */
 
     public String getBookerName() {
         return mainBooker.getFirstName();

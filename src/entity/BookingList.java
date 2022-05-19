@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * A Class that contains Arraylist of booking
  *
- * @author Suhani
+ * @author
  */
 
 public class BookingList implements Serializable {
@@ -105,14 +105,20 @@ public class BookingList implements Serializable {
      * A method to set booking
      *
      * @param booking takes in Booking
-     * @param i       takes in an int
+     * @param i takes in an int
      */
     public void set(Booking booking, int i) {
         bookings.set(i, booking);
     }
 
+    /**
+     * A method to remove booking
+     * @param booking takes booking
+     * @return removed booking
+     */
 
-    public boolean removeBooking(Booking booking) {
+    public boolean removeBooking(Booking booking)
+    {
       return bookings.remove(booking);
     }
 
