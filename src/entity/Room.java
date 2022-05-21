@@ -5,28 +5,25 @@ import java.io.Serializable;
 /**
  * A Class Containing Room Objects
  *
- * @author Devlin
+ * @author
  * @version 1.0
  */
 public class Room implements Serializable
 {
-  private boolean extraBed;
   private boolean isAvailable;
   private int roomNumber;
   private RoomType roomType;
   private double price;
   private int numberOfRooms;
-  private boolean isSmokingAllowed;
 
   public Room(RoomType roomType)
   {
     /**
      * A Three Argument Constructor creating a new Room Object, Defaults extra bed to false and isAvailable to True
      */
-    this.extraBed = false;
     this.isAvailable = true;
     this.roomType = roomType;
-    isSmokingAllowed=false;
+
   }
 
   /**
@@ -50,9 +47,8 @@ public class Room implements Serializable
     /**
      * A no Argument Constructor, defaulting extraBed to false, isAvailable to true.
      */
-     this.extraBed=false;
+
     this.isAvailable = true;
-    this.isSmokingAllowed=false;
     roomType = RoomType.Single_Bedroom; // initialized it with single room
 
   }
@@ -152,6 +148,7 @@ public class Room implements Serializable
     return price;
   }
 
+
   /**
    * combines all the room information and creates a string of all the information in the room
    *
@@ -160,8 +157,7 @@ public class Room implements Serializable
   public String toString()
   {
     return roomNumber + " Type: " + roomType + " Price: " + price
-        + " Number of Rooms: " + numberOfRooms + " Availability: " + isAvailable
-        + " ExtraBed: " + extraBed;
+        + " Number of Rooms: " + numberOfRooms + " Availability: " + isAvailable;
   }
 
   // if Room number is equal then the room is same..

@@ -43,25 +43,6 @@ public class ModelManager implements Serializable {
         return allBookings;
     }
 
-    /**
-     * Gets a Booking object which contains phoneNum from the list.
-     *
-     * @param phoneNum the phone number of the guest whose booking is needed
-     * @return the Booking which contains phoneNum, else null
-     */
-    public BookingList getBookingByGuestPhoneNum(String phoneNum) {
-        BookingList bookingByGuest = new BookingList();
-        BookingList allBookings = getAllBookings();
-
-        for (int i = 0; i < allBookings.size(); i++) {
-            if ((allBookings.get(i).getMainBooker().getPhoneNumber()
-                    .equals(phoneNum))) {
-                bookingByGuest.add(allBookings.get(i));
-
-            }
-        }
-        return bookingByGuest;
-    }
 
     /**
      * A method to get all rooms from room list
@@ -105,28 +86,6 @@ public class ModelManager implements Serializable {
     public void addBookings(BookingList bookings) {
         BookingList allBookings = getAllBookings();
         allBookings.addAllBookings(bookings.getBookings());
-        saveBookings(allBookings);
-
-    }
-
-    /**
-     * A method to delete booking from given firstname ,last name and phone number
-     * @param firstName takes String
-     * @param lastName takes String
-     * @param phoneNumber takes String
-     * It goes through the list of all bookings and check whether the given information matched with
-     *                    mainbooker and is it is matched tghe booking is removed and every bookings is saved
-     */
-
-    public void deleteBooking(String firstName, String lastName, String phoneNumber) {
-        BookingList allBookings = getAllBookings();
-        for (int i = 0; i < allBookings.size(); i++) {
-            Booking booking = allBookings.get(i);
-            if (booking.getMainBooker().getFirstName().equals(firstName) && booking.getMainBooker().getLastName().equals(lastName)
-                    && booking.getMainBooker().getPhoneNumber().equals(phoneNumber)) {
-                allBookings.removeBooking(booking);
-            }
-        }
         saveBookings(allBookings);
 
     }
@@ -185,6 +144,7 @@ public class ModelManager implements Serializable {
      * @param booking takes Booking
      * @param guests takes array list of guest
      *       First it takes all the booking from booking list
+     *       if the booking is equal then it will add the arrayList of guest
      *
      */
     public void addGuestsToBooking(Booking booking, ArrayList<Guest> guests) {
@@ -202,13 +162,17 @@ public class ModelManager implements Serializable {
 
     }
 
-    public void addAllRooms(ArrayList<Room> rooms) {
-        RoomList allRooms = getAllRooms();
-        allRooms.addAll(rooms);
-        saveRoomList(allRooms);
-    }
-
     // searching room
+    /**
+     * > The function takes in a room type, arrival date and departure date and
+     * returns a list of rooms that are available for the given dates
+     *
+     * @param arrival The date the guest wants to arrive
+     * @param departure The date the guest is leaving the hotel.
+     * @param roomType The type of room you want to search for.
+     * @return A list of rooms that are available for the given dates and room
+     * type.
+     */
     public RoomList searchRooms(LocalDate arrival, LocalDate departure,
                                 Room.RoomType roomType) {
         // setting the temp list with all rooms
@@ -239,6 +203,16 @@ public class ModelManager implements Serializable {
         return roomList;
     }
 
+    /**
+     * "Search for bookings by first name, last name, and phone number."
+     *
+     *
+     *
+     * @param firstname The first name of the guest
+     * @param lastname The last name of the guest
+     * @param phoneNumberText The phone number of the guest.
+     * @return An ArrayList of Bookings
+     */
     public ArrayList<Booking> searchBooking(String firstname, String lastname,
                                             String phoneNumberText) {
         BookingList allBookings = getAllBookings();
@@ -256,6 +230,14 @@ public class ModelManager implements Serializable {
         return bookings;
     }
 
+    /**
+     * It takes two dates as input and returns a list of bookings that are booked
+     * between the two dates
+     *
+     * @param dateFrom The date from which the bookings are to be filtered.
+     * @param dateTo The date to which the booking should be made.
+     * @return An ArrayList of Booking objects.
+     */
     public ArrayList<Booking> filterBookings(LocalDate dateFrom, LocalDate dateTo) {
         BookingList allBookings = getAllBookings();
         ArrayList<Booking> filteredBooking = new ArrayList<>();
@@ -317,6 +299,12 @@ public class ModelManager implements Serializable {
 
     }
 
+    /**
+     * Delete a booking from the list of bookings and save the list.
+     *
+     * @param booking The booking to be deleted.
+     * @return A boolean value.
+     */
     public boolean deleteBooking(Booking booking) {
         BookingList allBookings = getAllBookings();
         boolean isRemoved = allBookings.removeBooking(booking);
@@ -325,6 +313,16 @@ public class ModelManager implements Serializable {
     }
 
 
+    /**
+     * "If the selected booking is in the list of bookings, set its checked in
+     * status to true."
+     *
+     * it has to load the list of bookings, find the
+     * selected booking in the list, set its checked in status, and then save the
+     * list of bookings
+     *
+     * @param selectedBooking The booking that the user has selected to check in.
+     */
     public void checkIn(Booking selectedBooking) {
         BookingList allBookings = getAllBookings();
         for (Booking booking : allBookings.getBookings()) {
@@ -337,6 +335,11 @@ public class ModelManager implements Serializable {
     }
 
 
+    /**
+     * > This function returns an ArrayList of all the checked in bookings
+     *
+     * @return An ArrayList of Bookings that are checked in.
+     */
     public ArrayList<Booking> getAllCheckedInbookings() {
         BookingList allBookings = getAllBookings();
         ArrayList<Booking> checkedInsBookings = new ArrayList<>();
@@ -346,6 +349,15 @@ public class ModelManager implements Serializable {
         return checkedInsBookings;
     }
 
+    /**
+     * > This function returns an ArrayList of Bookings that are checked in and
+     * have the same first name, last name, and phone number as the parameters
+     *
+     * @param firstName The first name of the guest
+     * @param lastName The last name of the guest
+     * @param phoneNo The phone number of the guest
+     * @return An ArrayList of Bookings
+     */
     public ArrayList<Booking> filterCheckIn(String firstName, String lastName,
         String phoneNo)
     {
