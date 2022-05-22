@@ -10,8 +10,8 @@ public class RunApp {
 
 
 //        ModelManager modelManager = new ModelManager();
-//        modelManager.saveBookings(new BookingList());
-//        modelManager.saveRoomList(new RoomList());
+  //      modelManager.saveBookings(new BookingList());
+    //  modelManager.saveRoomList(new RoomList());
 
 
         Application.launch(GUI.class);
