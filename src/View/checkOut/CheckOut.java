@@ -1,6 +1,7 @@
 package View.checkOut;
 
 import View.AlertBox;
+import View.booking.SelectedRoomFromBooking;
 import entity.Booking;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +14,7 @@ import utils.ViewHandler;
 
 import javax.swing.text.View;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class CheckOut {
@@ -133,6 +135,7 @@ public class CheckOut {
         selectedBooking = booking;
         tabPane.getSelectionModel().select(1);
         arrivalDate.setValue(booking.getArrival());
+        nightStayed.setText(ChronoUnit.DAYS.between(booking.getArrival(),LocalDate.now())+"");
         finalCheckOutPrice = booking.checkOutPrice();
         updateFinalPrice();
     }
