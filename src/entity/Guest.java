@@ -6,7 +6,8 @@ import java.time.LocalDate;
 /**
  * A Class that contains firstname,lastname,phone number,nationality,address,date of birth
  *
- * @author
+ * @author Suhani Pandey
+ * @version 1.0
  */
 
 public class Guest implements Serializable {

@@ -7,7 +7,8 @@ import java.util.ArrayList;
 /**
  * A public class that creates a list of Room objects
  *
- * @author
+ * @author Devlin Onichuk
+ * @version 1.0
  */
 public class RoomList implements Serializable {
     private ArrayList<Room> rooms;
