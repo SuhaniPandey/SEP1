@@ -5,8 +5,8 @@ import java.io.Serializable;
 /**
  * A Class Containing Room Objects
  *
- * @author Devlin Onichuk
- * @version 1.0
+ * @author Devlin Onichuk, Suhani Pandey
+ * @version 2.0
  */
 public class Room implements Serializable
 {
