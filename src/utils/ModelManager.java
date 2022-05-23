@@ -119,7 +119,7 @@ public class ModelManager implements Serializable {
         } catch (IOException e) {
             System.out.println("IO Error writing to file");
         }
-
+  /*
         try {
             FileOutputStream fileOut = new FileOutputStream("rooms.xml");
             PrintWriter write = new PrintWriter(fileOut);
@@ -129,7 +129,7 @@ public class ModelManager implements Serializable {
                 MyFileHandler.writeToTextFile("rooms.xml", str);
         /*write.print(str + ",");
         if(i < size-1)
-        write.print(",");*/
+        write.print(",");
             }
 
 
@@ -137,6 +137,8 @@ public class ModelManager implements Serializable {
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
+
+   */
     }
 
     /**
@@ -175,16 +177,24 @@ public class ModelManager implements Serializable {
      */
     public RoomList searchRooms(LocalDate arrival, LocalDate departure,
                                 Room.RoomType roomType) {
+
+        System.out.println("Model Manager is herer...");
+
+
+        int debug;
         // setting the temp list with all rooms
         RoomList allRooms = getAllRooms();
         BookingList allBookings = getAllBookings();
         RoomList roomList = new RoomList();
 
         for (Room room : allRooms.getRooms()) {
-            if (!(room.getRoomType().equals(roomType)))
-                continue;  // do not add when roomtype dont match
-            roomList.add(room);
+            if ((room.getRoomType().equals(roomType))){
+                roomList.add(room);
+            }
         }
+        int size = roomList.size();
+        int debug1;
+
 
         for (Booking booking : allBookings.getBookings()) {
             LocalDate arrivalDate = booking.getArrival();

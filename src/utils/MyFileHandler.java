@@ -202,8 +202,7 @@ public class MyFileHandler
          }
          catch (EOFException eof)
          {
-           //Done reading
-         }
+            eof.printStackTrace();         }
       }
       finally
       {

@@ -16,9 +16,8 @@ public class RoomList implements Serializable {
      * A no argument constructor initializing the ArrayList
      */
     public RoomList() {
-        if (rooms == null) {
-            createList();
-        }
+        rooms = new ArrayList<>();
+
     }
 
 
@@ -28,7 +27,6 @@ public class RoomList implements Serializable {
      * Assigns room number in order of roomType
      */
     public void createList() {
-        if (rooms != null) return;  // this makes sures that no one is creating these list of rooms again
         rooms = new ArrayList<>();
         int roomNumber = 100;
         for (int i = 0; i <= 42; i++) {

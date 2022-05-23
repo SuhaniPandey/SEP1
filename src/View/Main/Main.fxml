@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Main.Main">
+<AnchorPane prefHeight="500.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Main.Main">
    <children>
       <AnchorPane layoutX="-8.0" layoutY="-3.0" prefHeight="54.0" prefWidth="700.0" style="-fx-background-color: #002d4c;">
          <children>
@@ -19,7 +19,7 @@
                   <Image url="@../../Images/overlook hotel logo2.png" />
                </image>
             </ImageView>
-            <Label layoutX="267.0" layoutY="11.0" text="The Overlooking Hotel" textFill="#ebe6e6">
+            <Label layoutX="267.0" layoutY="11.0" text="The Overlook Hotel" textFill="#ebe6e6">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
@@ -29,12 +29,12 @@
          <left>
             <VBox prefHeight="349.0" prefWidth="133.0" spacing="10.0" style="-fx-background-color: #002d4c;" BorderPane.alignment="CENTER">
                <children>
-                  <Button layoutX="10.0" layoutY="121.0" mnemonicParsing="false" onAction="#roomsPressed" prefHeight="55.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Rooms" textFill="#e4d1d1">
+                  <Button layoutX="10.0" layoutY="121.0" mnemonicParsing="false" onAction="#roomsPressed" prefHeight="55.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Room/Book" textFill="#e4d1d1">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button layoutX="10.0" layoutY="65.0" mnemonicParsing="false" onAction="#bookingPressed" prefHeight="55.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Booking" textFill="#e4d1d1">
+                  <Button layoutX="10.0" layoutY="65.0" mnemonicParsing="false" onAction="#bookingPressed" prefHeight="55.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 2px 0px;" text="Bookings" textFill="#e4d1d1">
                      <font>
                         <Font size="20.0" />
                      </font>
