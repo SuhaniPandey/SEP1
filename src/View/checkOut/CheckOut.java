@@ -3,6 +3,7 @@ package View.checkOut;
 import View.AlertBox;
 import View.booking.SelectedRoomFromBooking;
 import entity.Booking;
+import entity.BookingList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -96,8 +97,8 @@ public class CheckOut {
         String firstname = firstName.getText();
         String lastname = lastName.getText();
         String phoneno = phoneNumber.getText();
-        ArrayList<Booking> bookings = modelManager.searchCheckIn(firstname, lastname, phoneno);
-        checkInToDisplay.setAll(bookings);
+       BookingList bookings = modelManager. searchCheckIn(firstname, lastname, phoneno);
+        checkInToDisplay.setAll(bookings.getBookings());
     }
 
 

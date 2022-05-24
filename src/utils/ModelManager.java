@@ -260,19 +260,20 @@ public class ModelManager implements Serializable {
         return filteredBooking;
     }
 
-    public ArrayList<Booking> searchCheckIn(String firstname, String lastname, String phoneno) {
+    public BookingList searchCheckIn(String firstname, String lastname, String phoneno) {
         BookingList allBookings = getAllBookings();
-        ArrayList<Booking> allCheckIn = new ArrayList<>();
-        for (Booking booking : allBookings.getBookings()) {
-            Guest guest = booking.getMainBooker();
+       BookingList allCheckIn=new BookingList();
+        for (int i = 0; i < allBookings.size() ; i++)
+        {
+            Guest guest = allBookings.get(i).getMainBooker();
             if (!guest.getFirstName().equals(firstname))
                 continue;
             if (!guest.getLastName().equals(lastname))
                 continue;
             if (!guest.getPhoneNumber().equals(phoneno))
                 continue;
-            if (booking.getIsCheckedIn())
-                allCheckIn.add(booking);
+            if (allBookings.get(i).getIsCheckedIn())
+                allCheckIn.add(allBookings.get(i));
         }
         return allCheckIn;
 
