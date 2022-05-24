@@ -178,10 +178,6 @@ public class ModelManager implements Serializable {
     public RoomList searchRooms(LocalDate arrival, LocalDate departure,
                                 Room.RoomType roomType) {
 
-        System.out.println("Model Manager is herer...");
-
-
-        int debug;
         // setting the temp list with all rooms
         RoomList allRooms = getAllRooms();
         BookingList allBookings = getAllBookings();
@@ -192,8 +188,6 @@ public class ModelManager implements Serializable {
                 roomList.add(room);
             }
         }
-        int size = roomList.size();
-        int debug1;
 
 
         for (Booking booking : allBookings.getBookings()) {
