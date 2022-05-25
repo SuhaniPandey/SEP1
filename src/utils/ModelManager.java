@@ -346,13 +346,16 @@ public class ModelManager implements Serializable {
      * @return An ArrayList of Bookings that are checked in.
      */
     public ArrayList<Booking> getAllCheckedInbookings() {
-        BookingList allBookings = getAllBookings();
-        ArrayList<Booking> checkedInsBookings = new ArrayList<>();
-        for (Booking booking : allBookings.getBookings()) {
-            if (booking.getIsCheckedIn()) checkedInsBookings.add(booking);
+        BookingList allBookings = getAllBookings();//happens 1 time
+        ArrayList<Booking> checkedInsBookings = new ArrayList<>();//happens 1 time
+        for (Booking booking : allBookings.getBookings()) {//happens n times
+            if (booking.getIsCheckedIn()) checkedInsBookings.add(booking);//Comparison happens 1 time per iteration
         }
-        return checkedInsBookings;
-    }
+        return checkedInsBookings;//happens 1 time
+    }// T(0)=1+1+n+1+1
+    // removing all the constants
+    // O(n)
+    //Choose this code because of its complexity
 
     /**
      * > This function returns an ArrayList of Bookings that are checked in and
