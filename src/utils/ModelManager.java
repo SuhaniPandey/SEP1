@@ -6,10 +6,24 @@ import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import java.io.File;
+
 /**
  * A class for accessing Booking objects and reading/writing to/from files
  *Two files to read booking list and room list
- * @author
+ * @author Kristiyan, Suhani, Devlin
  * @version 1.0
  */
 public class ModelManager implements Serializable {
@@ -119,26 +133,6 @@ public class ModelManager implements Serializable {
         } catch (IOException e) {
             System.out.println("IO Error writing to file");
         }
-  /*
-        try {
-            FileOutputStream fileOut = new FileOutputStream("rooms.xml");
-            PrintWriter write = new PrintWriter(fileOut);
-            int size = roomList.size();
-            for (int i = 0; i < size; i++) {
-                String str = roomList.get(i).toString();
-                MyFileHandler.writeToTextFile("rooms.xml", str);
-        /*write.print(str + ",");
-        if(i < size-1)
-        write.print(",");
-            }
-
-
-            write.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found");
-        }
-
-   */
     }
 
     /**
@@ -277,31 +271,6 @@ public class ModelManager implements Serializable {
         }
         return allCheckIn;
 
-  /*public void createFile(ArrayList<String> RoomList)
-  {
-    try
-    {
-      FileOutputStream fileOut = new FileOutputStream("rooms.xml");
-      PrintWriter write = new PrintWriter(fileOut);
-      int size = RoomList.size();
-      for (int i = 0; i < size; i++)
-      {
-        String str = RoomList.get(i);
-        MyFileHandler.writeToTextFile("rooms.xml", str);
-        *//*write.print(str + ",");
-        if(i < size-1)
-        write.print(",");*//*
-      }
-
-
-      write.close();
-    }
-    catch (FileNotFoundException e)
-    {
-      System.out.println("File not found");
-    }
-  }*/
-
     }
 
     /**
@@ -384,6 +353,74 @@ public class ModelManager implements Serializable {
                 filterCheckIn.add(checkIn);
         }
         return filterCheckIn;
+        }
+
+    /**
+     * A static method to create an XML File
+     * to export room data to the Website
+     */
+    public static void createXML()
+        {
+            RoomList roomList = new RoomList();
+            roomList.createList();
+
+            try
+            {
+                DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+                Document doc = dBuilder.newDocument();
+
+                Element rootElement = doc.createElement("Rooms");
+                doc.appendChild(rootElement);
+                for (int i = 0; i < roomList.size(); i++)
+                {
+
+                    // Element
+                    Element room = doc.createElement("Room");
+                    rootElement.appendChild(room);
+
+                    // setting attribute to element
+                    Attr attr = doc.createAttribute("Number");
+                    attr.setValue(String.valueOf(roomList.get(i).getRoomNumber()));
+                    room.setAttributeNode(attr);
+
+                    // Element
+                    Element roomType = doc.createElement("roomType");
+                    roomType.appendChild(doc.createTextNode(String.valueOf(roomList.get(i).getRoomType())));
+                    room.appendChild(roomType);
+
+                    // Element
+                    Element roomAvailability = doc.createElement("isAvailable");
+                    roomAvailability.appendChild(doc.createTextNode("Available"));
+                    room.appendChild(roomAvailability);
+
+                    // Element
+                    Element roomNumber= doc.createElement("roomNumber");
+                    roomNumber.appendChild(doc.createTextNode(String.valueOf(roomList.get(i).getRoomNumber())));
+                    room.appendChild(roomNumber);
+
+
+                TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                Transformer transformer = transformerFactory.newTransformer();
+                DOMSource source = new DOMSource(doc);
+                StreamResult result = new StreamResult(new File("bookings.xml"));
+                transformer.transform(source, result);
+                }
+
+            }
+            catch (ParserConfigurationException e)
+            {
+                System.out.println("parser exception");
+            }
+            catch (TransformerConfigurationException e)
+            {
+                System.out.println("Config Exception");
+            }
+            catch (TransformerException e)
+            {
+                System.out.println("Transformer Exception");
+            }
+
         }
 
     }
