@@ -14,12 +14,16 @@ public class BookingList implements Serializable {
     private ArrayList<Booking> bookings;
 
     /**
-     * constructor
+     * No-argument constructor
      */
     public BookingList() {
         bookings = new ArrayList<>();
     }
 
+    /**
+     * A method to get booking
+     * @return bookings
+     */
     public ArrayList<Booking> getBookings() {
         return bookings;
     }

@@ -16,11 +16,12 @@ public class Room implements Serializable
   private double price;
   private int numberOfRooms;
 
+  /**
+   * This is a constructor that takes in a RoomType and sets the room to that type.
+   * @param roomType takes RoomTYpe
+   */
   public Room(RoomType roomType)
   {
-    /**
-     * A Three Argument Constructor creating a new Room Object, Defaults extra bed to false and isAvailable to True
-     */
     this.isAvailable = true;
     this.roomType = roomType;
 
@@ -42,15 +43,13 @@ public class Room implements Serializable
       price = 399;
   }
 
+  /**
+   * This is a constructor that sets the room to a single room.
+   */
   public Room()
   {
-    /**
-     * A no Argument Constructor, defaulting extraBed to false, isAvailable to true.
-     */
-
     this.isAvailable = true;
     roomType = RoomType.Single_Bedroom; // initialized it with single room
-
   }
   /**
    * @return the type of room

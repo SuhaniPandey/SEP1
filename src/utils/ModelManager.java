@@ -144,18 +144,22 @@ public class ModelManager implements Serializable {
      *
      */
     public void addGuestsToBooking(Booking booking, ArrayList<Guest> guests) {
-        BookingList allBookings = getAllBookings();
-        for (Booking booking1 : allBookings.getBookings()
+        BookingList allBookings = getAllBookings();//happens 1 time
+        for (Booking booking1 : allBookings.getBookings()//happens n times
         ) {
-            if (booking1.equals(booking)){
-                booking1.addAllGuests(guests);
+            if (booking1.equals(booking)){//Comparison happens 1 time per iteration
+                booking1.addAllGuests(guests);//happens 1 time
 
-                break;
+                break;//breaks the loop only 1 time
             }
 
         }
-        saveBookings(allBookings);
-
+        saveBookings(allBookings);//saves the booking to the booking list, happens 1 time
+    // T(0)=1+n+1+1+1
+        //removing all constants
+        //O(n)
+        //We choose this code to analyze because of its relative complexity
+        //compared to other loops in this program
     }
 
     // searching room
@@ -253,6 +257,14 @@ public class ModelManager implements Serializable {
         }
         return filteredBooking;
     }
+
+    /**
+     * A method to search if the guest are checked in
+     * @param firstname takes String
+     * @param lastname takes String
+     * @param phoneno takes String
+     * @return all the checks in
+     */
 
     public BookingList searchCheckIn(String firstname, String lastname, String phoneno) {
         BookingList allBookings = getAllBookings();

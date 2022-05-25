@@ -114,7 +114,7 @@ public class RoomList implements Serializable {
     /**
      * A method to add a room object to the rooms ArrayList
      *
-     * @param room is te object to be added to the ArrayList
+     * @param room is the object to be added to the ArrayList
      */
     public void add(Room room) {
         rooms.add(room);

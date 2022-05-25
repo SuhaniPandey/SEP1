@@ -23,6 +23,10 @@ public class Booking implements Serializable {
     private LocalDate departure;
     private boolean isCheckedIn;
 
+    /**
+     *  This is a constructor that takes in a guest and a room and creates a booking
+     *    object.
+     */
 
     public Booking(Guest mainBooker, Room room) {
         guests = new ArrayList<>();
