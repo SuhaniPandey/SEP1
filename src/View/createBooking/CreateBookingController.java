@@ -28,7 +28,16 @@ public class CreateBookingController implements Initializable {
     private ModelManager modelManager;
 
 
-    @Override
+
+    /**
+     * The initialize function is called when the FXML file is loaded. It creates a
+     * new ModelManager object and calls the initializeDates function
+     *
+     * @param url The location used to resolve relative paths for the root object,
+     * or null if the location is not known.
+     * @param resourceBundle This is a resource bundle that contains the resources
+     * for the controller.
+     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
         modelManager = new ModelManager();
         initializeDates();
@@ -36,6 +45,10 @@ public class CreateBookingController implements Initializable {
     }
 
 
+    /**
+     * It sets the arrival and departure dates to the dates that were selected in
+     * the previous scene
+     */
     private void initializeDates() {
         arrivalDate.setValue(SelectedRoomFromBooking.getArrivalDate());
         departureDate.setValue(SelectedRoomFromBooking.getDepartureDate());
@@ -48,6 +61,10 @@ public class CreateBookingController implements Initializable {
 
     }
 
+    /**
+     * The function takes the input from the user and creates a new booking object
+     * and adds it to the model
+     */
     @FXML
     private void onBookPressed() {
         String firstNameText = firstName.getText().trim();

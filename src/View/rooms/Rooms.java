@@ -37,6 +37,17 @@ public class Rooms implements Initializable
 
   private ObservableList<Room> roomsToDisplay;
 
+  /**
+   * The initialize function is called when the FXML file is loaded. It creates a
+   * new ModelManager object, creates an observable list of rooms to display,
+   * initializes the room type combo box, initializes the date pickers, and
+   * initializes the table
+   *
+   * @param url The location used to resolve relative paths for the root object, or
+   * null if the location is not known.
+   * @param resourceBundle This is a ResourceBundle object that contains the
+   * resources for the application.
+   */
   public void initialize(URL url, ResourceBundle resourceBundle)
   {
     modelManager = new ModelManager();
@@ -48,6 +59,12 @@ public class Rooms implements Initializable
 
   }
 
+  /**
+   * The function searches for rooms based on the arrival date, departure date, and
+   * room type
+   *
+   * @param actionEvent The event that triggered the method.
+   */
   @FXML private void searchPressed(ActionEvent actionEvent)
   {
     LocalDate arrival = arrivalDate.getValue();
@@ -65,6 +82,12 @@ public class Rooms implements Initializable
 
   }
 
+  /**
+   * When the user presses the book button, the selected room is stored in a static
+   * class, and the user is taken to the create booking screen
+   *
+   * @param actionEvent The event that triggered the method.
+   */
   @FXML private void bookPressed(ActionEvent actionEvent)
   {
     Room room = (Room) roomTableView.getSelectionModel().getSelectedItem();
@@ -82,6 +105,9 @@ public class Rooms implements Initializable
     anchorPane.getChildren().setAll(ViewHandler.getCreateBooking());
   }
 
+  /**
+   * It clears the error label after 2 seconds.
+   */
   private void clearLabel()
   {
 
@@ -103,6 +129,11 @@ public class Rooms implements Initializable
 
   }
 
+  /**
+   * It creates an array of all the possible values of the RoomType enum, converts
+   * it to an ObservableList, and sets the ChoiceBox to display the values of the
+   * ObservableList
+   */
   private void initializeRoomType()
   {
     Room.RoomType[] allRoomTypes = Room.RoomType.class.getEnumConstants();
@@ -112,6 +143,9 @@ public class Rooms implements Initializable
     roomTypeChoice.setValue(Room.RoomType.Single_Bedroom);
   }
 
+  /**
+   * The function initializes the date pickers to the current date and the next day
+   */
   private void initializeDatePickers()
   {
     arrivalDate.setValue(LocalDate.now());

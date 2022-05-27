@@ -46,6 +46,9 @@ public class CheckedInDetails {
     private ObservableList<Guest> guestsToShow ;
 
 
+    /**
+     * It initializes the table, and the date fields
+     */
     public void initialize() {
         guestsToShow = FXCollections.observableArrayList();
         initializeDateFields();
@@ -53,6 +56,10 @@ public class CheckedInDetails {
 
     }
 
+    /**
+     * This function sets the check in and check out date fields to be uneditable,
+     * and disables them
+     */
     private void initializeDateFields() {
         checkOutDate.setEditable(false);
         checkInDate.setEditable(false);
@@ -62,6 +69,9 @@ public class CheckedInDetails {
         checkInDate.setDisable(true);
     }
 
+    /**
+     * The function initializes the tableView with the data from the database
+     */
     private void initializeTable() {
 
         firstNameColumn.setCellValueFactory(
@@ -81,6 +91,9 @@ public class CheckedInDetails {
     }
 
 
+    /**
+     * It clears the anchorPane and sets it to the checkIn view.
+     */
     @FXML
     private void onBackPressed() {
         anchorPane.getChildren().clear();
@@ -88,18 +101,42 @@ public class CheckedInDetails {
 
     }
 
+    /**
+     * This function sets the text of the TextView object called bookedByName to
+     * the value of the String parameter called bookerName
+     *
+     * @param bookerName The name of the person who booked the appointment
+     */
     public void setBookerName(String bookerName) {
         this.bookedByName.setText(bookerName);
     }
 
+    /**
+     * `setCheckOut` sets the value of the `checkOutDate` property to the value of
+     * the `checkOut` parameter
+     *
+     * @param checkOut The date the user wants to check out.
+     */
     public void setCheckOut(LocalDate checkOut) {
         this.checkOutDate.setValue(checkOut);
     }
 
+    /**
+     * This function sets the value of the checkInDate property to the value of the
+     * checkIn parameter.
+     *
+     * @param checkIn The date the user wants to check in.
+     */
     public void setCheckIn(LocalDate checkIn) {
         this.checkInDate.setValue(checkIn);
     }
 
+    /**
+     * This function sets the guestsToShow list to the list passed in as a
+     * parameter.
+     *
+     * @param guestsToShow The list of guests to show in the table.
+     */
     public void setGuestsToShow(ObservableList<Guest> guestsToShow) {
         this.guestsToShow.setAll(guestsToShow);
     }

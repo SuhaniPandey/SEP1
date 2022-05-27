@@ -55,7 +55,18 @@ public class CheckIn implements Initializable {
 
     private ModelManager modelManager;
 
-    @Override
+
+    /**
+     * The initialize function is called when the FXML file is loaded. It creates a
+     * new ModelManager object, which is used to get all the checked in bookings
+     * from the database. The bookings are then added to an observable list, which
+     * is used to populate the table
+     *
+     * @param url The location used to resolve relative paths for the root object,
+     * or null if the location is not known.
+     * @param resourceBundle This is a ResourceBundle object that contains the
+     * resources for the controller.
+     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
         modelManager = new ModelManager();
         ArrayList<Booking> allCheckedIns = modelManager.getAllCheckedInbookings();
@@ -65,6 +76,10 @@ public class CheckIn implements Initializable {
     }
 
 
+    /**
+     * The function initializes the table by setting the cell value factory for
+     * each column to the corresponding property in the Booking class
+     */
     private void initializeTable() {
         roomNumberColumn.setCellValueFactory(
                 new PropertyValueFactory<>("roomNumber"));
@@ -78,6 +93,12 @@ public class CheckIn implements Initializable {
     }
 
 
+    /**
+     * It takes the selected booking from the tableview, and then passes the
+     * booking's check in and check out dates to the controller of the details
+     * view, which then uses those dates to populate the tableview in the details
+     * view
+     */
     @FXML
     private void detailsPressed() throws IOException {
         Booking booking = tableView.getSelectionModel().getSelectedItem();
@@ -102,11 +123,13 @@ public class CheckIn implements Initializable {
         // Switch view here..
         anchorPame.getChildren().clear();
         anchorPame.getChildren().setAll(root);
-
-
     }
 
 
+    /**
+     * It clears the text fields and then sets the list of bookings to display to
+     * all the checked in bookings
+     */
     @FXML
     private void onResetFilterPressed()
     {
@@ -115,10 +138,13 @@ public class CheckIn implements Initializable {
         phoneNumberFilter.clear();
         ArrayList<Booking> bookings=modelManager.getAllCheckedInbookings();
         bookingsToDisplay.setAll(bookings);
-
-
     }
 
+    /**
+     * The function takes the text from the text fields and passes it to the model
+     * manager, which returns an array list of bookings that match the filter. The
+     * array list is then set as the items to display in the table view
+     */
     @FXML
     private void onFilterPressed()
     {
@@ -130,6 +156,11 @@ public class CheckIn implements Initializable {
 
     }
 
+    /**
+     * When the check-out button is pressed, if a booking is selected, the
+     * check-out screen is loaded and the selected booking is passed to the
+     * check-out screen
+     */
     @FXML
     private void checkOutPressed() throws IOException {
         Booking selectedItem = tableView.getSelectionModel().getSelectedItem();
@@ -147,8 +178,5 @@ public class CheckIn implements Initializable {
 
         anchorPame.getChildren().clear();
         anchorPame.getChildren().setAll(root);
-
-
-
     }
 }

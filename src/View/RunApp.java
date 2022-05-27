@@ -12,7 +12,7 @@ import java.io.File;
 public class RunApp {
     public static void main(String[] args) {
 
-        ModelManager.createXML();
+      //  ModelManager.createXML();
 
         Application.launch(GUI.class);
 

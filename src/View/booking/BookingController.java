@@ -48,7 +48,17 @@ public class BookingController implements Initializable {
 
     private ModelManager modelManager;
 
-    @Override
+
+    /**
+     * The initialize function is called when the FXML file is loaded. It creates a
+     * new ModelManager object and an ObservableList of Booking objects. It then
+     * calls the initializeAllBookingTable function
+     *
+     * @param url The location used to resolve relative paths for the root object,
+     * or null if the location is not known.
+     * @param resourceBundle This is a resource bundle that is used to localize the
+     * root object.
+     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
         modelManager = new ModelManager();
         allBookingsToShow = FXCollections.observableArrayList();
@@ -56,6 +66,11 @@ public class BookingController implements Initializable {
     }
 
 
+    /**
+     * value is set for every column in the table
+     * It fetches all the bookings from the database and populates the table with
+     * the data
+     */
     private void initializeAllBookingTable() {
         bookerAll.setCellValueFactory(
                 new PropertyValueFactory<>("bookerName"));
@@ -74,12 +89,21 @@ public class BookingController implements Initializable {
     }
 
 
+    /**
+     * The function fetches all bookings from the model manager and sets the list
+     * of bookings to show to the list of bookings fetched from the model manager.
+     */
     private void fetchAllBookings() {
         BookingList bookingList = modelManager.getAllBookings();
         allBookingsToShow.setAll(bookingList.getBookings());
     }
 
 
+    /**
+     * If the dateFrom and dateTo filters are set, then filter the bookings and
+     * display them in the table
+     * if the dateTo and DateFrom are null then the alert box will be displayed.
+     */
     @FXML
     private void onFilterPressed() {
         LocalDate dateFrom = dateFromFilter.getValue();
@@ -97,6 +121,9 @@ public class BookingController implements Initializable {
         allBookingsToShow.setAll(filteredBooking);
     }
 
+    /**
+     * It clears the date fields and fetches all bookings
+     */
     @FXML
     private void resetFilterPressed() {
         dateFromFilter.getEditor().clear();
@@ -105,6 +132,12 @@ public class BookingController implements Initializable {
 
     }
 
+    /**
+     * The function is called when the user presses the remove button. It checks if
+     * the user has selected a booking to remove, if not it displays an error
+     * message. If the user has selected a booking, it removes the booking from the
+     * system and updates the table view
+     */
     @FXML
     private void onRemovePressed() {
 
@@ -122,7 +155,14 @@ public class BookingController implements Initializable {
 
     }
 
-
+    /**
+     *  A function that is called when the user presses the check-in button. It
+     *     checks if the user has selected a booking to check-in, if not it displays an
+     *     error message. If the user has selected a booking, it checks if the booking
+     *     is already checked in, if not it loads the check-in add guests screen and
+     *      passes the selected booking to the check-in add guests screen.
+     * @throws IOException
+     */
     @FXML
     private void onCheckedInPressed() throws IOException {
 
@@ -144,9 +184,6 @@ public class BookingController implements Initializable {
 
         anchorPane.getChildren().clear();
         anchorPane.getChildren().setAll(root);
-
-
-
     }
 }
 

@@ -61,6 +61,10 @@ public class CheckOut {
     private TableColumn<Booking, LocalDate> checkedOutDate;
 
 
+    /**
+     * It initializes the model manager, the check in to display list, the tabs,
+     * the table, and the dates
+     */
     public void initialize() {
         modelManager = new ModelManager();
         if (bookingFromBefore == null) {
@@ -73,11 +77,19 @@ public class CheckOut {
         initializeDates();
     }
 
+    /**
+     * > The function disables the checkOutTab, but enables the content of the
+     * checkOutTab
+     */
     private void initializeTabs() {
         checkOutTab.setDisable(true);
         checkOutTab.getContent().setDisable(false);
     }
 
+    /**
+     * The function initializes the table view by setting the cell value factory
+     * for each column to the corresponding property value factory
+     */
     private void initializeTable() {
         mainBooker.setCellValueFactory(
                 new PropertyValueFactory<>("bookerName"));
@@ -92,6 +104,11 @@ public class CheckOut {
 
     }
 
+    /**
+     * The function takes the text from the text fields and passes it to the model
+     * manager, which then returns a list of bookings that match the search
+     * criteria
+     */
     @FXML
     private void onSearchPressed() {
         String firstname = firstName.getText();
@@ -102,6 +119,12 @@ public class CheckOut {
     }
 
 
+    /**
+     * If the modelManager.deleteBooking(selectedBooking) returns true, then the
+     * booking has been deleted from the system and the user is notified of this.
+     * If it returns false, then the user is notified that the booking has not been
+     * deleted
+     */
     @FXML
     private void onCheckOutPressed() {
         if (modelManager.deleteBooking(selectedBooking)){
@@ -111,11 +134,12 @@ public class CheckOut {
             return;
         }
         AlertBox.display("Checkout failed... Something went wrong");
-
-
-
     }
 
+    /**
+     * This function sets the departure date to the current date, and sets the
+     * arrival date to be uneditable and disabled
+     */
     private void initializeDates() {
         departureDate.setValue(LocalDate.now());
         arrivalDate.setEditable(false);
@@ -127,6 +151,14 @@ public class CheckOut {
 
     }
 
+    /**
+     * It gets the selected booking from the table view, checks if it's null, if
+     * it's not null, it sets the selected booking to the booking that was
+     * selected, selects the next tab, sets the arrival date to the arrival date of
+     * the booking, sets the number of nights stayed to the number of nights
+     * stayed, sets the final checkout price to the checkout price of the booking,
+     * and updates the final price
+     */
     public void onNextpressed() {
         Booking booking = checkInAllTableView.getSelectionModel().getSelectedItem();
         if (booking == null) {
@@ -141,10 +173,17 @@ public class CheckOut {
         updateFinalPrice();
     }
 
+    /**
+     * This function updates the final price of the order
+     */
     private void updateFinalPrice( ) {
         finalPrice.setText(finalCheckOutPrice + "");
     }
 
+    /**
+     * If the smoking checkbox is selected, add 100 to the final checkout price,
+     * otherwise subtract 100 from the final checkout price
+     */
     @FXML
     private void onSmokingPressed() {
         if (smokingCheckBox.isSelected()) {
@@ -156,6 +195,11 @@ public class CheckOut {
 
     }
 
+    /**
+     * If the discount checkbox is selected, then subtract 10% of the checkout
+     * price from the final checkout price. Otherwise, add 10% of the checkout
+     * price to the final checkout price
+     */
     public void onDiscountPressed() {
         double discount = 0.1 * selectedBooking.checkOutPrice();
         if (discountCheckBox.isSelected()){
@@ -168,6 +212,14 @@ public class CheckOut {
     }
 
 
+    /**
+     * This function sets the bookingFromBefore variable to the bookingFromBefore
+     * parameter, and then sets the text of the firstName, lastName, and
+     * phoneNumber TextViews to the bookerName, lastName, and phoneNumber of the
+     * bookingFromBefore variable
+     *
+     * @param bookingFromBefore The booking object that is being edited.
+     */
     public void setBookingFromBefore(Booking bookingFromBefore) {
         this.bookingFromBefore = bookingFromBefore;
         firstName.setText(bookingFromBefore.getBookerName());

@@ -29,11 +29,18 @@ public class CheckInAddGuests {
     private ArrayList<Guest> addedGuests;
 
 
+    /**
+     * > This function initializes the modelManager and addedGuests variables
+     */
     public void initialize() {
         modelManager = new ModelManager();
         addedGuests = new ArrayList<>();
     }
 
+    /**
+     * When the check in button is pressed, add the guests to the booking, then
+     * check in the booking
+     */
     @FXML
     private void checkInPressed( ) {
         modelManager.addGuestsToBooking(selectedBooking, addedGuests);
@@ -43,6 +50,9 @@ public class CheckInAddGuests {
 
     }
 
+    /**
+     * The function adds a guest to the booking, and clears the fields
+     */
     @FXML
     private void addGuestPressed() {
         String firstName = firstNameCheckIn.getText().trim();
@@ -57,6 +67,9 @@ public class CheckInAddGuests {
 
     }
 
+    /**
+     * It clears all the fields in the check-in tab
+     */
     private void clearFields() {
         firstNameCheckIn.clear();
         lastNameCheckIn.clear();
@@ -66,10 +79,20 @@ public class CheckInAddGuests {
         dateOfBirth.setValue(null);
     }
 
+    /**
+     * The function setSelectedBooking() is a public function that takes a Booking
+     * object as a parameter and sets the selectedBooking variable to the Booking
+     * object passed in
+     *
+     * @param selectedBooking The selected booking object.
+     */
     public void setSelectedBooking(Booking selectedBooking) {
         this.selectedBooking = selectedBooking;
     }
 
+    /**
+     * It clears the fields and sets the anchorPane to the booking view
+     */
     @FXML
     private void onBackPressed() {
         clearFields();
