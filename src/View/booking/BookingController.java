@@ -135,7 +135,8 @@ public class BookingController implements Initializable {
     /**
      * The function is called when the user presses the remove button. It checks if
      * the user has selected a booking to remove, if not it displays an error
-     * message. If the user has selected a booking, it removes the booking from the
+     * message.
+     * If the user has selected a booking, it removes the booking from the
      * system and updates the table view
      */
     @FXML

@@ -112,7 +112,7 @@ public class CheckedInDetails {
     }
 
     /**
-     * `setCheckOut` sets the value of the `checkOutDate` property to the value of
+     * setCheckOut` sets the value of the `checkOutDate` property to the value of
      * the `checkOut` parameter
      *
      * @param checkOut The date the user wants to check out.
