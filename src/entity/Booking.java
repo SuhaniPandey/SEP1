@@ -167,7 +167,7 @@ public class Booking implements Serializable {
 
     public String toString() {
         return "Booking{" + "guest=" + mainBooker + ", rooms=" + room
-                + ", arrival=" + arrival + ", departure=" + departure + '}';
+            + ", arrival=" + arrival + ", departure=" + departure + '}';
     }
 
     /**
@@ -201,7 +201,7 @@ public class Booking implements Serializable {
         }
         Booking other = (Booking) obj;
         return mainBooker.equals(other.mainBooker) && room.equals(other.room)
-                && arrival.equals(other.arrival) && departure.equals(other.departure);
+            && arrival.equals(other.arrival) && departure.equals(other.departure);
     }
 
     /**

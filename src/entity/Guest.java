@@ -27,7 +27,7 @@ public class Guest implements Serializable {
      * @param dateOfBirth which refers to date of birth of the guest
      */
     public Guest(String firstName, String lastName, String phoneNumber,
-                 String nationality, String address, LocalDate dateOfBirth) {
+        String nationality, String address, LocalDate dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -173,7 +173,7 @@ public class Guest implements Serializable {
 
     public String toString() {
         return "FirstName: " + firstName + " Lastname: " + lastName + "PhoneNumber: " + phoneNumber
-                + "Nationality: " + nationality + "Date of birth: " + dateOfBirth;
+            + "Nationality: " + nationality + "Date of birth: " + dateOfBirth;
     }
 
     /**
@@ -189,6 +189,6 @@ public class Guest implements Serializable {
         }
         Guest other = (Guest) obj;
         return firstName.equals(other.firstName) && lastName.equals(other.lastName)
-                && phoneNumber.equals(other.phoneNumber) && nationality.equals(other.nationality) && dateOfBirth.isEqual(other.dateOfBirth);
+            && phoneNumber.equals(other.phoneNumber) && nationality.equals(other.nationality) && dateOfBirth.isEqual(other.dateOfBirth);
     }
 }

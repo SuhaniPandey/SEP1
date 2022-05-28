@@ -124,7 +124,7 @@ public class BookingList implements Serializable {
 
     public boolean removeBooking(Booking booking)
     {
-      return bookings.remove(booking);
+        return bookings.remove(booking);
     }
 
 }
