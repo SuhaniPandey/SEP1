@@ -79,7 +79,6 @@ public class Rooms implements Initializable
     }
     RoomList roomList = modelManager.searchRooms(arrival, departure, roomType);
     roomsToDisplay.setAll(roomList.getRooms());
-
   }
 
   /**
