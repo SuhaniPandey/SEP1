@@ -23,7 +23,7 @@ import java.io.File;
 /**
  * A class for accessing Booking objects and reading/writing to/from files
  *Two files to read booking list and room list
- * @author Kristiyan, Suhani, Devlin
+ * @author Kristiyan, Suhani
  * @version 1.0
  */
 public class ModelManager implements Serializable {
@@ -38,7 +38,7 @@ public class ModelManager implements Serializable {
 
     /**
      * Creates an array list BookingList of all Booking objects in the binary file
-     *
+     * gets all booking
      * @return array list of every booking object in the binary file
      */
     public BookingList getAllBookings() {
@@ -83,7 +83,7 @@ public class ModelManager implements Serializable {
 
     /**
      * Adds a Booking to the binary file.
-     *Bookings are added and every bookings are saved in the booking list at last
+     *Bookings are added and every booking are saved in the booking list at last
      * @param booking the Booking object which will be added to the binary file
      */
     public void addBooking(Booking booking) {
@@ -94,7 +94,7 @@ public class ModelManager implements Serializable {
 
     /**
      * Adds an array list of Booking objects to the binary file.
-     *
+     *saves booking after adding all the booking
      * @param bookings the BookingList array list which will be added to the binary file
      */
     public void addBookings(BookingList bookings) {
@@ -164,7 +164,7 @@ public class ModelManager implements Serializable {
 
     // searching room
     /**
-     * > The function takes in a room type, arrival date and departure date and
+     *  The function takes in a room type, arrival date and departure date and
      * returns a list of rooms that are available for the given dates
      *
      * @param arrival The date the guest wants to arrive
@@ -247,8 +247,12 @@ public class ModelManager implements Serializable {
         ) {
             boolean include = false;
             // following if-else checks if the given date includes the booked date..
+            //if the departure date is before starting date and after end date
+            //or departure date is equal to starting date
             if ((booking.getDeparture().isBefore(dateTo) && (booking.getDeparture().isAfter(dateFrom))) || booking.getDeparture().isEqual(dateTo))
                 include = true;
+            //if arrival date is after end date and arrival date is before starting date
+            //or arrival date is equal to end date
             else if ((booking.getArrival().isAfter(dateFrom) && (booking.getArrival().isBefore(dateTo))) || booking.getArrival().isEqual(dateFrom))
                 include = true;
             if (include) {
@@ -264,6 +268,12 @@ public class ModelManager implements Serializable {
      * @param lastname takes String
      * @param phoneno takes String
      * @return all the checks in
+     * this method goes through all booking list
+     * from all booking it will get the main booker
+     * checks if the information of the guest mentioned in text field is equal to mainbooker´s information
+     * if the information is same, it will check if the guest is checked in or not
+     * if they are checked, then they will be added to checked in guest list
+     *
      */
 
     public BookingList searchCheckIn(String firstname, String lastname, String phoneno) {
@@ -322,9 +332,10 @@ public class ModelManager implements Serializable {
 
 
     /**
-     * > This function returns an ArrayList of all the checked in bookings
+     * This function returns an ArrayList of all the checked in bookings
      *
      * @return An ArrayList of Bookings that are checked in.
+     *
      */
     public ArrayList<Booking> getAllCheckedInbookings() {
         BookingList allBookings = getAllBookings();//happens 1 time
@@ -339,7 +350,7 @@ public class ModelManager implements Serializable {
     //Choose this code because of its complexity
 
     /**
-     * > This function returns an ArrayList of Bookings that are checked in and
+     * >This function returns an ArrayList of Bookings that are checked in and
      * have the same first name, last name, and phone number as the parameters
      *
      * @param firstName The first name of the guest
