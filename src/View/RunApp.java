@@ -11,18 +11,7 @@ import java.io.File;
 
 public class RunApp {
     public static void main(String[] args) {
-
-      //  ModelManager.createXML();
-      /*
-        ModelManager modelManager = new ModelManager();
-       modelManager.saveBookings(new BookingList());
-       RoomList roomlist=new RoomList();
-       roomlist.createList();
-       modelManager.saveRoomList(roomlist);
-
-       */
-
-       Application.launch(GUI.class);
+      Application.launch(GUI.class);
 
     }
 }
